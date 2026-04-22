@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MDGTB301 · Digital Economy · Dr. Hildegard Haas</title>
+<meta name="description" content="MDGTB301 Digital Economy — Masters Year 1 · EU Business School · Dr. Hildegard Haas">
+<style>
+/* ════════════════════════════════════════════════════════════════════════
+   MDGTB301 DIGITAL ECONOMY — SHARED CSS CORE
+   ════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* Content category colours */
+  --cat-definition: #DC2626;
+  --cat-framework:  #E5A100;
+  --cat-case:       #16A34A;
+  --cat-activity:   #7C3AED;
+  --cat-institution:#1E3A8A;
+
+  /* Link-card colours (hub page) */
+  --card-fg:  #1E3A8A;  /* navy - Framework Gallery */
+  --card-ac:  #3B82F6;  /* blue - Activity */
+  --card-cs:  #16A34A;  /* green - Case Study */
+  --card-pr:  #F97316;  /* orange - Pre-Reading */
+  --card-rf:  #7C3AED;  /* purple - Reflection */
+
+  /* Brand */
+  --teal:     #00BE96;
+  --teal-dk:  #00876B;
+  --navy:     #0F2440;
+  --navy-mid: #1D3557;
+
+  /* Neutrals */
+  --ink:      #111418;
+  --ink-mid:  #3A4149;
+  --ink-lt:   #6B7280;
+  --paper:    #FFFFFF;
+  --off:      #F7F8FA;
+  --line:     #E4E7EC;
+  --line-dk:  #CBD3DB;
+
+  --font: "Arial", "Helvetica Neue", Helvetica, sans-serif;
+  --r-sm: 4px; --r-md: 8px; --r-lg: 16px;
+  --shadow-sm: 0 1px 2px rgba(15,36,64,.06), 0 1px 3px rgba(15,36,64,.04);
+  --shadow-md: 0 4px 12px rgba(15,36,64,.08), 0 2px 4px rgba(15,36,64,.04);
+  --max: 1200px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--off);
+  -webkit-font-smoothing: antialiased;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+input, textarea {
+  -webkit-user-select: text !important;
+  user-select: text !important;
+}
+img, svg { -webkit-user-drag: none; user-drag: none; }
+
+a { color: var(--teal-dk); text-decoration: none; }
+a:hover { color: var(--navy); }
+
+/* ─── Brand bar ─── */
+.brand-bar {
+  height: 4px;
+  background: linear-gradient(90deg,
+    var(--cat-institution) 0% 20%, var(--cat-definition) 20% 40%,
+    var(--cat-framework) 40% 60%, var(--cat-case) 60% 80%,
+    var(--cat-activity) 80% 100%);
+}
+
+/* ─── Hero ─── */
+.hero {
+  background: var(--navy);
+  color: var(--paper);
+  padding: 64px 24px 72px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -120px; right: -120px;
+  width: 380px; height: 380px;
+  background: radial-gradient(circle, rgba(0,190,150,0.22) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  bottom: -180px; left: -140px;
+  width: 420px; height: 420px;
+  background: radial-gradient(circle, rgba(229,161,0,0.12) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.hero-inner { max-width: var(--max); margin: 0 auto; position: relative; z-index: 1; }
+.hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 12px;
+  letter-spacing: 2.5px;
+  color: var(--teal);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.hero-meta::before {
+  content: "";
+  width: 48px; height: 1px;
+  background: var(--teal);
+}
+.hero-title {
+  font-size: clamp(40px, 6.5vw, 80px);
+  line-height: 1.04;
+  margin: 0 0 8px;
+  font-weight: 900;
+  letter-spacing: -1.5px;
+}
+.hero-subtitle {
+  font-size: 22px;
+  color: rgba(255,255,255,0.72);
+  margin: 0 0 28px;
+  font-weight: 400;
+}
+.hero-subtitle strong { color: var(--teal); font-weight: 700; }
+.hero-desc {
+  max-width: 760px;
+  font-size: 17px;
+  color: rgba(255,255,255,0.82);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ─── Stats strip ─── */
+.stats {
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+}
+.stats-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 40px 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 24px;
+  text-align: center;
+}
+.stat-num {
+  display: block;
+  font-size: 56px;
+  font-weight: 900;
+  color: var(--teal-dk);
+  line-height: 1;
+  letter-spacing: -2px;
+}
+.stat-label {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--ink-lt);
+  font-weight: 700;
+  margin-top: 8px;
+}
+
+/* ─── Sticky nav ─── */
+.unit-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+  box-shadow: var(--shadow-sm);
+}
+.unit-nav-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.unit-nav-brand {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+  color: var(--navy);
+  flex: 0 0 auto;
+}
+.unit-nav-brand a { color: inherit; text-decoration: none; }
+.unit-nav-back {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--teal-dk);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.unit-nav-back:hover { color: var(--navy); }
+
+.search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+.search-box input {
+  font-family: var(--font);
+  font-size: 13px;
+  padding: 9px 32px 9px 34px;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: var(--off);
+  color: var(--ink);
+  width: 240px;
+  transition: all 0.18s ease;
+  outline: none;
+}
+.search-box input:focus {
+  width: 300px;
+  background: var(--paper);
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px rgba(0, 190, 150, 0.15);
+}
+.search-icon {
+  position: absolute;
+  left: 12px;
+  width: 16px; height: 16px;
+  color: var(--ink-lt);
+  pointer-events: none;
+}
+.search-clear {
+  position: absolute;
+  right: 8px;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--ink-lt);
+  color: var(--paper);
+  border: 0;
+  font-size: 13px;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.search-clear:hover { background: var(--navy); }
+.search-status {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 10px 24px;
+  font-size: 13px;
+  color: var(--navy);
+  background: #FFFAED;
+  border-top: 1px solid var(--cat-framework);
+  font-weight: 600;
+}
+.search-status strong { color: var(--teal-dk); }
+
+@media (max-width: 720px) {
+  .unit-nav-inner { flex-wrap: wrap; }
+  .search-box { width: 100%; }
+  .search-box input, .search-box input:focus { width: 100%; }
+}
+
+/* ─── Page section defaults ─── */
+.section { padding: 64px 24px; }
+.section-inner { max-width: var(--max); margin: 0 auto; }
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  color: var(--teal-dk);
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.section-eyebrow::before {
+  content: "";
+  width: 24px; height: 2px;
+  background: var(--teal);
+}
+.section-title {
+  font-size: clamp(28px, 4vw, 40px);
+  line-height: 1.15;
+  font-weight: 800;
+  color: var(--navy);
+  margin: 0 0 12px;
+  letter-spacing: -0.5px;
+}
+.section-lede {
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--ink-mid);
+  max-width: 780px;
+  margin: 0 0 36px;
+}
+
+/* ─── Footer ─── */
+footer {
+  background: var(--navy);
+  color: rgba(255,255,255,0.72);
+  padding: 40px 24px 28px;
+  border-top: 4px solid var(--teal);
+}
+.footer-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  text-align: center;
+}
+.footer-inner h4 {
+  margin: 0 0 8px;
+  color: var(--paper);
+  font-size: 18px;
+  font-weight: 800;
+}
+.footer-inner p {
+  margin: 0 0 8px;
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+.footer-inner .accent { color: var(--teal); font-weight: 700; }
+.footer-bottom {
+  max-width: var(--max);
+  margin: 20px auto 0;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  text-align: center;
+}
+
+/* ─── Copyright badge ─── */
+.copyright-badge {
+  position: fixed;
+  bottom: 16px;
+  left: 16px;
+  z-index: 60;
+  background: rgba(15, 36, 64, 0.92);
+  color: var(--paper);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 20px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  border: 1px solid rgba(0, 190, 150, 0.3);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.copyright-badge .c-symbol { color: var(--teal); font-weight: 800; font-size: 13px; }
+
+/* ─── Print protection ─── */
+@media print {
+  body * { visibility: hidden !important; display: none !important; }
+  body::before {
+    content: "Printing is disabled for this course material. © Dr. Hildegard Haas · MDGTB301";
+    visibility: visible !important;
+    display: block !important;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    padding: 40px;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════════
+   HUB-PAGE SPECIFIC CSS
+   Accordion with link cards — marti301 style
+   ════════════════════════════════════════════════════════════════ */
+
+.units-section {
+  padding: 16px 24px 80px;
+  background: var(--off);
+}
+.units-inner { max-width: var(--max); margin: 0 auto; }
+
+.units-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 32px 0 24px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 20px;
+}
+.units-header h2 {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--navy);
+  letter-spacing: -0.5px;
+}
+.units-header .count {
+  font-size: 14px;
+  color: var(--ink-lt);
+  font-weight: 600;
+}
+
+/* ─── Unit accordion row ─── */
+.unit {
+  background: var(--paper);
+  border-radius: var(--r-lg);
+  margin-bottom: 14px;
+  border: 1px solid var(--line);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+.unit[open] { box-shadow: var(--shadow-md); }
+
+.unit-summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 22px 28px;
+  display: grid;
+  grid-template-columns: 56px 1fr auto;
+  align-items: center;
+  gap: 20px;
+  transition: background 0.15s;
+}
+.unit-summary::-webkit-details-marker { display: none; }
+.unit-summary:hover { background: #FAFBFC; }
+
+.unit-num {
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--paper);
+  background: var(--navy);
+  width: 48px; height: 48px;
+  border-radius: var(--r-sm);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: -0.5px;
+  position: relative;
+}
+.unit-num::after {
+  content: "";
+  position: absolute;
+  bottom: -3px; left: 8px; right: 8px;
+  height: 2px;
+  background: var(--teal);
+}
+
+.unit-heading { display: flex; flex-direction: column; gap: 6px; }
+.unit-heading h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1.2;
+  letter-spacing: -0.2px;
+}
+.unit-tag {
+  display: inline-flex;
+  align-self: flex-start;
+  font-size: 10.5px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--ink-lt);
+  background: var(--off);
+  padding: 4px 10px;
+  border-radius: var(--r-sm);
+  font-weight: 700;
+}
+
+.unit-chevron {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--off);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--navy);
+  font-size: 12px;
+  font-weight: 700;
+  transition: all 0.25s;
+  line-height: 1;
+}
+.unit-chevron::before { content: "▼"; }
+.unit[open] .unit-chevron {
+  background: var(--teal);
+  color: var(--paper);
+}
+.unit[open] .unit-chevron::before { content: "▲"; }
+
+.unit-body {
+  padding: 0 20px 20px;
+  display: grid;
+  gap: 8px;
+}
+
+/* ─── Link cards (inside accordion) ─── */
+.link-card {
+  display: grid;
+  grid-template-columns: 56px 1fr auto;
+  align-items: center;
+  gap: 18px;
+  padding: 16px 20px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  text-decoration: none;
+  color: var(--ink);
+  transition: all 0.18s ease;
+}
+.link-card:hover {
+  transform: translateX(4px);
+  border-color: var(--card-color, var(--teal));
+  box-shadow: var(--shadow-md);
+  color: var(--ink);
+}
+.link-card:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
+}
+
+.link-badge {
+  width: 44px; height: 44px;
+  border-radius: var(--r-sm);
+  background: var(--card-color, var(--navy));
+  color: var(--paper);
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 44px;
+}
+
+.link-body h4 {
+  margin: 0 0 2px;
+  font-size: 15.5px;
+  font-weight: 800;
+  color: var(--navy);
+  letter-spacing: -0.1px;
+  line-height: 1.3;
+}
+.link-body p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--ink-lt);
+  line-height: 1.45;
+}
+
+.link-format {
+  font-size: 10.5px;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--ink-lt);
+  font-weight: 700;
+  flex: 0 0 auto;
+}
+
+@media (max-width: 640px) {
+  .unit-summary {
+    grid-template-columns: 42px 1fr auto;
+    padding: 16px 18px;
+    gap: 14px;
+  }
+  .unit-num { width: 42px; height: 42px; font-size: 20px; }
+  .unit-heading h3 { font-size: 16.5px; }
+  .unit-body { padding: 0 14px 14px; }
+  .link-card {
+    padding: 14px 16px;
+    grid-template-columns: 40px 1fr;
+    gap: 14px;
+  }
+  .link-badge { width: 40px; height: 40px; font-size: 12px; }
+  .link-format { grid-column: 2; justify-self: flex-start; margin-top: 4px; }
+}
+
+/* ─── Complete gallery link ─── */
+.complete-gallery-section {
+  padding: 48px 24px 64px;
+  background: var(--off);
+  border-top: 1px solid var(--line);
+}
+.complete-gallery-section .section-inner { max-width: var(--max); margin: 0 auto; }
+.complete-gallery-section h3 {
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  color: var(--teal-dk);
+  text-transform: uppercase;
+  font-weight: 700;
+  margin: 0 0 14px;
+}
+
+.gallery-link {
+  display: grid;
+  grid-template-columns: 60px 1fr auto;
+  align-items: center;
+  gap: 20px;
+  padding: 24px 28px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  text-decoration: none;
+  color: var(--ink);
+  transition: all 0.2s;
+}
+.gallery-link:hover {
+  border-color: var(--teal);
+  transform: translateX(4px);
+  box-shadow: var(--shadow-md);
+  color: var(--ink);
+}
+.gallery-icon {
+  width: 48px; height: 48px;
+  border-radius: var(--r-sm);
+  background: var(--teal);
+  color: var(--paper);
+  font-size: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+}
+.gallery-body h4 {
+  margin: 0 0 3px;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--navy);
+  letter-spacing: -0.2px;
+}
+.gallery-body p {
+  margin: 0;
+  font-size: 13.5px;
+  color: var(--ink-lt);
+}
+.gallery-arrow {
+  font-size: 22px;
+  color: var(--teal);
+  font-weight: 400;
+  flex: 0 0 auto;
+}
+
+/* ─── Hidden state for search filter ─── */
+.unit.is-hidden,
+.link-card.is-hidden { display: none !important; }
+
+</style>
+</head>
+<body>
+<div class="brand-bar"></div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-meta"><span>MDGTB301 · 3 ECTS · Masters Year 1</span></div>
+    <h1 class="hero-title">Digital Economy</h1>
+    <p class="hero-subtitle">Interactive Framework Galleries &amp; Course Materials</p>
+    <p class="hero-desc">A course by <strong style="color: var(--teal);">Dr. Hildegard Haas</strong> · EU Business School</p>
+  </div>
+</header>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="stats-inner">
+    <div class="stat"><span class="stat-num">5</span><span class="stat-label">Units</span></div>
+    <div class="stat"><span class="stat-num">20</span><span class="stat-label">Slibraries</span></div>
+    <div class="stat"><span class="stat-num">100</span><span class="stat-label">Frameworks</span></div>
+  </div>
+</section>
+
+<!-- STICKY NAV + SEARCH -->
+<nav class="unit-nav" aria-label="Course navigation">
+  <div class="unit-nav-inner">
+    <span class="unit-nav-brand">MDGTB301</span>
+    <div class="search-box">
+      <svg class="search-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="9" cy="9" r="6.5" stroke="currentColor" stroke-width="1.8"/>
+        <path d="M14 14L17.5 17.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+      <input type="text" id="search" placeholder="Search units, cases, readings…" aria-label="Search" autocomplete="off" spellcheck="false">
+      <button class="search-clear" id="search-clear" aria-label="Clear search" hidden>&times;</button>
+    </div>
+  </div>
+  <div class="search-status" id="search-status" hidden></div>
+</nav>
+
+<!-- COURSE UNITS ACCORDION -->
+<section class="units-section">
+  <div class="units-inner">
+    <div class="units-header">
+      <h2>Course Units</h2>
+      <span class="count">5 units · 20 Slibraries · 100 frameworks</span>
+    </div>
+    
+    <details class="unit" id="unit-1" open>
+      <summary class="unit-summary">
+        <span class="unit-num">1</span>
+        <div class="unit-heading">
+          <h3>Digitalization of the Global Economy</h3>
+          <span class="unit-tag">Foundation</span>
+        </div>
+        <span class="unit-chevron"></span>
+      </summary>
+      <div class="unit-body">
+        <a class="link-card" href="unit1.html" style="--card-color: var(--card-fg);">
+          <span class="link-badge" style="--card-color: var(--card-fg);">FG</span>
+          <div class="link-body">
+            <h4>Framework Gallery</h4>
+            <p>20 interactive concepts · Slibraries 1–4</p>
+          </div>
+          <span class="link-format">HTML</span>
+        </a>
+        <a class="link-card" href="activities/Unit1_Activity.html" style="--card-color: var(--card-ac);">
+          <span class="link-badge" style="--card-color: var(--card-ac);">DI</span>
+          <div class="link-body">
+            <h4>Discussion — What is the Digital Economy?</h4>
+            <p>Guided conversation tracing the atoms-to-bits shift and the 3-layer OECD model</p>
+          </div>
+          <span class="link-format">HTML</span>
+        </a>
+        <a class="link-card" href="cases/Unit1_Case.html" style="--card-color: var(--card-cs);">
+          <span class="link-badge" style="--card-color: var(--card-cs);">CS</span>
+          <div class="link-body">
+            <h4>Case: Netflix — From Atoms to Bits</h4>
+            <p>The DVD-mail-order to streaming pivot · 1997–2026</p>
+          </div>
+          <span class="link-format">HTML</span>
+        </a>
+        <a class="link-card" href="prereading/Unit1_PreReading.html" style="--card-color: var(--card-pr);">
+          <span class="link-badge" style="--card-color: var(--card-pr);">PR</span>
+          <div class="link-body">
+            <h4>Pre-Reading: Bukht &amp; Heeks — Defining the Digital Economy</h4>
+            <p>Key framework: Core / Narrow / Broad 3-Layer Scope</p>
+          </div>
+          <span class="link-format">HTML</span>
+        </a>
+        <a class="link-card" href="reflections/Unit1_Reflection.html" style="--card-color: var(--card-rf);">
+          <span class="link-badge" style="--card-color: var(--card-rf);">RF</span>
+          <div class="link-body">
+            <h4>Reflection Prompt</h4>
+            <p>3 questions for independent study</p>
+          </div>
+          <span class="link-format">HTML</span>
+        </a>
+      </div>
+    </details>
+    <details class="unit" id="unit-2">
+      <summary class="unit-summary">
+        <span class="unit-num">2</span>
+        <div class="unit-heading">
+          <h3>Fundamental Concepts of the Digital Economy</h3>
+          <span class="unit-tag">Workshop</span>
+        </div>
+        <span class="unit-chevron"></span>
+      </summary>
+      <div class="unit-body">
+        <a class="link-card" href="unit2.html" style="--card-color: var(--card-fg);">
+          <span class="link-badge" style="--card-color: var(--card-fg);">FG</span>
+          <div class="link-body">
+            <h4>Framework Gallery</h4>
+            <p>20 interactive concepts · Slibraries 5–8</p>
+          </div>
+          <span class="link-format">HTML</span>
+        </a>
+        <a class="link-card" href="activities/Unit2_Activity.html" style="--card-color: var(--card-ac);">
+          <span class="link-badge" style="--card-color: var(--card-ac);">WS</span>
+          <div class="link-body">
+            <h4>Workshop — Network Effects in Practice</h4>
+            <p>Hands-on mapping of direct, indirect, and cross-side network effects</p>
+          </div>
+          <span class="link-format">HTML</span>
+        </a>
+        <a class="link-card" href="cases/Unit2_Case.html" style="--card-color: var(--card-cs);">
+          <span class="link-badge" style="--card-color: var(--card-cs);">CS</span>
+          <div class="link-body">
+            <h4>Case: Spotify — Information Goods at Scale</h4>
+            <p>Freemium, long tail, and the economics of zero marginal cost</p>
+          </div>
+          <span class="link-format">HTML</span>
+        </a>
+        <a class="link-card" href="prereading/Unit2_PreReading.html" style="--card-color: var(--card-pr);">
+          <span class="link-badge" style="--card-color: var(--card-pr);">PR</span>
+          <div class="link-body">
+            <h4>Pre-Reading: Shapiro &amp; Varian — Information Rules</h4>
+            <p>Key framework: Versioning, lock-in, and switching costs</p>
+          </div>
+          <span class="link-format">HTML</span>
+        </a>
+        <a class="link-card" href="reflections/Unit2_Reflection.html" style="--card-color: var(--card-rf);">
+          <span class="link-badge" style="--card-color: var(--card-rf);">RF</span>
+          <div class="link-body">
+            <h4>Reflection Prompt</h4>
+            <p>3 questions for independent study</p>
+          </div>
+          <span class="link-format">HTML</span>
+        </a>
+      </div>
+    </details>
+    <details class="unit" id="unit-3">
+      <summary class="unit-summary">
+        <span class="unit-num">3</span>
+        <div class="unit-heading">
+          <h3>Digital Markets</h3>
+          <span class="unit-tag">Analysis</span>
+        </div>
+        <span class="unit-chevron"></span>
+      </summary>
+      <div class="unit-body">
+        <a class="link-card" href="unit3.html" style="--card-color: var(--card-fg);">
+          <span class="link-badge" style="--card-color: var(--card-fg);">FG</span>
+          <div class="link-body">
+            <h4>Framework Gallery</h4>
+            <p>20 interactive concepts · Slibraries 9–12</p>
+          </div>
+          <span class="link-format">HTML</span>
+        </a>
+        <a class="link-card" href="activities/Unit3_Activity.html" style="--card-color: var(--card-ac);">
+          <span class="link-badge" style="--card-color: var(--card-ac);">AN</span>
+          <div class="link-body">
+            <h4>Analysis — Platform Economics of GAFAM</h4>
+            <p>Comparative analysis of winner-takes-most dynamics under the EU DMA</p>
+          </div>
+          <span class="link-format">HTML</span>
+        </a>
+        <a class="link-card" href="cases/Unit3_Case.html" style="--card-color: var(--card-cs);">
+          <span class="link-badge" style="--card-color: var(--card-cs);">CS</span>
+          <div class="link-body">
+            <h4>Case: Apple App Store — Gatekeeper or Platform?</h4>
+            <p>DMA compliance and the EU vs Big Tech showdown</p>
+          </div>
+          <span class="link-format">HTML</span>
+        </a>
+        <a class="link-card" href="prereading/Unit3_PreReading.html" style="--card-color: var(--card-pr);">
+          <span class="link-badge" style="--card-color: var(--card-pr);">PR</span>
+          <div class="link-body">
+            <h4>Pre-Reading: Parker, Van Alstyne &amp; Choudary — Platform Revolution</h4>
+            <p>Key framework: Pipeline vs Platform business models</p>
+          </div>
+          <span class="link-format">HTML</span>
+        </a>
+        <a class="link-card" href="reflections/Unit3_Reflection.html" style="--card-color: var(--card-rf);">
+          <span class="link-badge" style="--card-color: var(--card-rf);">RF</span>
+          <div class="link-body">
+            <h4>Reflection Prompt</h4>
+            <p>3 questions for independent study</p>
+          </div>
+          <span class="link-format">HTML</span>
+        </a>
+      </div>
+    </details>
+    <details class="unit" id="unit-4">
+      <summary class="unit-summary">
+        <span class="unit-num">4</span>
+        <div class="unit-heading">
+          <h3>Adapting to the Digital Economy</h3>
+          <span class="unit-tag">Hackathon</span>
+        </div>
+        <span class="unit-chevron"></span>
+      </summary>
+      <div class="unit-body">
+        <a class="link-card" href="unit4.html" style="--card-color: var(--card-fg);">
+          <span class="link-badge" style="--card-color: var(--card-fg);">FG</span>
+          <div class="link-body">
+            <h4>Framework Gallery</h4>
+            <p>20 interactive concepts · Slibraries 13–16</p>
+          </div>
+          <span class="link-format">HTML</span>
+        </a>
+        <a class="link-card" href="activities/Unit4_Activity.html" style="--card-color: var(--card-ac);">
+          <span class="link-badge" style="--card-color: var(--card-ac);">HK</span>
+          <div class="link-body">
+            <h4>Hackathon — AI Transformation Sprint</h4>
+            <p>48-hour sprint designing an AI transformation plan using BCG 10-20-70</p>
+          </div>
+          <span class="link-format">HTML</span>
+        </a>
+        <a class="link-card" href="cases/Unit4_Case.html" style="--card-color: var(--card-cs);">
+          <span class="link-badge" style="--card-color: var(--card-cs);">CS</span>
+          <div class="link-body">
+            <h4>Case: Microsoft — Nadella's Growth Mindset Reset</h4>
+            <p>From Windows to Azure — the cloud-first pivot · 2014–2026</p>
+          </div>
+          <span class="link-format">HTML</span>
+        </a>
+        <a class="link-card" href="prereading/Unit4_PreReading.html" style="--card-color: var(--card-pr);">
+          <span class="link-badge" style="--card-color: var(--card-pr);">PR</span>
+          <div class="link-body">
+            <h4>Pre-Reading: Brynjolfsson &amp; McAfee — The Second Machine Age</h4>
+            <p>Key framework: BCG 10-20-70 Digital Transformation</p>
+          </div>
+          <span class="link-format">HTML</span>
+        </a>
+        <a class="link-card" href="reflections/Unit4_Reflection.html" style="--card-color: var(--card-rf);">
+          <span class="link-badge" style="--card-color: var(--card-rf);">RF</span>
+          <div class="link-body">
+            <h4>Reflection Prompt</h4>
+            <p>3 questions for independent study</p>
+          </div>
+          <span class="link-format">HTML</span>
+        </a>
+      </div>
+    </details>
+    <details class="unit" id="unit-5">
+      <summary class="unit-summary">
+        <span class="unit-num">5</span>
+        <div class="unit-heading">
+          <h3>Ethical &amp; Legal Issues in the Digital Economy</h3>
+          <span class="unit-tag">Debate</span>
+        </div>
+        <span class="unit-chevron"></span>
+      </summary>
+      <div class="unit-body">
+        <a class="link-card" href="unit5.html" style="--card-color: var(--card-fg);">
+          <span class="link-badge" style="--card-color: var(--card-fg);">FG</span>
+          <div class="link-body">
+            <h4>Framework Gallery</h4>
+            <p>20 interactive concepts · Slibraries 17–20</p>
+          </div>
+          <span class="link-format">HTML</span>
+        </a>
+        <a class="link-card" href="activities/Unit5_Activity.html" style="--card-color: var(--card-ac);">
+          <span class="link-badge" style="--card-color: var(--card-ac);">DB</span>
+          <div class="link-body">
+            <h4>Debate — Surveillance Capitalism: Invasion or Inevitable?</h4>
+            <p>Structured debate with pro/con teams and jury · Zuboff framework</p>
+          </div>
+          <span class="link-format">HTML</span>
+        </a>
+        <a class="link-card" href="cases/Unit5_Case.html" style="--card-color: var(--card-cs);">
+          <span class="link-badge" style="--card-color: var(--card-cs);">CS</span>
+          <div class="link-body">
+            <h4>Case: Meta — Cambridge Analytica Fallout</h4>
+            <p>From data breach to GDPR regulatory crackdown</p>
+          </div>
+          <span class="link-format">HTML</span>
+        </a>
+        <a class="link-card" href="prereading/Unit5_PreReading.html" style="--card-color: var(--card-pr);">
+          <span class="link-badge" style="--card-color: var(--card-pr);">PR</span>
+          <div class="link-body">
+            <h4>Pre-Reading: Zuboff — The Age of Surveillance Capitalism</h4>
+            <p>Key framework: Behavioural surplus and prediction markets</p>
+          </div>
+          <span class="link-format">HTML</span>
+        </a>
+        <a class="link-card" href="reflections/Unit5_Reflection.html" style="--card-color: var(--card-rf);">
+          <span class="link-badge" style="--card-color: var(--card-rf);">RF</span>
+          <div class="link-body">
+            <h4>Reflection Prompt</h4>
+            <p>3 questions for independent study</p>
+          </div>
+          <span class="link-format">HTML</span>
+        </a>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- COMPLETE GALLERY -->
+<section class="complete-gallery-section">
+  <div class="section-inner">
+    <h3>Complete Gallery</h3>
+    <a class="gallery-link" href="complete.html">
+      <span class="gallery-icon">&#x25A0;</span>
+      <div class="gallery-body">
+        <h4>All 100 Frameworks — Complete Gallery Wall</h4>
+        <p>Every concept from every unit in one scrollable page</p>
+      </div>
+      <span class="gallery-arrow">&rarr;</span>
+    </a>
+  </div>
+</section>
+
+
+<footer>
+  <div class="footer-inner">
+    <h4>MDGTB301 · Digital Economy</h4>
+    <p>A course by <span class="accent">Dr. Hildegard Haas</span> · EU Business School</p>
+    <p>Masters Programme in Digital Business &amp; Innovation</p>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Dr. Hildegard Haas · MDGTB301 · All rights reserved</span>
+  </div>
+</footer>
+
+<div class="copyright-badge" aria-label="Copyright notice">
+  <span class="c-symbol">&copy;</span>
+  <span>Dr. Hildegard Haas</span>
+</div>
+
+<script>
+
+(function protectContent(){
+  function blockEvent(e){
+    if (e.target && e.target.tagName === 'INPUT') return;
+    e.preventDefault();
+    if (e.clipboardData) e.clipboardData.setData('text/plain','');
+    return false;
+  }
+  document.addEventListener('copy',  blockEvent);
+  document.addEventListener('cut',   blockEvent);
+  document.addEventListener('paste', (e) => { if (e.target.tagName !== 'INPUT') e.preventDefault(); });
+  document.addEventListener('contextmenu', (e) => e.preventDefault());
+  document.addEventListener('dragstart',   (e) => e.preventDefault());
+  document.addEventListener('selectstart', (e) => {
+    if (e.target && e.target.tagName === 'INPUT') return;
+    e.preventDefault();
+  });
+  document.addEventListener('keydown', (e) => {
+    const k = (e.key || '').toLowerCase();
+    const mod = e.ctrlKey || e.metaKey;
+    if (e.target && e.target.tagName === 'INPUT') return;
+    if (mod && ['c','x','v','a','p','s','u'].includes(k)) { e.preventDefault(); return false; }
+    if (e.key === 'F12' || e.key === 'PrintScreen') { e.preventDefault(); return false; }
+  });
+  window.print = function(){ alert('Printing is disabled for this course material.'); return false; };
+})();
+
+
+/* ─── Search filter ─── */
+document.addEventListener('DOMContentLoaded', () => {
+  const input = document.getElementById('search');
+  const clear = document.getElementById('search-clear');
+  const status = document.getElementById('search-status');
+
+  function filter(q) {
+    q = q.trim().toLowerCase();
+    const units = document.querySelectorAll('.unit');
+    let matches = 0;
+    units.forEach(unit => {
+      const cards = unit.querySelectorAll('.link-card');
+      const unitText = (unit.querySelector('.unit-heading').textContent || '').toLowerCase();
+      let unitHit = !q || unitText.includes(q);
+      let cardHits = 0;
+      cards.forEach(card => {
+        if (!q) { card.classList.remove('is-hidden'); cardHits++; return; }
+        const txt = card.textContent.toLowerCase();
+        const hit = txt.includes(q) || unitText.includes(q);
+        card.classList.toggle('is-hidden', !hit);
+        if (hit) cardHits++;
+      });
+      const showUnit = !q || unitHit || cardHits > 0;
+      unit.classList.toggle('is-hidden', !showUnit);
+      if (showUnit && q) unit.open = true;
+      if (showUnit) matches += cardHits || 1;
+    });
+    clear.hidden = !q;
+    if (q) {
+      status.hidden = false;
+      status.innerHTML = matches === 0
+        ? `No matches for "<strong>${q.replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]))}</strong>"`
+        : `<strong>${matches}</strong> result${matches===1?'':'s'} for "<strong>${q.replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]))}</strong>"`;
+    } else {
+      status.hidden = true;
+    }
+  }
+
+  let t; input.addEventListener('input', () => { clearTimeout(t); t = setTimeout(() => filter(input.value), 120); });
+  clear.addEventListener('click', () => { input.value=''; filter(''); input.focus(); });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === '/' && document.activeElement !== input && !e.ctrlKey && !e.metaKey) {
+      e.preventDefault(); input.focus();
+    }
+  });
+});
+</script>
+</body>
+</html>

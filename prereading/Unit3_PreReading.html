@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 3 · Pre-Reading — MDGTB301</title>
+<meta name="description" content="MDGTB301 Digital Economy — Masters Year 1 · EU Business School · Dr. Hildegard Haas">
+<style>
+/* ════════════════════════════════════════════════════════════════════════
+   MDGTB301 DIGITAL ECONOMY — SHARED CSS CORE
+   ════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* Content category colours */
+  --cat-definition: #DC2626;
+  --cat-framework:  #E5A100;
+  --cat-case:       #16A34A;
+  --cat-activity:   #7C3AED;
+  --cat-institution:#1E3A8A;
+
+  /* Link-card colours (hub page) */
+  --card-fg:  #1E3A8A;  /* navy - Framework Gallery */
+  --card-ac:  #3B82F6;  /* blue - Activity */
+  --card-cs:  #16A34A;  /* green - Case Study */
+  --card-pr:  #F97316;  /* orange - Pre-Reading */
+  --card-rf:  #7C3AED;  /* purple - Reflection */
+
+  /* Brand */
+  --teal:     #00BE96;
+  --teal-dk:  #00876B;
+  --navy:     #0F2440;
+  --navy-mid: #1D3557;
+
+  /* Neutrals */
+  --ink:      #111418;
+  --ink-mid:  #3A4149;
+  --ink-lt:   #6B7280;
+  --paper:    #FFFFFF;
+  --off:      #F7F8FA;
+  --line:     #E4E7EC;
+  --line-dk:  #CBD3DB;
+
+  --font: "Arial", "Helvetica Neue", Helvetica, sans-serif;
+  --r-sm: 4px; --r-md: 8px; --r-lg: 16px;
+  --shadow-sm: 0 1px 2px rgba(15,36,64,.06), 0 1px 3px rgba(15,36,64,.04);
+  --shadow-md: 0 4px 12px rgba(15,36,64,.08), 0 2px 4px rgba(15,36,64,.04);
+  --max: 1200px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--off);
+  -webkit-font-smoothing: antialiased;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+input, textarea {
+  -webkit-user-select: text !important;
+  user-select: text !important;
+}
+img, svg { -webkit-user-drag: none; user-drag: none; }
+
+a { color: var(--teal-dk); text-decoration: none; }
+a:hover { color: var(--navy); }
+
+/* ─── Brand bar ─── */
+.brand-bar {
+  height: 4px;
+  background: linear-gradient(90deg,
+    var(--cat-institution) 0% 20%, var(--cat-definition) 20% 40%,
+    var(--cat-framework) 40% 60%, var(--cat-case) 60% 80%,
+    var(--cat-activity) 80% 100%);
+}
+
+/* ─── Hero ─── */
+.hero {
+  background: var(--navy);
+  color: var(--paper);
+  padding: 64px 24px 72px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -120px; right: -120px;
+  width: 380px; height: 380px;
+  background: radial-gradient(circle, rgba(0,190,150,0.22) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  bottom: -180px; left: -140px;
+  width: 420px; height: 420px;
+  background: radial-gradient(circle, rgba(229,161,0,0.12) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.hero-inner { max-width: var(--max); margin: 0 auto; position: relative; z-index: 1; }
+.hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 12px;
+  letter-spacing: 2.5px;
+  color: var(--teal);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.hero-meta::before {
+  content: "";
+  width: 48px; height: 1px;
+  background: var(--teal);
+}
+.hero-title {
+  font-size: clamp(40px, 6.5vw, 80px);
+  line-height: 1.04;
+  margin: 0 0 8px;
+  font-weight: 900;
+  letter-spacing: -1.5px;
+}
+.hero-subtitle {
+  font-size: 22px;
+  color: rgba(255,255,255,0.72);
+  margin: 0 0 28px;
+  font-weight: 400;
+}
+.hero-subtitle strong { color: var(--teal); font-weight: 700; }
+.hero-desc {
+  max-width: 760px;
+  font-size: 17px;
+  color: rgba(255,255,255,0.82);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ─── Stats strip ─── */
+.stats {
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+}
+.stats-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 40px 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 24px;
+  text-align: center;
+}
+.stat-num {
+  display: block;
+  font-size: 56px;
+  font-weight: 900;
+  color: var(--teal-dk);
+  line-height: 1;
+  letter-spacing: -2px;
+}
+.stat-label {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--ink-lt);
+  font-weight: 700;
+  margin-top: 8px;
+}
+
+/* ─── Sticky nav ─── */
+.unit-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+  box-shadow: var(--shadow-sm);
+}
+.unit-nav-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.unit-nav-brand {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+  color: var(--navy);
+  flex: 0 0 auto;
+}
+.unit-nav-brand a { color: inherit; text-decoration: none; }
+.unit-nav-back {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--teal-dk);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.unit-nav-back:hover { color: var(--navy); }
+
+.search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+.search-box input {
+  font-family: var(--font);
+  font-size: 13px;
+  padding: 9px 32px 9px 34px;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: var(--off);
+  color: var(--ink);
+  width: 240px;
+  transition: all 0.18s ease;
+  outline: none;
+}
+.search-box input:focus {
+  width: 300px;
+  background: var(--paper);
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px rgba(0, 190, 150, 0.15);
+}
+.search-icon {
+  position: absolute;
+  left: 12px;
+  width: 16px; height: 16px;
+  color: var(--ink-lt);
+  pointer-events: none;
+}
+.search-clear {
+  position: absolute;
+  right: 8px;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--ink-lt);
+  color: var(--paper);
+  border: 0;
+  font-size: 13px;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.search-clear:hover { background: var(--navy); }
+.search-status {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 10px 24px;
+  font-size: 13px;
+  color: var(--navy);
+  background: #FFFAED;
+  border-top: 1px solid var(--cat-framework);
+  font-weight: 600;
+}
+.search-status strong { color: var(--teal-dk); }
+
+@media (max-width: 720px) {
+  .unit-nav-inner { flex-wrap: wrap; }
+  .search-box { width: 100%; }
+  .search-box input, .search-box input:focus { width: 100%; }
+}
+
+/* ─── Page section defaults ─── */
+.section { padding: 64px 24px; }
+.section-inner { max-width: var(--max); margin: 0 auto; }
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  color: var(--teal-dk);
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.section-eyebrow::before {
+  content: "";
+  width: 24px; height: 2px;
+  background: var(--teal);
+}
+.section-title {
+  font-size: clamp(28px, 4vw, 40px);
+  line-height: 1.15;
+  font-weight: 800;
+  color: var(--navy);
+  margin: 0 0 12px;
+  letter-spacing: -0.5px;
+}
+.section-lede {
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--ink-mid);
+  max-width: 780px;
+  margin: 0 0 36px;
+}
+
+/* ─── Footer ─── */
+footer {
+  background: var(--navy);
+  color: rgba(255,255,255,0.72);
+  padding: 40px 24px 28px;
+  border-top: 4px solid var(--teal);
+}
+.footer-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  text-align: center;
+}
+.footer-inner h4 {
+  margin: 0 0 8px;
+  color: var(--paper);
+  font-size: 18px;
+  font-weight: 800;
+}
+.footer-inner p {
+  margin: 0 0 8px;
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+.footer-inner .accent { color: var(--teal); font-weight: 700; }
+.footer-bottom {
+  max-width: var(--max);
+  margin: 20px auto 0;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  text-align: center;
+}
+
+/* ─── Copyright badge ─── */
+.copyright-badge {
+  position: fixed;
+  bottom: 16px;
+  left: 16px;
+  z-index: 60;
+  background: rgba(15, 36, 64, 0.92);
+  color: var(--paper);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 20px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  border: 1px solid rgba(0, 190, 150, 0.3);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.copyright-badge .c-symbol { color: var(--teal); font-weight: 800; font-size: 13px; }
+
+/* ─── Print protection ─── */
+@media print {
+  body * { visibility: hidden !important; display: none !important; }
+  body::before {
+    content: "Printing is disabled for this course material. © Dr. Hildegard Haas · MDGTB301";
+    visibility: visible !important;
+    display: block !important;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    padding: 40px;
+  }
+}
+
+
+/* Shared content-page layout */
+.content-page {
+  padding: 32px 24px 80px;
+  background: var(--off);
+}
+.content-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Page header (big banner with badge + title) */
+.content-header {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: 36px 40px;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 28px;
+  position: relative;
+  overflow: hidden;
+}
+.content-header::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--card-color, var(--teal));
+}
+.content-header-top {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+.content-badge {
+  width: 52px; height: 52px;
+  border-radius: var(--r-sm);
+  background: var(--card-color, var(--navy));
+  color: var(--paper);
+  font-size: 15px;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 52px;
+  letter-spacing: 0.5px;
+}
+.content-tag {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--ink-lt);
+  font-weight: 700;
+}
+.content-header h1 {
+  margin: 0 0 8px;
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--navy);
+  letter-spacing: -0.4px;
+  line-height: 1.22;
+}
+.content-header .subtitle {
+  margin: 0;
+  font-size: 16px;
+  color: var(--ink-mid);
+  font-style: italic;
+  line-height: 1.5;
+}
+
+/* Meta bar (duration, format, etc.) */
+.content-meta {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  padding: 16px 20px;
+  background: var(--off);
+  border-radius: var(--r-md);
+  border: 1px solid var(--line);
+  margin-bottom: 28px;
+  font-size: 13px;
+}
+.content-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.content-meta-item .label {
+  font-size: 10px;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--ink-lt);
+  font-weight: 700;
+}
+.content-meta-item .value {
+  color: var(--navy);
+  font-weight: 700;
+}
+
+/* Section block */
+.content-section {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: 28px 32px;
+  margin-bottom: 20px;
+}
+.content-section h2 {
+  margin: 0 0 14px;
+  font-size: 13px;
+  letter-spacing: 2.4px;
+  text-transform: uppercase;
+  color: var(--teal-dk);
+  font-weight: 800;
+}
+.content-section h3 {
+  margin: 16px 0 10px;
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--navy);
+}
+.content-section p {
+  margin: 0 0 12px;
+  line-height: 1.7;
+  color: var(--ink);
+}
+.content-section ul, .content-section ol {
+  padding-left: 22px;
+  line-height: 1.7;
+  color: var(--ink);
+}
+.content-section li { margin-bottom: 8px; }
+.content-section strong { color: var(--navy); }
+.content-section em { color: var(--navy-mid); font-style: italic; }
+
+/* Timeline (case studies) */
+.timeline { border-left: 2px solid var(--teal); margin: 8px 0 0 6px; padding-left: 20px; }
+.timeline-item { position: relative; padding: 10px 0; }
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -26px; top: 15px;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--teal);
+  border: 2px solid var(--paper);
+  box-shadow: 0 0 0 2px var(--teal);
+}
+.timeline-year {
+  font-weight: 800;
+  color: var(--teal-dk);
+  font-size: 13px;
+  letter-spacing: 0.5px;
+}
+.timeline-event {
+  color: var(--ink);
+  font-size: 14.5px;
+  line-height: 1.55;
+  margin-top: 2px;
+}
+
+/* Structure table (activities) */
+.structure-table {
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  overflow: hidden;
+}
+.structure-row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  border-bottom: 1px solid var(--line);
+}
+.structure-row:last-child { border-bottom: 0; }
+.structure-time {
+  background: var(--off);
+  padding: 14px 16px;
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--navy);
+  letter-spacing: 0.5px;
+  border-right: 1px solid var(--line);
+}
+.structure-body {
+  padding: 14px 20px;
+}
+.structure-body h4 {
+  margin: 0 0 4px;
+  font-size: 14.5px;
+  font-weight: 800;
+  color: var(--navy);
+}
+.structure-body p {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--ink-mid);
+}
+
+/* Company snapshot card (cases) */
+.snapshot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+  margin: 14px 0 0;
+}
+.snapshot-item {
+  padding: 14px 16px;
+  background: var(--off);
+  border-radius: var(--r-sm);
+  border-left: 3px solid var(--teal);
+}
+.snapshot-item .label {
+  font-size: 10px;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--ink-lt);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 4px;
+}
+.snapshot-item .value {
+  color: var(--navy);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+/* Data exhibits (cases) */
+.data-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin-top: 12px;
+}
+.data-item {
+  padding: 18px 20px;
+  background: linear-gradient(135deg, #0F2440 0%, #1D3557 100%);
+  color: var(--paper);
+  border-radius: var(--r-md);
+}
+.data-item .label {
+  font-size: 11px;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--teal);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 6px;
+}
+.data-item .value {
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.3;
+}
+
+/* Framework box (pre-readings) */
+.framework-box {
+  background: linear-gradient(135deg, #FFFAED 0%, #FDF4E0 100%);
+  border: 1px solid var(--cat-framework);
+  border-radius: var(--r-md);
+  padding: 24px 28px;
+  margin: 12px 0;
+}
+.framework-box-title {
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--cat-framework);
+  text-transform: uppercase;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+.framework-box h3 {
+  margin: 0 0 14px;
+  color: var(--navy);
+  font-size: 20px;
+  font-weight: 800;
+}
+.framework-layers { display: grid; gap: 10px; }
+.framework-layer {
+  padding: 12px 16px;
+  background: var(--paper);
+  border-radius: var(--r-sm);
+  border-left: 3px solid var(--cat-framework);
+}
+.framework-layer strong { color: var(--navy); font-size: 15px; }
+.framework-layer span { display: block; font-size: 13px; color: var(--ink-mid); margin-top: 4px; line-height: 1.5; }
+
+/* Comparison table (pre-readings) */
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0;
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  overflow: hidden;
+  font-size: 13.5px;
+}
+.compare-table th, .compare-table td {
+  padding: 12px 14px;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+  line-height: 1.5;
+}
+.compare-table th {
+  background: var(--navy);
+  color: var(--paper);
+  font-weight: 800;
+  font-size: 11px;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+}
+.compare-table tr:last-child td { border-bottom: 0; }
+.compare-table tr:nth-child(even) td { background: var(--off); }
+
+/* Reflection questions */
+.reflection-q {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: 26px 30px;
+  margin-bottom: 18px;
+  border-left: 4px solid var(--card-rf);
+}
+.reflection-q .q-number {
+  display: inline-block;
+  width: 32px; height: 32px;
+  background: var(--card-rf);
+  color: var(--paper);
+  border-radius: 50%;
+  text-align: center;
+  line-height: 32px;
+  font-weight: 800;
+  font-size: 14px;
+  margin-bottom: 14px;
+}
+.reflection-q h3 {
+  margin: 0 0 10px;
+  font-size: 17px;
+  color: var(--navy);
+  font-weight: 800;
+  line-height: 1.4;
+}
+.reflection-q .guidance {
+  background: var(--off);
+  padding: 14px 18px;
+  border-radius: var(--r-sm);
+  border-left: 3px solid var(--teal);
+  font-size: 13.5px;
+  color: var(--ink-mid);
+  margin-top: 12px;
+  line-height: 1.6;
+}
+.reflection-q .guidance::before {
+  content: "GUIDANCE";
+  display: block;
+  font-size: 10px;
+  letter-spacing: 1.6px;
+  color: var(--teal-dk);
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+/* Related frameworks block */
+.related-frameworks {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: 24px 28px;
+  margin-top: 20px;
+}
+.related-frameworks h2 {
+  margin: 0 0 12px;
+  font-size: 13px;
+  letter-spacing: 2.4px;
+  text-transform: uppercase;
+  color: var(--teal-dk);
+  font-weight: 800;
+}
+.related-frameworks ul {
+  padding-left: 0;
+  list-style: none;
+  margin: 0;
+  display: grid;
+  gap: 6px;
+}
+.related-frameworks li {
+  padding: 10px 14px;
+  background: var(--off);
+  border-radius: var(--r-sm);
+  border-left: 3px solid var(--cat-framework);
+  margin: 0;
+  font-size: 14px;
+}
+.related-frameworks a { color: var(--navy); font-weight: 700; text-decoration: none; }
+.related-frameworks a:hover { color: var(--teal-dk); }
+.related-frameworks .id { display: inline-block; font-family: monospace; color: var(--cat-framework); font-size: 12px; margin-right: 8px; font-weight: 800; }
+
+/* Callout */
+.callout {
+  padding: 16px 20px;
+  border-left: 3px solid var(--teal);
+  background: var(--off);
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  margin: 14px 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.callout strong {
+  display: block;
+  font-size: 10.5px;
+  letter-spacing: 1.8px;
+  color: var(--teal-dk);
+  text-transform: uppercase;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+@media (max-width: 640px) {
+  .content-header, .content-section, .reflection-q { padding: 22px 20px; }
+  .structure-row { grid-template-columns: 1fr; }
+  .structure-time { border-right: 0; border-bottom: 1px solid var(--line); }
+}
+
+</style>
+</head>
+<body>
+<div class="brand-bar"></div>
+
+<nav class="unit-nav">
+  <div class="unit-nav-inner">
+    <span class="unit-nav-brand"><a href="../index.html">MDGTB301</a></span>
+    <a class="unit-nav-back" href="../index.html">&larr; Back to course home</a>
+  </div>
+</nav>
+<section class="content-page">
+  <div class="content-inner">
+
+    <header class="content-header" style="--card-color: var(--card-pr);">
+      <div class="content-header-top">
+        <div class="content-badge" style="--card-color: var(--card-pr);">PR</div>
+        <div>
+          <div class="content-tag">Unit 3 · Pre-Reading · Digital Markets</div>
+        </div>
+      </div>
+      <h1>Pre-Reading: Parker, Van Alstyne &amp; Choudary — Platform Revolution</h1>
+      <p class="subtitle">Pipeline vs platform business models</p>
+    </header>
+
+    <div class="content-meta">
+      <div class="content-meta-item"><span class="label">Estimated time</span><span class="value">50 minutes</span></div>
+      <div class="content-meta-item"><span class="label">Read before</span><span class="value">Unit 3 session</span></div>
+    </div>
+
+    <section class="content-section">
+      <h2>Abstract</h2>
+      <p><em>Platform Revolution</em> (Parker, Van Alstyne &amp; Choudary, 2016) is the definitive business-school text on platform economics. Its central distinction — <em>pipeline</em> firms that control their value chain end-to-end versus <em>platform</em> firms that orchestrate external producers and consumers — has become the default framework for analysing digital competition. The DMA, the Apple vs Epic litigation, and most current antitrust debate rest on distinctions this book articulated.</p>
+    </section>
+
+    <section class="content-section">
+      <h2>Key Framework</h2>
+      <div class="framework-box"><div class="framework-box-title">KEY FRAMEWORK</div><h3>Pipeline vs Platform</h3><table class="compare-table"><thead><tr><th>Dimension</th><th>Pipeline</th><th>Platform</th></tr></thead><tbody><tr><td><strong>Value chain</strong></td><td>Controlled end-to-end by the firm</td><td>Orchestrated; external producers and consumers</td></tr><tr><td><strong>Key asset</strong></td><td>Internal processes &amp; product IP</td><td>The network, its data, and the rules</td></tr><tr><td><strong>Scaling bottleneck</strong></td><td>Supply-side capital</td><td>Side liquidity (chicken-and-egg)</td></tr><tr><td><strong>Defensibility</strong></td><td>Process excellence, scale economies</td><td>Network effects, data flywheel, switching costs</td></tr><tr><td><strong>Competitive threat</strong></td><td>A better pipeline, a new platform</td><td>Multi-homing, regulation, envelopment</td></tr></tbody></table></div>
+    </section>
+
+    <section class="content-section">
+      <h2>Core Arguments</h2>
+      <ol><li>Every large technology firm after 2010 is a platform. Every large firm <em>not</em> in technology is now trying to become one. Most will fail — platforms require side liquidity, not capital.</li>
+<li>The inverted firm: platforms externalise production. Uber owns no cars; Airbnb owns no rooms; YouTube produces no video. The consequence is that platform scale is bounded by the size of the external side, not the firm's balance sheet.</li>
+<li>Platform governance is as important as platform technology. The rules of participation determine trust, quality, and ultimately value.</li>
+<li>Regulation designed for pipelines (antitrust, labour, consumer protection) mis-fits platforms. This is why the DMA had to be written from scratch.</li></ol>
+    </section>
+
+    <section class="content-section">
+      <h2>Questions to Consider</h2>
+      <ol><li>Is your university a pipeline or a platform? What would it take to flip it to the other?</li>
+<li>Name a pipeline firm that is in slow-motion disruption by a platform. Why is the incumbent failing to respond?</li>
+<li>Platform governance rules often look like censorship, monopoly, or moral judgement. How should a platform decide what rules to impose?</li>
+<li>Can a platform be publicly owned? What examples exist? What are the failure modes?</li></ol>
+    </section>
+
+    <section class="content-section">
+      <h2>Citation</h2>
+      <p>Parker, G., Van Alstyne, M. &amp; Choudary, S. P. (2016) <em>Platform Revolution: How Networked Markets Are Transforming the Economy and How to Make Them Work for You</em>. W. W. Norton.</p>
+    </section>
+
+    <section class="content-section">
+      <h2>Further Reading</h2>
+      <ul><li>Rochet, J.-C. &amp; Tirole, J. (2003) "Platform Competition in Two-Sided Markets", <em>Journal of the European Economic Association</em>, 1(4).</li>
+<li>European Commission (2022) <em>Regulation (EU) 2022/1925 — Digital Markets Act</em>.</li>
+<li>Evans, D. S. &amp; Schmalensee, R. (2016) <em>Matchmakers: The New Economics of Multisided Platforms</em>.</li></ul>
+    </section>
+
+    
+<div class="related-frameworks">
+  <h2>Related Frameworks</h2>
+  <ul><li><a href="../unit3.html#"><span class="id">3-1-2</span>Two-Sided Platform</a></li><li><a href="../unit3.html#"><span class="id">3-1-4</span>Marketplace vs Platform</a></li><li><a href="../unit3.html#"><span class="id">3-3-3</span>Platform Governance</a></li><li><a href="../unit3.html#"><span class="id">3-3-5</span>Platform Data Flywheel</a></li></ul>
+</div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <h4>MDGTB301 · Digital Economy</h4>
+    <p>A course by <span class="accent">Dr. Hildegard Haas</span> · EU Business School</p>
+    <p>Masters Programme in Digital Business &amp; Innovation</p>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Dr. Hildegard Haas · MDGTB301 · All rights reserved</span>
+  </div>
+</footer>
+
+<div class="copyright-badge" aria-label="Copyright notice">
+  <span class="c-symbol">&copy;</span>
+  <span>Dr. Hildegard Haas</span>
+</div>
+<script>
+(function protectContent(){
+  function blockEvent(e){
+    if (e.target && e.target.tagName === 'INPUT') return;
+    e.preventDefault();
+    if (e.clipboardData) e.clipboardData.setData('text/plain','');
+    return false;
+  }
+  document.addEventListener('copy',  blockEvent);
+  document.addEventListener('cut',   blockEvent);
+  document.addEventListener('paste', (e) => { if (e.target.tagName !== 'INPUT') e.preventDefault(); });
+  document.addEventListener('contextmenu', (e) => e.preventDefault());
+  document.addEventListener('dragstart',   (e) => e.preventDefault());
+  document.addEventListener('selectstart', (e) => {
+    if (e.target && e.target.tagName === 'INPUT') return;
+    e.preventDefault();
+  });
+  document.addEventListener('keydown', (e) => {
+    const k = (e.key || '').toLowerCase();
+    const mod = e.ctrlKey || e.metaKey;
+    if (e.target && e.target.tagName === 'INPUT') return;
+    if (mod && ['c','x','v','a','p','s','u'].includes(k)) { e.preventDefault(); return false; }
+    if (e.key === 'F12' || e.key === 'PrintScreen') { e.preventDefault(); return false; }
+  });
+  window.print = function(){ alert('Printing is disabled for this course material.'); return false; };
+})();
+</script>
+</body>
+</html>
