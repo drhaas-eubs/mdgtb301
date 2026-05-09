@@ -1,0 +1,1429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 5 · Ethical & Legal Issues in the Digital Economy — MDGTB301</title>
+<meta name="description" content="MDGTB301 Digital Economy — Unit 5 Framework Gallery · EU Business School · Dr. Hildegard Haas">
+
+<style>
+:root {
+  --teal:        #00BE96;
+  --teal-soft:   #C8F0E5;
+  --teal-line:   #0E8E73;
+  --navy:        #0E1F3A;
+  --navy-deep:   #081428;
+  --navy-mid:    #1A2F4E;
+  --coral:       #E8634A;
+  --gold:        #D4A437;
+  --gold-soft:   #F9E8B7;
+  --red:         #C0392B;
+  --red-soft:    #FADBD8;
+  --green:       #2E8B57;
+  --purple:      #6A4C93;
+  --ink:         #1A1A1A;
+  --body:        #3A3A3A;
+  --muted:       #6B7280;
+  --rule:        #D1D5DB;
+  --bg:          #FCFCFA;
+  --card-bg:     #FFFFFF;
+  --card-border: #E5E7EB;
+  --shadow-sm:   0 1px 3px rgba(14,31,58,0.06), 0 1px 2px rgba(14,31,58,0.04);
+  --shadow-md:   0 4px 14px rgba(14,31,58,0.10), 0 2px 6px rgba(14,31,58,0.06);
+  --shadow-lg:   0 12px 40px rgba(14,31,58,0.18);
+  --radius:      8px;
+  --radius-lg:   12px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+*::-webkit-selection { background: var(--teal-soft); }
+*::selection { background: var(--teal-soft); }
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--body);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  user-select: none;
+  -webkit-user-select: none;
+  min-height: 100vh;
+}
+input, textarea { user-select: text; -webkit-user-select: text; }
+
+/* ═══════════ NAV ═══════════ */
+.topnav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--navy);
+  color: #fff;
+  border-bottom: 3px solid var(--teal);
+  box-shadow: var(--shadow-sm);
+}
+.topnav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff; }
+.brand-mark {
+  width: 32px; height: 32px;
+  background: var(--teal); color: var(--navy);
+  font-weight: 700;
+  display: grid; place-items: center;
+  border-radius: 6px;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+.brand-text { font-weight: 700; font-size: 14px; letter-spacing: 1px; }
+.brand-sub { font-size: 12px; color: var(--teal-soft); margin-left: 4px; }
+
+.nav-spacer { flex: 1 1 auto; }
+
+.search {
+  flex: 0 1 320px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.search input {
+  width: 100%;
+  padding: 8px 36px 8px 14px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  border-radius: 999px;
+  font-size: 13px;
+  font-family: inherit;
+  outline: none;
+  transition: background 0.15s, border-color 0.15s;
+}
+.search input::placeholder { color: rgba(255,255,255,0.5); }
+.search input:focus { background: rgba(255,255,255,0.16); border-color: var(--teal); }
+.search-clear {
+  position: absolute;
+  right: 8px;
+  background: none;
+  border: 0;
+  color: rgba(255,255,255,0.6);
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  padding: 4px 6px;
+  display: none;
+}
+.search.has-text .search-clear { display: block; }
+
+.back-link {
+  font-size: 13px;
+  color: var(--teal-soft);
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+}
+.back-link:hover { background: rgba(255,255,255,0.08); color: #fff; }
+
+/* ═══════════ HERO ═══════════ */
+.hero {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 100%);
+  color: #fff;
+  padding: 60px 24px 48px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.hero-inner { max-width: 1200px; margin: 0 auto; }
+.hero-num {
+  font-size: 13px;
+  letter-spacing: 3px;
+  color: var(--teal);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.hero-title {
+  font-size: 44px;
+  line-height: 1.15;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+.hero-tagline {
+  font-size: 18px;
+  color: var(--teal-soft);
+  margin-bottom: 24px;
+  font-style: italic;
+  max-width: 720px;
+}
+.hero-stats {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+.hero-stat {
+  background: rgba(255,255,255,0.06);
+  border-left: 3px solid var(--teal);
+  padding: 10px 16px;
+  border-radius: 0 6px 6px 0;
+  font-size: 13px;
+  color: var(--teal-soft);
+}
+.hero-stat strong { color: #fff; font-size: 18px; display: block; }
+
+.legend {
+  display: flex; flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 22px;
+}
+.legend-item {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.legend-def { background: var(--red-soft); color: var(--red); }
+.legend-fwk { background: var(--gold-soft); color: var(--gold); }
+
+/* ═══════════ MAIN ═══════════ */
+main { max-width: 1200px; margin: 0 auto; padding: 36px 24px 80px; }
+.search-status {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 14px;
+  min-height: 18px;
+}
+
+/* ═══════════ ACCORDION SUB-UNITS ═══════════ */
+.subunit {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  margin-bottom: 18px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+.subunit[open] {
+  box-shadow: var(--shadow-md);
+  border-color: var(--teal-line);
+}
+.subunit-summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 18px 22px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: linear-gradient(180deg, #fff 0%, #FAFBFC 100%);
+  user-select: none;
+  transition: background 0.15s;
+}
+.subunit-summary::-webkit-details-marker { display: none; }
+.subunit-summary:hover { background: #F5F8FA; }
+.subunit-id {
+  background: var(--teal);
+  color: var(--navy);
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: Consolas, ui-monospace, monospace;
+}
+.subunit-name {
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--navy);
+  flex: 1 1 auto;
+}
+.subunit-count {
+  font-size: 12px;
+  color: var(--muted);
+  background: #F0F4F8;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+.subunit-chev {
+  color: var(--teal);
+  font-size: 18px;
+  transition: transform 0.2s ease;
+}
+.subunit[open] .subunit-chev { transform: rotate(90deg); }
+.subunit-body {
+  padding: 6px 22px 24px;
+  border-top: 1px solid var(--card-border);
+  background: #FAFBFC;
+}
+.subunit-subtitle {
+  font-style: italic;
+  color: var(--muted);
+  margin: 14px 0 12px;
+  font-size: 14px;
+}
+.trigger {
+  background: var(--navy);
+  color: #fff;
+  padding: 12px 16px;
+  border-radius: 6px;
+  margin-bottom: 22px;
+  border-left: 4px solid var(--teal);
+  font-size: 14px;
+}
+.trigger strong {
+  color: var(--teal);
+  letter-spacing: 1.5px;
+  font-size: 11px;
+  display: block;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+
+/* ═══════════ FRAMEWORK GRID ═══════════ */
+.fw-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+.fw-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+  display: flex;
+  flex-direction: column;
+  outline: none;
+}
+.fw-card:hover, .fw-card:focus {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--teal);
+}
+.fw-thumb {
+  background: var(--thumb-bg, linear-gradient(135deg, #F5F8FA 0%, #E8F0F4 100%));
+  height: 130px;
+  display: grid; place-items: center;
+  border-bottom: 1px solid var(--card-border);
+  padding: 8px;
+}
+.fw-thumb svg { width: 100%; height: 100%; max-width: 220px; max-height: 120px; }
+.fw-card[data-type="DEFINITION"] .fw-thumb { --thumb-bg: #FFF1F1; }
+.fw-card[data-type="FRAMEWORK"]  .fw-thumb { --thumb-bg: #FFF8E6; }
+.fw-meta {
+  padding: 14px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.fw-badge {
+  display: inline-block;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  align-self: flex-start;
+}
+.fw-badge-def { background: var(--red-soft); color: var(--red); }
+.fw-badge-fwk { background: var(--gold-soft); color: var(--gold); }
+.fw-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.25;
+}
+.fw-short {
+  font-size: 12.5px;
+  color: var(--body);
+  line-height: 1.4;
+}
+
+/* ═══════════ MODAL ═══════════ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(8,20,40,0.7);
+  backdrop-filter: blur(4px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 24px;
+}
+.modal-overlay.open { display: flex; }
+.modal-panel {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  max-width: 680px;
+  width: 100%;
+  max-height: 88vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+}
+.modal-header {
+  padding: 22px 24px 14px;
+  border-bottom: 1px solid var(--card-border);
+  position: relative;
+}
+.modal-breadcrumb {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+}
+.modal-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  align-items: center;
+}
+.view-sheet-btn {
+  background: var(--teal);
+  color: var(--navy);
+  border: 0;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.15s;
+}
+.view-sheet-btn:hover { background: #00A682; }
+.modal-close {
+  background: #F0F4F8;
+  border: 0;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  font-size: 18px;
+  cursor: pointer;
+  color: var(--navy);
+  display: grid; place-items: center;
+  transition: background 0.15s;
+}
+.modal-close:hover { background: var(--card-border); }
+
+.modal-body { padding: 22px 24px 28px; }
+.modal-tagline {
+  font-style: italic;
+  color: var(--coral);
+  margin-bottom: 16px;
+  padding: 10px 14px;
+  background: #FFF5F0;
+  border-left: 3px solid var(--coral);
+  border-radius: 0 6px 6px 0;
+  font-size: 14px;
+}
+.modal-section { margin-bottom: 18px; }
+.modal-section h4 {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  color: var(--teal-line);
+  font-weight: 700;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+.modal-section p { font-size: 14px; line-height: 1.55; }
+.modal-cta {
+  background: var(--navy);
+  color: #fff;
+  padding: 16px 18px;
+  border-radius: 8px;
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.modal-cta-text { flex: 1; font-size: 13px; line-height: 1.4; }
+.modal-cta-text strong { color: var(--teal); display: block; margin-bottom: 2px; }
+
+/* ═══════════ PDF VIEWER ═══════════ */
+.pdf-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--navy-deep);
+  z-index: 200;
+  display: none;
+  flex-direction: column;
+}
+.pdf-overlay.open { display: flex; }
+.pdf-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 22px;
+  background: var(--navy);
+  color: #fff;
+  border-bottom: 2px solid var(--teal);
+  flex-shrink: 0;
+}
+.pdf-tb-label {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  color: var(--teal);
+  font-weight: 700;
+}
+.pdf-tb-title {
+  font-size: 14px;
+  flex: 1;
+  font-weight: 600;
+  color: #fff;
+}
+.pdf-btn {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 600;
+}
+.pdf-btn:hover { background: rgba(255,255,255,0.18); }
+.pdf-btn.primary {
+  background: var(--teal);
+  color: var(--navy);
+  border-color: var(--teal);
+}
+.pdf-btn.primary:hover { background: #00A682; }
+.pdf-canvas-wrap {
+  flex: 1;
+  overflow: auto;
+  display: grid;
+  place-items: start center;
+  padding: 24px;
+}
+.pdf-canvas-wrap canvas {
+  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+  background: #fff;
+  max-width: 100%;
+}
+.pdf-loading {
+  color: var(--teal-soft);
+  font-size: 15px;
+  padding: 80px 0;
+}
+
+/* ═══════════ FOOTER ═══════════ */
+.site-footer {
+  background: var(--navy);
+  color: var(--teal-soft);
+  padding: 36px 24px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.site-footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: end;
+}
+.site-footer h5 { color: #fff; font-size: 14px; margin-bottom: 4px; }
+.site-footer .copy { color: rgba(255,255,255,0.5); font-size: 11px; }
+
+/* ═══════════ COPYRIGHT BADGE ═══════════ */
+.copyright-badge {
+  position: fixed;
+  bottom: 12px;
+  right: 12px;
+  background: var(--navy);
+  color: var(--teal);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 10.5px;
+  font-weight: 600;
+  z-index: 90;
+  box-shadow: var(--shadow-md);
+  letter-spacing: 0.5px;
+  pointer-events: none;
+}
+
+/* ═══════════ PRINT BLOCK ═══════════ */
+@media print {
+  body * { visibility: hidden !important; }
+  body::after {
+    content: "Printing is disabled · © Dr. Hildegard Haas · MDGTB301";
+    visibility: visible !important;
+    position: fixed; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    color: var(--navy);
+  }
+}
+
+/* ═══════════ RESPONSIVE ═══════════ */
+@media (max-width: 720px) {
+  .hero-title { font-size: 32px; }
+  .topnav-inner { padding: 12px 16px; gap: 10px; }
+  .search { flex: 1 1 100%; order: 5; }
+  main { padding: 24px 16px 60px; }
+  .modal-actions { position: static; margin-top: 8px; }
+  .modal-header { padding: 20px 18px 12px; }
+  .modal-body { padding: 18px 18px 24px; }
+  .pdf-toolbar { padding: 10px 14px; flex-wrap: wrap; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ NAV ═══════════ -->
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-mark">M</span>
+      <span class="brand-text">MDGTB301</span>
+      <span class="brand-sub">Digital Economy</span>
+    </a>
+    <a href="index.html" class="back-link">← Back to course home</a>
+    <span class="nav-spacer"></span>
+    <div class="search" id="search">
+      <input type="search" id="searchInput" placeholder="Filter frameworks…  ('/')" autocomplete="off">
+      <button class="search-clear" id="searchClear" type="button" aria-label="Clear search">×</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════ HERO ═══════════ -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-num">UNIT 5</div>
+    <h1 class="hero-title">Ethical & Legal Issues in the Digital Economy</h1>
+    <p class="hero-tagline">Privacy, IP, surveillance capitalism, and algorithmic accountability</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><strong>20</strong>frameworks</div>
+      <div class="hero-stat"><strong>4</strong>sub-units</div>
+      <div class="hero-stat"><strong>21pp</strong>A4 reference PDF</div>
+    </div>
+    <div class="legend">
+      <span class="legend-item legend-def">DEFINITION</span>
+      <span class="legend-item legend-fwk">FRAMEWORK</span>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════ MAIN ═══════════ -->
+<main>
+  <div class="search-status" id="searchStatus" aria-live="polite"></div>
+
+  
+      <details class="subunit" open>
+        <summary class="subunit-summary">
+          <span class="subunit-id">5.1</span>
+          <span class="subunit-name">Data Rights & Privacy</span>
+          <span class="subunit-count">5 cards</span>
+          <span class="subunit-chev" aria-hidden="true">▸</span>
+        </summary>
+        <div class="subunit-body">
+          <p class="subunit-subtitle">GDPR principles, consent, minimisation, and the right to be forgotten</p>
+          <div class="trigger">
+            <strong>Trigger Question</strong>
+            <span>On what lawful basis are we processing — and have we minimised to that purpose?</span>
+          </div>
+          <div class="fw-grid">
+        <article class="fw-card" data-id="5.1.1" data-type="FRAMEWORK" data-pdf-page="2" data-fw-name="GDPR Principles" tabindex="0" role="button" aria-label="GDPR Principles — FRAMEWORK">
+          <div class="fw-thumb"><svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+    <rect x="40" y="20" width="120" height="80" rx="8" fill="#E5A100" opacity="0.9"/>
+    <text x="100" y="50" text-anchor="middle" font-family="Arial" font-size="24" font-weight="900" fill="#fff">GDPR</text>
+    <text x="100" y="68" text-anchor="middle" font-family="Arial" font-size="7" font-weight="700" fill="#fff">EU 2016/679</text>
+    <g fill="#fff" opacity="0.7">
+      <circle cx="55" cy="85" r="3"/><circle cx="75" cy="85" r="3"/><circle cx="95" cy="85" r="3"/><circle cx="115" cy="85" r="3"/><circle cx="135" cy="85" r="3"/>
+    </g>
+    <text x="100" y="113" text-anchor="middle" font-family="Arial" font-size="7" font-weight="700" fill="#E5A100" opacity="0.7">7 PRINCIPLES</text>
+  </svg></div>
+          <div class="fw-meta">
+            <span class="fw-badge fw-badge-fwk">FRAMEWORK</span>
+            <h4 class="fw-name">GDPR Principles</h4>
+            <p class="fw-short">Seven principles · eight rights — the EU's foundational data-protection regime.</p>
+          </div>
+        </article>
+        <article class="fw-card" data-id="5.1.2" data-type="DEFINITION" data-pdf-page="3" data-fw-name="Personal Data as Property" tabindex="0" role="button" aria-label="Personal Data as Property — DEFINITION">
+          <div class="fw-thumb"><svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+    <path d="M 100 25 C 80 25 65 40 65 60 C 65 80 80 95 100 95 C 120 95 135 80 135 60 C 135 40 120 25 100 25 Z M 100 45 C 108 45 115 52 115 60 C 115 68 108 75 100 75 C 92 75 85 68 85 60 C 85 52 92 45 100 45 Z" fill="#DC2626" opacity="0.85"/>
+    <text x="100" y="65" text-anchor="middle" font-family="Arial" font-size="9" font-weight="800" fill="#DC2626">ME</text>
+    <text x="100" y="112" text-anchor="middle" font-family="Arial" font-size="8" font-weight="700" fill="#DC2626" opacity="0.7">PROPERTY OR RIGHT?</text>
+  </svg></div>
+          <div class="fw-meta">
+            <span class="fw-badge fw-badge-def">DEFINITION</span>
+            <h4 class="fw-name">Personal Data as Property</h4>
+            <p class="fw-short">Is personal data my property — or relational and beyond markets?</p>
+          </div>
+        </article>
+        <article class="fw-card" data-id="5.1.3" data-type="FRAMEWORK" data-pdf-page="4" data-fw-name="Consent &amp; Legitimate Interest" tabindex="0" role="button" aria-label="Consent &amp; Legitimate Interest — FRAMEWORK">
+          <div class="fw-thumb"><svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+    
+      <rect x="25" y="25" width="48" height="30" rx="4" fill="#E5A100" opacity="1"/>
+      <text x="49" y="44" text-anchor="middle" font-family="Arial" font-size="8" font-weight="800" fill="#fff">CONSENT</text>
+    
+      <rect x="80" y="25" width="48" height="30" rx="4" fill="#E5A100" opacity="0.5"/>
+      <text x="104" y="44" text-anchor="middle" font-family="Arial" font-size="8" font-weight="800" fill="#fff">CONTRACT</text>
+    
+      <rect x="135" y="25" width="48" height="30" rx="4" fill="#E5A100" opacity="0.5"/>
+      <text x="159" y="44" text-anchor="middle" font-family="Arial" font-size="8" font-weight="800" fill="#fff">LEGAL</text>
+    
+      <rect x="25" y="65" width="48" height="30" rx="4" fill="#E5A100" opacity="0.5"/>
+      <text x="49" y="84" text-anchor="middle" font-family="Arial" font-size="8" font-weight="800" fill="#fff">VITAL</text>
+    
+      <rect x="80" y="65" width="48" height="30" rx="4" fill="#E5A100" opacity="0.5"/>
+      <text x="104" y="84" text-anchor="middle" font-family="Arial" font-size="8" font-weight="800" fill="#fff">PUBLIC</text>
+    
+      <rect x="135" y="65" width="48" height="30" rx="4" fill="#E5A100" opacity="0.5"/>
+      <text x="159" y="84" text-anchor="middle" font-family="Arial" font-size="8" font-weight="800" fill="#fff">LEGIT</text>
+    
+    <text x="100" y="115" text-anchor="middle" font-family="Arial" font-size="7" font-weight="700" fill="#E5A100" opacity="0.6">ART. 6 · 6 LAWFUL BASES</text>
+  </svg></div>
+          <div class="fw-meta">
+            <span class="fw-badge fw-badge-fwk">FRAMEWORK</span>
+            <h4 class="fw-name">Consent & Legitimate Interest</h4>
+            <p class="fw-short">Two of the six lawful bases — and the most contested in practice.</p>
+          </div>
+        </article>
+        <article class="fw-card" data-id="5.1.4" data-type="DEFINITION" data-pdf-page="5" data-fw-name="Data Minimisation" tabindex="0" role="button" aria-label="Data Minimisation — DEFINITION">
+          <div class="fw-thumb"><svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+    <rect x="25" y="20" width="70" height="80" rx="4" fill="#DC2626" opacity="0.3"/>
+    <g fill="#DC2626" opacity="0.7">
+      
+        <rect x="35" y="30" width="18" height="12" rx="1"/>
+      
+        <rect x="60" y="30" width="18" height="12" rx="1"/>
+      
+        <rect x="35" y="48" width="18" height="12" rx="1"/>
+      
+        <rect x="60" y="48" width="18" height="12" rx="1"/>
+      
+        <rect x="35" y="66" width="18" height="12" rx="1"/>
+      
+        <rect x="60" y="66" width="18" height="12" rx="1"/>
+      
+        <rect x="35" y="84" width="18" height="12" rx="1"/>
+      
+        <rect x="60" y="84" width="18" height="12" rx="1"/>
+      
+    </g>
+    <text x="60" y="113" text-anchor="middle" font-family="Arial" font-size="7" font-weight="700" fill="#DC2626" opacity="0.7">BEFORE</text>
+    <rect x="110" y="20" width="70" height="80" rx="4" fill="#DC2626" opacity="0.9"/>
+    <g fill="#fff">
+      <rect x="120" y="30" width="18" height="12" rx="1"/>
+      <rect x="145" y="48" width="18" height="12" rx="1"/>
+      <rect x="120" y="66" width="18" height="12" rx="1"/>
+    </g>
+    <text x="145" y="113" text-anchor="middle" font-family="Arial" font-size="7" font-weight="700" fill="#DC2626">MINIMISED</text>
+  </svg></div>
+          <div class="fw-meta">
+            <span class="fw-badge fw-badge-def">DEFINITION</span>
+            <h4 class="fw-name">Data Minimisation</h4>
+            <p class="fw-short">Collect only what you need · keep only as long as you need.</p>
+          </div>
+        </article>
+        <article class="fw-card" data-id="5.1.5" data-type="FRAMEWORK" data-pdf-page="6" data-fw-name="Right to be Forgotten" tabindex="0" role="button" aria-label="Right to be Forgotten — FRAMEWORK">
+          <div class="fw-thumb"><svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+    <rect x="40" y="30" width="120" height="60" rx="6" fill="#E5A100" opacity="0.2"/>
+    <line x1="50" y1="45" x2="150" y2="45" stroke="#E5A100" stroke-width="1.5" opacity="0.5"/>
+    <line x1="50" y1="60" x2="150" y2="60" stroke="#E5A100" stroke-width="1.5" opacity="0.5" stroke-dasharray="3 2"/>
+    <line x1="50" y1="75" x2="150" y2="75" stroke="#E5A100" stroke-width="1.5" opacity="0.5"/>
+    <g transform="translate(145, 25)">
+      <rect x="-20" y="0" width="40" height="20" rx="3" fill="#E5A100"/>
+      <text x="0" y="14" text-anchor="middle" font-family="Arial" font-size="9" font-weight="900" fill="#fff">✕</text>
+    </g>
+    <text x="100" y="108" text-anchor="middle" font-family="Arial" font-size="8" font-weight="700" fill="#E5A100" opacity="0.7">ART. 17 · ERASURE</text>
+  </svg></div>
+          <div class="fw-meta">
+            <span class="fw-badge fw-badge-fwk">FRAMEWORK</span>
+            <h4 class="fw-name">Right to be Forgotten</h4>
+            <p class="fw-short">GDPR Art. 17 — the data subject's right to have personal data erased.</p>
+          </div>
+        </article></div>
+        </div>
+      </details>
+
+      <details class="subunit" >
+        <summary class="subunit-summary">
+          <span class="subunit-id">5.2</span>
+          <span class="subunit-name">Intellectual Property</span>
+          <span class="subunit-count">5 cards</span>
+          <span class="subunit-chev" aria-hidden="true">▸</span>
+        </summary>
+        <div class="subunit-body">
+          <p class="subunit-subtitle">Copyright, Creative Commons, patent trolls, and AI's IP frontier</p>
+          <div class="trigger">
+            <strong>Trigger Question</strong>
+            <span>How does pre-digital IP law cope with zero-cost copying and generative AI?</span>
+          </div>
+          <div class="fw-grid">
+        <article class="fw-card" data-id="5.2.1" data-type="DEFINITION" data-pdf-page="7" data-fw-name="Copyright in the Digital Age" tabindex="0" role="button" aria-label="Copyright in the Digital Age — DEFINITION">
+          <div class="fw-thumb"><svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="100" cy="60" r="38" fill="none" stroke="#DC2626" stroke-width="3"/>
+    <text x="100" y="72" text-anchor="middle" font-family="Arial" font-size="44" font-weight="900" fill="#DC2626">©</text>
+    <text x="100" y="113" text-anchor="middle" font-family="Arial" font-size="8" font-weight="700" fill="#DC2626" opacity="0.7">ALL RIGHTS RESERVED</text>
+  </svg></div>
+          <div class="fw-meta">
+            <span class="fw-badge fw-badge-def">DEFINITION</span>
+            <h4 class="fw-name">Copyright in the Digital Age</h4>
+            <p class="fw-short">Pre-digital law · post-digital reality — the regime under maximum stress.</p>
+          </div>
+        </article>
+        <article class="fw-card" data-id="5.2.2" data-type="DEFINITION" data-pdf-page="8" data-fw-name="Creative Commons" tabindex="0" role="button" aria-label="Creative Commons — DEFINITION">
+          <div class="fw-thumb"><svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="100" cy="60" r="32" fill="none" stroke="#DC2626" stroke-width="2"/>
+    <text x="100" y="70" text-anchor="middle" font-family="Arial" font-size="30" font-weight="900" fill="#DC2626">cc</text>
+    
+      <g transform="translate(148, 60)">
+        <circle r="11" fill="#DC2626" opacity="0.7"/>
+        <text x="0" y="3" text-anchor="middle" font-family="Arial" font-size="8" font-weight="900" fill="#fff">BY</text>
+      </g>
+    
+      <g transform="translate(100, 108)">
+        <circle r="11" fill="#DC2626" opacity="0.7"/>
+        <text x="0" y="3" text-anchor="middle" font-family="Arial" font-size="8" font-weight="900" fill="#fff">SA</text>
+      </g>
+    
+      <g transform="translate(52, 60.00000000000001)">
+        <circle r="11" fill="#DC2626" opacity="0.7"/>
+        <text x="0" y="3" text-anchor="middle" font-family="Arial" font-size="8" font-weight="900" fill="#fff">NC</text>
+      </g>
+    
+      <g transform="translate(99.99999999999999, 12)">
+        <circle r="11" fill="#DC2626" opacity="0.7"/>
+        <text x="0" y="3" text-anchor="middle" font-family="Arial" font-size="8" font-weight="900" fill="#fff">ND</text>
+      </g>
+    
+  </svg></div>
+          <div class="fw-meta">
+            <span class="fw-badge fw-badge-def">DEFINITION</span>
+            <h4 class="fw-name">Creative Commons</h4>
+            <p class="fw-short">A spectrum of standardised, machine-readable licences for permissive sharing.</p>
+          </div>
+        </article>
+        <article class="fw-card" data-id="5.2.3" data-type="FRAMEWORK" data-pdf-page="9" data-fw-name="Patent Trolls" tabindex="0" role="button" aria-label="Patent Trolls — FRAMEWORK">
+          <div class="fw-thumb"><svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+    <path d="M 70 50 Q 70 30 100 30 Q 130 30 130 50 L 130 60 L 70 60 Z" fill="#E5A100"/>
+    <rect x="60" y="58" width="80" height="38" rx="4" fill="#E5A100" opacity="0.9"/>
+    <circle cx="100" cy="75" r="4" fill="#fff"/>
+    <line x1="100" y1="80" x2="100" y2="88" stroke="#fff" stroke-width="2"/>
+    <text x="100" y="110" text-anchor="middle" font-family="Arial" font-size="8" font-weight="700" fill="#E5A100" opacity="0.7">NPE · TROLL</text>
+  </svg></div>
+          <div class="fw-meta">
+            <span class="fw-badge fw-badge-fwk">FRAMEWORK</span>
+            <h4 class="fw-name">Patent Trolls</h4>
+            <p class="fw-short">Non-practising entities that hold patents to litigate, not to produce.</p>
+          </div>
+        </article>
+        <article class="fw-card" data-id="5.2.4" data-type="FRAMEWORK" data-pdf-page="10" data-fw-name="AI &amp; Copyright" tabindex="0" role="button" aria-label="AI &amp; Copyright — FRAMEWORK">
+          <div class="fw-thumb"><svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+    <rect x="20" y="35" width="50" height="50" rx="4" fill="#E5A100" opacity="0.5"/>
+    <text x="45" y="55" text-anchor="middle" font-family="Arial" font-size="9" font-weight="800" fill="#fff">HUMAN</text>
+    <text x="45" y="70" text-anchor="middle" font-family="Arial" font-size="14" font-weight="900" fill="#fff">✓</text>
+    <path d="M 78 60 L 98 60" stroke="#E5A100" stroke-width="2" marker-end="url(#ahAI)"/>
+    <rect x="105" y="35" width="75" height="50" rx="4" fill="#E5A100"/>
+    <text x="142" y="55" text-anchor="middle" font-family="Arial" font-size="9" font-weight="800" fill="#fff">AI GENERATED</text>
+    <text x="142" y="72" text-anchor="middle" font-family="Arial" font-size="14" font-weight="900" fill="#fff">?</text>
+    <defs><marker id="ahAI" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+      <path d="M0,0 L0,10 L10,5 z" fill="#E5A100"/></marker></defs>
+  </svg></div>
+          <div class="fw-meta">
+            <span class="fw-badge fw-badge-fwk">FRAMEWORK</span>
+            <h4 class="fw-name">AI & Copyright</h4>
+            <p class="fw-short">Three open questions · no settled answers · billion-dollar litigation pending.</p>
+          </div>
+        </article>
+        <article class="fw-card" data-id="5.2.5" data-type="DEFINITION" data-pdf-page="11" data-fw-name="Trade Secrets vs Patents" tabindex="0" role="button" aria-label="Trade Secrets vs Patents — DEFINITION">
+          <div class="fw-thumb"><svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+    <rect x="25" y="30" width="70" height="60" rx="4" fill="#DC2626" opacity="0.9"/>
+    <text x="60" y="55" text-anchor="middle" font-family="Arial" font-size="18" font-weight="900" fill="#fff">🔒</text>
+    <text x="60" y="80" text-anchor="middle" font-family="Arial" font-size="8" font-weight="800" fill="#fff">SECRET</text>
+    <rect x="105" y="30" width="70" height="60" rx="4" fill="#DC2626" opacity="0.4"/>
+    <text x="140" y="55" text-anchor="middle" font-family="Arial" font-size="18" font-weight="900" fill="#fff">📜</text>
+    <text x="140" y="80" text-anchor="middle" font-family="Arial" font-size="7" font-weight="800" fill="#fff">PATENT · 20YR</text>
+  </svg></div>
+          <div class="fw-meta">
+            <span class="fw-badge fw-badge-def">DEFINITION</span>
+            <h4 class="fw-name">Trade Secrets vs Patents</h4>
+            <p class="fw-short">Two strategies for protecting innovation · radically different trade-offs.</p>
+          </div>
+        </article></div>
+        </div>
+      </details>
+
+      <details class="subunit" >
+        <summary class="subunit-summary">
+          <span class="subunit-id">5.3</span>
+          <span class="subunit-name">Surveillance Capitalism</span>
+          <span class="subunit-count">5 cards</span>
+          <span class="subunit-chev" aria-hidden="true">▸</span>
+        </summary>
+        <div class="subunit-body">
+          <p class="subunit-subtitle">Zuboff's frame — extraction, prediction, modification, and instrumentarian power</p>
+          <div class="trigger">
+            <strong>Trigger Question</strong>
+            <span>Are we operating in a behavioural-futures market — and is that consonant with our values?</span>
+          </div>
+          <div class="fw-grid">
+        <article class="fw-card" data-id="5.3.1" data-type="DEFINITION" data-pdf-page="12" data-fw-name="Zuboff's Definition" tabindex="0" role="button" aria-label="Zuboff's Definition — DEFINITION">
+          <div class="fw-thumb"><svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="100" cy="60" r="28" fill="none" stroke="#DC2626" stroke-width="2"/>
+    <circle cx="100" cy="60" r="18" fill="#DC2626" opacity="0.85"/>
+    <circle cx="100" cy="60" r="8" fill="#fff"/>
+    <circle cx="100" cy="60" r="4" fill="#DC2626"/>
+    
+      <line x1="132" y1="60"
+            x2="142" y2="60" stroke="#DC2626" stroke-width="1.5"/>
+    
+      <line x1="122.62741699796952" y1="82.62741699796952"
+            x2="129.698484809835" y2="89.698484809835" stroke="#DC2626" stroke-width="1.5"/>
+    
+      <line x1="100" y1="92"
+            x2="100" y2="102" stroke="#DC2626" stroke-width="1.5"/>
+    
+      <line x1="77.37258300203048" y1="82.62741699796952"
+            x2="70.301515190165" y2="89.698484809835" stroke="#DC2626" stroke-width="1.5"/>
+    
+      <line x1="68" y1="60.00000000000001"
+            x2="58" y2="60.00000000000001" stroke="#DC2626" stroke-width="1.5"/>
+    
+      <line x1="77.37258300203047" y1="37.37258300203048"
+            x2="70.30151519016499" y2="30.301515190165006" stroke="#DC2626" stroke-width="1.5"/>
+    
+      <line x1="100" y1="28"
+            x2="99.99999999999999" y2="18" stroke="#DC2626" stroke-width="1.5"/>
+    
+      <line x1="122.62741699796952" y1="37.372583002030474"
+            x2="129.69848480983498" y2="30.301515190165" stroke="#DC2626" stroke-width="1.5"/>
+    
+    <text x="100" y="112" text-anchor="middle" font-family="Arial" font-size="7" font-weight="800" fill="#DC2626" opacity="0.7">ZUBOFF 2019</text>
+  </svg></div>
+          <div class="fw-meta">
+            <span class="fw-badge fw-badge-def">DEFINITION</span>
+            <h4 class="fw-name">Zuboff's Definition</h4>
+            <p class="fw-short">Human experience as raw material for behavioural-prediction products.</p>
+          </div>
+        </article>
+        <article class="fw-card" data-id="5.3.2" data-type="FRAMEWORK" data-pdf-page="13" data-fw-name="Behavioural Futures Markets" tabindex="0" role="button" aria-label="Behavioural Futures Markets — FRAMEWORK">
+          <div class="fw-thumb"><svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+    <line x1="15" y1="100" x2="190" y2="100" stroke="#E5A100" opacity="0.3"/>
+    <line x1="15" y1="15" x2="15" y2="100" stroke="#E5A100" opacity="0.3"/>
+    <path d="M 15 85 Q 40 70 60 75 Q 80 80 90 50 Q 100 45 120 55 Q 140 40 160 30 Q 180 20 190 18" fill="none" stroke="#E5A100" stroke-width="2"/>
+    <circle cx="40" cy="75" r="3.5" fill="#E5A100"/><circle cx="90" cy="50" r="3.5" fill="#E5A100"/><circle cx="120" cy="55" r="3.5" fill="#E5A100"/><circle cx="160" cy="30" r="3.5" fill="#E5A100"/>
+    <text x="100" y="115" text-anchor="middle" font-family="Arial" font-size="8" font-weight="700" fill="#E5A100" opacity="0.7">PREDICTION MARKETS</text>
+  </svg></div>
+          <div class="fw-meta">
+            <span class="fw-badge fw-badge-fwk">FRAMEWORK</span>
+            <h4 class="fw-name">Behavioural Futures Markets</h4>
+            <p class="fw-short">Markets in predictions of what humans will do · the product is human behaviour.</p>
+          </div>
+        </article>
+        <article class="fw-card" data-id="5.3.3" data-type="DEFINITION" data-pdf-page="14" data-fw-name="Data Extraction Imperative" tabindex="0" role="button" aria-label="Data Extraction Imperative — DEFINITION">
+          <div class="fw-thumb"><svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+    
+      <circle cx="30" cy="25" r="9" fill="#DC2626" opacity="0.55"/>
+      <text x="30" y="29" text-anchor="middle" font-size="10">📱</text>
+    
+      <circle cx="80" cy="20" r="9" fill="#DC2626" opacity="0.55"/>
+      <text x="80" y="24" text-anchor="middle" font-size="10">⌚</text>
+    
+      <circle cx="130" cy="25" r="9" fill="#DC2626" opacity="0.55"/>
+      <text x="130" y="29" text-anchor="middle" font-size="10">🎤</text>
+    
+      <circle cx="170" cy="30" r="9" fill="#DC2626" opacity="0.55"/>
+      <text x="170" y="34" text-anchor="middle" font-size="10">📹</text>
+    
+      <circle cx="30" cy="90" r="9" fill="#DC2626" opacity="0.55"/>
+      <text x="30" y="94" text-anchor="middle" font-size="10">🚗</text>
+    
+      <circle cx="80" cy="95" r="9" fill="#DC2626" opacity="0.55"/>
+      <text x="80" y="99" text-anchor="middle" font-size="10">🏠</text>
+    
+      <circle cx="130" cy="95" r="9" fill="#DC2626" opacity="0.55"/>
+      <text x="130" y="99" text-anchor="middle" font-size="10">💊</text>
+    
+      <circle cx="170" cy="90" r="9" fill="#DC2626" opacity="0.55"/>
+      <text x="170" y="94" text-anchor="middle" font-size="10">👁</text>
+    
+    <rect x="65" y="50" width="70" height="22" rx="4" fill="#DC2626"/>
+    <text x="100" y="65" text-anchor="middle" font-family="Arial" font-size="9" font-weight="800" fill="#fff">EXTRACT →</text>
+  </svg></div>
+          <div class="fw-meta">
+            <span class="fw-badge fw-badge-def">DEFINITION</span>
+            <h4 class="fw-name">Data Extraction Imperative</h4>
+            <p class="fw-short">Once the data flywheel turns · stopping is uncompetitive · extraction expands.</p>
+          </div>
+        </article>
+        <article class="fw-card" data-id="5.3.4" data-type="DEFINITION" data-pdf-page="15" data-fw-name="Instrumentarian Power" tabindex="0" role="button" aria-label="Instrumentarian Power — DEFINITION">
+          <div class="fw-thumb"><svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+    <g transform="translate(60, 60)">
+      <circle r="24" fill="#DC2626" opacity="0.85"/>
+      <circle r="10" fill="#fff"/>
+      <text x="0" y="3" text-anchor="middle" font-family="Arial" font-size="7" font-weight="800" fill="#DC2626">OBS</text>
+    </g>
+    <g transform="translate(140, 60)">
+      <rect x="-22" y="-22" width="44" height="44" rx="4" fill="#DC2626"/>
+      <g stroke="#fff" stroke-width="2" fill="none">
+        <path d="M -10 0 Q 0 -10 10 0 Q 0 10 -10 0"/>
+      </g>
+      <text x="0" y="4" text-anchor="middle" font-family="Arial" font-size="7" font-weight="800" fill="#fff">SHAPE</text>
+    </g>
+    <path d="M 85 60 L 115 60" stroke="#DC2626" stroke-width="2" marker-end="url(#ahI)"/>
+    <defs><marker id="ahI" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+      <path d="M0,0 L0,10 L10,5 z" fill="#DC2626"/></marker></defs>
+  </svg></div>
+          <div class="fw-meta">
+            <span class="fw-badge fw-badge-def">DEFINITION</span>
+            <h4 class="fw-name">Instrumentarian Power</h4>
+            <p class="fw-short">Power that shapes behaviour from the outside · without coercion · without consent.</p>
+          </div>
+        </article>
+        <article class="fw-card" data-id="5.3.5" data-type="FRAMEWORK" data-pdf-page="16" data-fw-name="Privacy Equation (MIT)" tabindex="0" role="button" aria-label="Privacy Equation (MIT) — FRAMEWORK">
+          <div class="fw-thumb"><svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+    <rect x="15" y="40" width="70" height="40" rx="4" fill="#E5A100" opacity="0.5"/>
+    <text x="50" y="57" text-anchor="middle" font-family="Arial" font-size="7" font-weight="800" fill="#fff">YOUR</text>
+    <text x="50" y="70" text-anchor="middle" font-family="Arial" font-size="7" font-weight="800" fill="#fff">DATA</text>
+    <g transform="translate(100, 60)">
+      <line x1="-10" y1="-10" x2="-10" y2="10" stroke="#E5A100" stroke-width="2.5"/>
+      <line x1="10" y1="-10" x2="10" y2="10" stroke="#E5A100" stroke-width="2.5"/>
+      <path d="M -10 0 L 10 0" stroke="#E5A100" stroke-width="1.5" opacity="0.4"/>
+    </g>
+    <rect x="115" y="40" width="70" height="40" rx="4" fill="#E5A100"/>
+    <text x="150" y="57" text-anchor="middle" font-family="Arial" font-size="7" font-weight="800" fill="#fff">LLM</text>
+    <text x="150" y="70" text-anchor="middle" font-family="Arial" font-size="7" font-weight="800" fill="#fff">UTILITY</text>
+    <text x="100" y="105" text-anchor="middle" font-family="Arial" font-size="7" font-weight="700" fill="#E5A100" opacity="0.7">UNEQUAL EXCHANGE</text>
+  </svg></div>
+          <div class="fw-meta">
+            <span class="fw-badge fw-badge-fwk">FRAMEWORK</span>
+            <h4 class="fw-name">Privacy Equation (MIT)</h4>
+            <p class="fw-short">MIT IDE — privacy is a continuously-renegotiated social contract, not a fixed state.</p>
+          </div>
+        </article></div>
+        </div>
+      </details>
+
+      <details class="subunit" >
+        <summary class="subunit-summary">
+          <span class="subunit-id">5.4</span>
+          <span class="subunit-name">Algorithmic Accountability</span>
+          <span class="subunit-count">5 cards</span>
+          <span class="subunit-chev" aria-hidden="true">▸</span>
+        </summary>
+        <div class="subunit-body">
+          <p class="subunit-subtitle">EU AI Act, accountability spectrum, responsibility gap, bias, and risk</p>
+          <div class="trigger">
+            <strong>Trigger Question</strong>
+            <span>If this AI system causes harm, who is responsible — and is that allocation defensible?</span>
+          </div>
+          <div class="fw-grid">
+        <article class="fw-card" data-id="5.4.1" data-type="FRAMEWORK" data-pdf-page="17" data-fw-name="EU AI Act" tabindex="0" role="button" aria-label="EU AI Act — FRAMEWORK">
+          <div class="fw-thumb"><svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+    <rect x="30" y="20" width="140" height="80" rx="8" fill="#E5A100" opacity="0.9"/>
+    <text x="100" y="48" text-anchor="middle" font-family="Arial" font-size="18" font-weight="900" fill="#fff">AI ACT</text>
+    <text x="100" y="66" text-anchor="middle" font-family="Arial" font-size="7" font-weight="700" fill="#fff">EU 2024/1689</text>
+    <g fill="#fff">
+      
+        <rect x="31" y="76" width="28" height="12" rx="2" opacity="1"/>
+        <text x="45" y="85" text-anchor="middle" font-family="Arial" font-size="6" font-weight="800" fill="#E5A100">BAN</text>
+      
+        <rect x="66" y="76" width="28" height="12" rx="2" opacity="0.8"/>
+        <text x="80" y="85" text-anchor="middle" font-family="Arial" font-size="6" font-weight="800" fill="#E5A100">HIGH</text>
+      
+        <rect x="101" y="76" width="28" height="12" rx="2" opacity="0.6"/>
+        <text x="115" y="85" text-anchor="middle" font-family="Arial" font-size="6" font-weight="800" fill="#E5A100">LIM</text>
+      
+        <rect x="136" y="76" width="28" height="12" rx="2" opacity="0.35"/>
+        <text x="150" y="85" text-anchor="middle" font-family="Arial" font-size="6" font-weight="800" fill="#E5A100">MIN</text>
+      
+    </g>
+  </svg></div>
+          <div class="fw-meta">
+            <span class="fw-badge fw-badge-fwk">FRAMEWORK</span>
+            <h4 class="fw-name">EU AI Act</h4>
+            <p class="fw-short">EU 2024/1689 — the world's first comprehensive risk-based AI regulation.</p>
+          </div>
+        </article>
+        <article class="fw-card" data-id="5.4.2" data-type="FRAMEWORK" data-pdf-page="18" data-fw-name="Accountability Spectrum" tabindex="0" role="button" aria-label="Accountability Spectrum — FRAMEWORK">
+          <div class="fw-thumb"><svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+    <line x1="15" y1="100" x2="190" y2="100" stroke="#E5A100" opacity="0.3"/>
+    <line x1="100" y1="15" x2="100" y2="100" stroke="#E5A100" opacity="0.3" stroke-dasharray="2 2"/>
+    <g fill="#E5A100">
+      <rect x="60" y="60" width="10" height="30" rx="1"/>
+      <rect x="75" y="50" width="10" height="40" rx="1"/>
+      <rect x="90" y="35" width="10" height="55" rx="1"/>
+    </g>
+    <g fill="#E5A100" opacity="0.4">
+      <rect x="105" y="75" width="10" height="15" rx="1"/>
+      <rect x="120" y="80" width="10" height="10" rx="1"/>
+      <rect x="135" y="82" width="10" height="8" rx="1"/>
+    </g>
+    <text x="80" y="28" text-anchor="middle" font-family="Arial" font-size="7" font-weight="800" fill="#E5A100">GROUP A</text>
+    <text x="125" y="28" text-anchor="middle" font-family="Arial" font-size="7" font-weight="800" fill="#E5A100" opacity="0.5">GROUP B</text>
+  </svg></div>
+          <div class="fw-meta">
+            <span class="fw-badge fw-badge-fwk">FRAMEWORK</span>
+            <h4 class="fw-name">Accountability Spectrum</h4>
+            <p class="fw-short">From mere conduit to active gatekeeper — five positions of platform responsibility.</p>
+          </div>
+        </article>
+        <article class="fw-card" data-id="5.4.3" data-type="FRAMEWORK" data-pdf-page="19" data-fw-name="Responsibility Gap" tabindex="0" role="button" aria-label="Responsibility Gap — FRAMEWORK">
+          <div class="fw-thumb"><svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+    <rect x="30" y="30" width="40" height="40" rx="4" fill="#E5A100" opacity="0.5"/>
+    <text x="50" y="55" text-anchor="middle" font-family="Arial" font-size="8" font-weight="800" fill="#fff">USER</text>
+    <rect x="130" y="30" width="40" height="40" rx="4" fill="#E5A100" opacity="0.5"/>
+    <text x="150" y="55" text-anchor="middle" font-family="Arial" font-size="7" font-weight="800" fill="#fff">MAKER</text>
+    <rect x="80" y="30" width="40" height="40" rx="4" fill="#E5A100" opacity="0.5"/>
+    <text x="100" y="55" text-anchor="middle" font-family="Arial" font-size="8" font-weight="800" fill="#fff">AI</text>
+    <text x="100" y="90" text-anchor="middle" font-family="Arial" font-size="28" font-weight="900" fill="#E5A100">?</text>
+    <text x="100" y="112" text-anchor="middle" font-family="Arial" font-size="7" font-weight="700" fill="#E5A100" opacity="0.7">RESPONSIBILITY GAP</text>
+  </svg></div>
+          <div class="fw-meta">
+            <span class="fw-badge fw-badge-fwk">FRAMEWORK</span>
+            <h4 class="fw-name">Responsibility Gap</h4>
+            <p class="fw-short">Matthias — when no human can fairly be held accountable for a machine's harm.</p>
+          </div>
+        </article>
+        <article class="fw-card" data-id="5.4.4" data-type="FRAMEWORK" data-pdf-page="20" data-fw-name="Algorithmic Bias" tabindex="0" role="button" aria-label="Algorithmic Bias — FRAMEWORK">
+          <div class="fw-thumb"><svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+    
+        <rect x="25" y="20" width="70" height="35" rx="4" fill="#E5A100" opacity="0.4"/>
+        <text x="60" y="42" text-anchor="middle" font-family="Arial" font-size="9" font-weight="800" fill="#fff">RISK 1</text>
+      
+        <rect x="115" y="20" width="70" height="35" rx="4" fill="#E5A100" opacity="0.6000000000000001"/>
+        <text x="150" y="42" text-anchor="middle" font-family="Arial" font-size="9" font-weight="800" fill="#fff">RISK 2</text>
+      
+        <rect x="25" y="65" width="70" height="35" rx="4" fill="#E5A100" opacity="0.8"/>
+        <text x="60" y="87" text-anchor="middle" font-family="Arial" font-size="9" font-weight="800" fill="#fff">RISK 3</text>
+      
+        <rect x="115" y="65" width="70" height="35" rx="4" fill="#E5A100" opacity="0.4"/>
+        <text x="150" y="87" text-anchor="middle" font-family="Arial" font-size="9" font-weight="800" fill="#fff">RISK 4</text>
+      
+    <text x="100" y="110" text-anchor="middle" font-family="Arial" font-size="7" font-weight="700" fill="#E5A100" opacity="0.7">4 RISKS · 4 MITIGATIONS</text>
+  </svg></div>
+          <div class="fw-meta">
+            <span class="fw-badge fw-badge-fwk">FRAMEWORK</span>
+            <h4 class="fw-name">Algorithmic Bias</h4>
+            <p class="fw-short">Three sources · three responses · the central operational risk in AI deployment.</p>
+          </div>
+        </article>
+        <article class="fw-card" data-id="5.4.5" data-type="FRAMEWORK" data-pdf-page="21" data-fw-name="AI Risk &amp; Mitigation Matrix (MIT)" tabindex="0" role="button" aria-label="AI Risk &amp; Mitigation Matrix (MIT) — FRAMEWORK">
+          <div class="fw-thumb"><svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+    
+      <rect x="21" y="30" width="48" height="60" rx="4" fill="#E5A100" opacity="0.5"/>
+      <text x="45" y="55" text-anchor="middle" font-family="Arial" font-size="15" font-weight="900" fill="#fff">1</text>
+      <text x="45" y="75" text-anchor="middle" font-family="Arial" font-size="7" font-weight="800" fill="#fff">MEASURE</text>
+    
+      <rect x="76" y="30" width="48" height="60" rx="4" fill="#E5A100" opacity="0.7"/>
+      <text x="100" y="55" text-anchor="middle" font-family="Arial" font-size="15" font-weight="900" fill="#fff">2</text>
+      <text x="100" y="75" text-anchor="middle" font-family="Arial" font-size="7" font-weight="800" fill="#fff">DESIGN</text>
+    
+      <rect x="131" y="30" width="48" height="60" rx="4" fill="#E5A100" opacity="0.9"/>
+      <text x="155" y="55" text-anchor="middle" font-family="Arial" font-size="15" font-weight="900" fill="#fff">3</text>
+      <text x="155" y="75" text-anchor="middle" font-family="Arial" font-size="7" font-weight="800" fill="#fff">AUTONOMY</text>
+    
+    <text x="100" y="108" text-anchor="middle" font-family="Arial" font-size="7" font-weight="700" fill="#E5A100" opacity="0.6">HUMAN-CENTERED AI</text>
+  </svg></div>
+          <div class="fw-meta">
+            <span class="fw-badge fw-badge-fwk">FRAMEWORK</span>
+            <h4 class="fw-name">AI Risk & Mitigation Matrix (MIT)</h4>
+            <p class="fw-short">MIT IDE 2025 — a 2×2 of AI risk types and mitigation maturity.</p>
+          </div>
+        </article></div>
+        </div>
+      </details>
+</main>
+
+<!-- ═══════════ MODAL ═══════════ -->
+<div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="modal-panel">
+    <div class="modal-header">
+      <div class="modal-breadcrumb" id="modalBreadcrumb"></div>
+      <h2 class="modal-title" id="modalTitle"></h2>
+      <div class="modal-actions">
+        <button class="view-sheet-btn" id="viewSheetBtn" type="button">📄 View Framework Sheet</button>
+        <button class="modal-close" id="modalClose" type="button" aria-label="Close">×</button>
+      </div>
+    </div>
+    <div class="modal-body">
+      <p class="modal-tagline" id="modalTagline"></p>
+      <div class="modal-section">
+        <h4>What this is</h4>
+        <p id="modalShort"></p>
+      </div>
+      <div class="modal-section">
+        <h4>Reference sheet</h4>
+        <p>The full A4 framework sheet — Definition · Origin & Author · Core Mechanism · Illustrative Figure · How &amp; When Used · Real-World Examples · Related Frameworks · Harvard References — opens via the green button above.</p>
+      </div>
+      <div class="modal-cta">
+        <div class="modal-cta-text">
+          <strong>Sheet structure</strong>
+          9 sections · A4 portrait · Harvard-referenced · designed for revision and assessment.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ PDF VIEWER ═══════════ -->
+<div class="pdf-overlay" id="pdfOverlay" role="dialog" aria-modal="true" aria-hidden="true">
+  <header class="pdf-toolbar">
+    <span class="pdf-tb-label">Framework Sheet</span>
+    <span class="pdf-tb-title" id="pdfTitle">—</span>
+    <button class="pdf-btn" id="pdfPrev" type="button" aria-label="Previous page">‹ Prev</button>
+    <span id="pdfPageInfo" style="font-size:12px; color: rgba(255,255,255,0.7); min-width: 60px; text-align: center;">— / —</span>
+    <button class="pdf-btn" id="pdfNext" type="button" aria-label="Next page">Next ›</button>
+    <button class="pdf-btn" id="pdfZoomOut" type="button" aria-label="Zoom out">−</button>
+    <button class="pdf-btn" id="pdfZoomIn" type="button" aria-label="Zoom in">+</button>
+    <button class="pdf-btn primary" id="pdfClose" type="button">Close</button>
+  </header>
+  <div class="pdf-canvas-wrap" id="pdfCanvasWrap">
+    <div class="pdf-loading" id="pdfLoading">Loading framework sheet…</div>
+  </div>
+</div>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div>
+      <h5>MDGTB301 · Digital Economy</h5>
+      <div>A course by Dr. Hildegard Haas · EU Business School</div>
+      <div>Masters Programme in Digital Business &amp; Innovation</div>
+    </div>
+    <div class="copy">© 2026 Dr. Hildegard Haas · MDGTB301 · All rights reserved</div>
+  </div>
+</footer>
+
+<div class="copyright-badge">© Dr. Hildegard Haas</div>
+
+<!-- ═══════════ PDF.js (CDN) ═══════════ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+<script>
+(function () {
+  'use strict';
+
+  // ─── DATA ───────────────────────────────────────────
+  const FW_DB = {"5.1.1":{"name":"GDPR Principles","type":"FRAMEWORK","short":"Seven principles · eight rights — the EU's foundational data-protection regime.","sub":"Data Rights & Privacy","subId":"5.1","pdfPage":2},"5.1.2":{"name":"Personal Data as Property","type":"DEFINITION","short":"Is personal data my property — or relational and beyond markets?","sub":"Data Rights & Privacy","subId":"5.1","pdfPage":3},"5.1.3":{"name":"Consent & Legitimate Interest","type":"FRAMEWORK","short":"Two of the six lawful bases — and the most contested in practice.","sub":"Data Rights & Privacy","subId":"5.1","pdfPage":4},"5.1.4":{"name":"Data Minimisation","type":"DEFINITION","short":"Collect only what you need · keep only as long as you need.","sub":"Data Rights & Privacy","subId":"5.1","pdfPage":5},"5.1.5":{"name":"Right to be Forgotten","type":"FRAMEWORK","short":"GDPR Art. 17 — the data subject's right to have personal data erased.","sub":"Data Rights & Privacy","subId":"5.1","pdfPage":6},"5.2.1":{"name":"Copyright in the Digital Age","type":"DEFINITION","short":"Pre-digital law · post-digital reality — the regime under maximum stress.","sub":"Intellectual Property","subId":"5.2","pdfPage":7},"5.2.2":{"name":"Creative Commons","type":"DEFINITION","short":"A spectrum of standardised, machine-readable licences for permissive sharing.","sub":"Intellectual Property","subId":"5.2","pdfPage":8},"5.2.3":{"name":"Patent Trolls","type":"FRAMEWORK","short":"Non-practising entities that hold patents to litigate, not to produce.","sub":"Intellectual Property","subId":"5.2","pdfPage":9},"5.2.4":{"name":"AI & Copyright","type":"FRAMEWORK","short":"Three open questions · no settled answers · billion-dollar litigation pending.","sub":"Intellectual Property","subId":"5.2","pdfPage":10},"5.2.5":{"name":"Trade Secrets vs Patents","type":"DEFINITION","short":"Two strategies for protecting innovation · radically different trade-offs.","sub":"Intellectual Property","subId":"5.2","pdfPage":11},"5.3.1":{"name":"Zuboff's Definition","type":"DEFINITION","short":"Human experience as raw material for behavioural-prediction products.","sub":"Surveillance Capitalism","subId":"5.3","pdfPage":12},"5.3.2":{"name":"Behavioural Futures Markets","type":"FRAMEWORK","short":"Markets in predictions of what humans will do · the product is human behaviour.","sub":"Surveillance Capitalism","subId":"5.3","pdfPage":13},"5.3.3":{"name":"Data Extraction Imperative","type":"DEFINITION","short":"Once the data flywheel turns · stopping is uncompetitive · extraction expands.","sub":"Surveillance Capitalism","subId":"5.3","pdfPage":14},"5.3.4":{"name":"Instrumentarian Power","type":"DEFINITION","short":"Power that shapes behaviour from the outside · without coercion · without consent.","sub":"Surveillance Capitalism","subId":"5.3","pdfPage":15},"5.3.5":{"name":"Privacy Equation (MIT)","type":"FRAMEWORK","short":"MIT IDE — privacy is a continuously-renegotiated social contract, not a fixed state.","sub":"Surveillance Capitalism","subId":"5.3","pdfPage":16},"5.4.1":{"name":"EU AI Act","type":"FRAMEWORK","short":"EU 2024/1689 — the world's first comprehensive risk-based AI regulation.","sub":"Algorithmic Accountability","subId":"5.4","pdfPage":17},"5.4.2":{"name":"Accountability Spectrum","type":"FRAMEWORK","short":"From mere conduit to active gatekeeper — five positions of platform responsibility.","sub":"Algorithmic Accountability","subId":"5.4","pdfPage":18},"5.4.3":{"name":"Responsibility Gap","type":"FRAMEWORK","short":"Matthias — when no human can fairly be held accountable for a machine's harm.","sub":"Algorithmic Accountability","subId":"5.4","pdfPage":19},"5.4.4":{"name":"Algorithmic Bias","type":"FRAMEWORK","short":"Three sources · three responses · the central operational risk in AI deployment.","sub":"Algorithmic Accountability","subId":"5.4","pdfPage":20},"5.4.5":{"name":"AI Risk & Mitigation Matrix (MIT)","type":"FRAMEWORK","short":"MIT IDE 2025 — a 2×2 of AI risk types and mitigation maturity.","sub":"Algorithmic Accountability","subId":"5.4","pdfPage":21}};
+  const PDF_URL = 'MDGTB301_Unit5_Framework_Library.pdf';
+  const UNIT_NUM = 5;
+  const UNIT_TITLE = 'Ethical & Legal Issues in the Digital Economy';
+
+  if (window.pdfjsLib) {
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+      'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  }
+
+  // ─── SEARCH ─────────────────────────────────────────
+  const searchInput  = document.getElementById('searchInput');
+  const searchEl     = document.getElementById('search');
+  const searchClear  = document.getElementById('searchClear');
+  const searchStatus = document.getElementById('searchStatus');
+
+  function applySearch() {
+    const q = searchInput.value.trim().toLowerCase();
+    searchEl.classList.toggle('has-text', q.length > 0);
+    let shown = 0, hidden = 0;
+    document.querySelectorAll('.fw-card').forEach(card => {
+      if (!q) {
+        card.style.display = '';
+        shown++;
+        return;
+      }
+      const hay = (card.querySelector('.fw-name').textContent + ' ' +
+                   card.querySelector('.fw-short').textContent + ' ' +
+                   card.dataset.id).toLowerCase();
+      if (hay.indexOf(q) !== -1) { card.style.display = ''; shown++; }
+      else { card.style.display = 'none'; hidden++; }
+    });
+    document.querySelectorAll('.subunit').forEach(d => {
+      const hasVisible = d.querySelector('.fw-card:not([style*="display: none"])');
+      if (q && !hasVisible) d.style.display = 'none';
+      else d.style.display = '';
+      if (q) d.setAttribute('open', '');
+    });
+    searchStatus.textContent = q
+      ? (shown + ' framework' + (shown === 1 ? '' : 's') + ' match "' + searchInput.value + '"' + (hidden ? ' · ' + hidden + ' hidden' : ''))
+      : '';
+  }
+  searchInput.addEventListener('input', applySearch);
+  searchClear.addEventListener('click', () => {
+    searchInput.value = '';
+    applySearch();
+    searchInput.focus();
+  });
+  // "/" focuses search
+  document.addEventListener('keydown', (e) => {
+    if (e.key === '/' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
+      e.preventDefault();
+      searchInput.focus();
+    }
+  });
+
+  // ─── MODAL ──────────────────────────────────────────
+  const modal       = document.getElementById('modalOverlay');
+  const modalTitle  = document.getElementById('modalTitle');
+  const modalBread  = document.getElementById('modalBreadcrumb');
+  const modalTagline = document.getElementById('modalTagline');
+  const modalShort  = document.getElementById('modalShort');
+  const modalClose  = document.getElementById('modalClose');
+  const viewBtn     = document.getElementById('viewSheetBtn');
+
+  let currentFwId = null;
+
+  function openModal(fwId) {
+    const fw = FW_DB[fwId];
+    if (!fw) return;
+    currentFwId = fwId;
+    modalBread.textContent = 'Unit ' + UNIT_NUM + ' · ' + fw.subId + ' · ' + fw.sub;
+    modalTitle.textContent = fw.name;
+    modalTagline.textContent = fw.short;
+    modalShort.textContent =
+      'Card ' + fwId + ' is part of "' + fw.sub + '". Open the framework sheet for the full structured reference: definition, origin and author, core mechanism, illustrative figure, how and when used, real-world examples, related frameworks, and Harvard sources.';
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    modalClose.focus();
+  }
+  function closeModal() {
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    currentFwId = null;
+  }
+
+  document.querySelectorAll('.fw-card').forEach(card => {
+    card.addEventListener('click', () => openModal(card.dataset.id));
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(card.dataset.id); }
+    });
+  });
+  modalClose.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      if (pdfOverlay.classList.contains('open')) closePdf();
+      else if (modal.classList.contains('open')) closeModal();
+    }
+  });
+
+  // ─── PDF VIEWER ─────────────────────────────────────
+  const pdfOverlay = document.getElementById('pdfOverlay');
+  const pdfTitle   = document.getElementById('pdfTitle');
+  const pdfClose   = document.getElementById('pdfClose');
+  const pdfPrev    = document.getElementById('pdfPrev');
+  const pdfNext    = document.getElementById('pdfNext');
+  const pdfZoomIn  = document.getElementById('pdfZoomIn');
+  const pdfZoomOut = document.getElementById('pdfZoomOut');
+  const pdfPageInfo = document.getElementById('pdfPageInfo');
+  const pdfWrap    = document.getElementById('pdfCanvasWrap');
+  const pdfLoading = document.getElementById('pdfLoading');
+
+  let pdfDoc = null;
+  let currentPage = 1;
+  let pageScale = 1.4;
+  let totalPages = 0;
+  let renderTask = null;
+
+  function ensureCanvas() {
+    let c = pdfWrap.querySelector('canvas');
+    if (!c) {
+      c = document.createElement('canvas');
+      pdfWrap.appendChild(c);
+    }
+    return c;
+  }
+
+  async function renderPage(pageNum) {
+    if (!pdfDoc) return;
+    if (renderTask) { try { renderTask.cancel(); } catch (e) {} }
+    pdfLoading.style.display = 'block';
+    try {
+      const page = await pdfDoc.getPage(pageNum);
+      const vp = page.getViewport({ scale: pageScale });
+      const canvas = ensureCanvas();
+      const ctx = canvas.getContext('2d');
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = vp.width * dpr;
+      canvas.height = vp.height * dpr;
+      canvas.style.width = vp.width + 'px';
+      canvas.style.height = vp.height + 'px';
+      ctx.scale(dpr, dpr);
+      renderTask = page.render({ canvasContext: ctx, viewport: vp });
+      await renderTask.promise;
+      pdfLoading.style.display = 'none';
+      pdfPageInfo.textContent = pageNum + ' / ' + totalPages;
+    } catch (e) {
+      if (e && e.name === 'RenderingCancelledException') return;
+      console.error(e);
+      pdfLoading.textContent = 'Could not render page.';
+    }
+  }
+
+  async function openPdfAt(pageNum, label) {
+    pdfOverlay.classList.add('open');
+    pdfOverlay.setAttribute('aria-hidden', 'false');
+    pdfTitle.textContent = label || ('Unit ' + UNIT_NUM);
+    if (!pdfDoc) {
+      try {
+        pdfLoading.textContent = 'Loading framework sheet…';
+        pdfLoading.style.display = 'block';
+        pdfDoc = await pdfjsLib.getDocument(PDF_URL).promise;
+        totalPages = pdfDoc.numPages;
+      } catch (e) {
+        pdfLoading.textContent = 'Could not load PDF: ' + PDF_URL;
+        console.error(e);
+        return;
+      }
+    }
+    currentPage = Math.max(1, Math.min(pageNum, totalPages));
+    await renderPage(currentPage);
+  }
+  function closePdf() {
+    pdfOverlay.classList.remove('open');
+    pdfOverlay.setAttribute('aria-hidden', 'true');
+  }
+
+  viewBtn.addEventListener('click', () => {
+    if (!currentFwId) return;
+    const fw = FW_DB[currentFwId];
+    openPdfAt(fw.pdfPage, fw.name);
+  });
+  pdfClose.addEventListener('click', closePdf);
+  pdfPrev.addEventListener('click', () => { if (currentPage > 1) { currentPage--; renderPage(currentPage); } });
+  pdfNext.addEventListener('click', () => { if (currentPage < totalPages) { currentPage++; renderPage(currentPage); } });
+  pdfZoomIn.addEventListener('click', () => { pageScale = Math.min(pageScale + 0.2, 3.0); renderPage(currentPage); });
+  pdfZoomOut.addEventListener('click', () => { pageScale = Math.max(pageScale - 0.2, 0.6); renderPage(currentPage); });
+
+  // ─── COPY/CONTEXT PROTECTION ────────────────────────
+  document.addEventListener('contextmenu', (e) => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    e.preventDefault();
+  });
+  document.addEventListener('keydown', (e) => {
+    const k = e.key.toLowerCase();
+    if ((e.ctrlKey || e.metaKey) && (k === 's' || k === 'p' || k === 'u')) e.preventDefault();
+    if (k === 'f12') e.preventDefault();
+  });
+  // Block save/print
+  window.addEventListener('beforeprint', () => { /* CSS @media print blocks visibility */ });
+
+})();
+</script>
+
+</body>
+</html>

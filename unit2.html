@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 2 · Fundamental Concepts of the Digital Economy — MDGTB301</title>
+<meta name="description" content="MDGTB301 Digital Economy — Unit 2 Framework Gallery · EU Business School · Dr. Hildegard Haas">
+
+<style>
+:root {
+  --teal:        #00BE96;
+  --teal-soft:   #C8F0E5;
+  --teal-line:   #0E8E73;
+  --navy:        #0E1F3A;
+  --navy-deep:   #081428;
+  --navy-mid:    #1A2F4E;
+  --coral:       #E8634A;
+  --gold:        #D4A437;
+  --gold-soft:   #F9E8B7;
+  --red:         #C0392B;
+  --red-soft:    #FADBD8;
+  --green:       #2E8B57;
+  --purple:      #6A4C93;
+  --ink:         #1A1A1A;
+  --body:        #3A3A3A;
+  --muted:       #6B7280;
+  --rule:        #D1D5DB;
+  --bg:          #FCFCFA;
+  --card-bg:     #FFFFFF;
+  --card-border: #E5E7EB;
+  --shadow-sm:   0 1px 3px rgba(14,31,58,0.06), 0 1px 2px rgba(14,31,58,0.04);
+  --shadow-md:   0 4px 14px rgba(14,31,58,0.10), 0 2px 6px rgba(14,31,58,0.06);
+  --shadow-lg:   0 12px 40px rgba(14,31,58,0.18);
+  --radius:      8px;
+  --radius-lg:   12px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+*::-webkit-selection { background: var(--teal-soft); }
+*::selection { background: var(--teal-soft); }
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--body);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  user-select: none;
+  -webkit-user-select: none;
+  min-height: 100vh;
+}
+input, textarea { user-select: text; -webkit-user-select: text; }
+
+/* ═══════════ NAV ═══════════ */
+.topnav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--navy);
+  color: #fff;
+  border-bottom: 3px solid var(--teal);
+  box-shadow: var(--shadow-sm);
+}
+.topnav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff; }
+.brand-mark {
+  width: 32px; height: 32px;
+  background: var(--teal); color: var(--navy);
+  font-weight: 700;
+  display: grid; place-items: center;
+  border-radius: 6px;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+.brand-text { font-weight: 700; font-size: 14px; letter-spacing: 1px; }
+.brand-sub { font-size: 12px; color: var(--teal-soft); margin-left: 4px; }
+
+.nav-spacer { flex: 1 1 auto; }
+
+.search {
+  flex: 0 1 320px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.search input {
+  width: 100%;
+  padding: 8px 36px 8px 14px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  border-radius: 999px;
+  font-size: 13px;
+  font-family: inherit;
+  outline: none;
+  transition: background 0.15s, border-color 0.15s;
+}
+.search input::placeholder { color: rgba(255,255,255,0.5); }
+.search input:focus { background: rgba(255,255,255,0.16); border-color: var(--teal); }
+.search-clear {
+  position: absolute;
+  right: 8px;
+  background: none;
+  border: 0;
+  color: rgba(255,255,255,0.6);
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  padding: 4px 6px;
+  display: none;
+}
+.search.has-text .search-clear { display: block; }
+
+.back-link {
+  font-size: 13px;
+  color: var(--teal-soft);
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+}
+.back-link:hover { background: rgba(255,255,255,0.08); color: #fff; }
+
+/* ═══════════ HERO ═══════════ */
+.hero {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 100%);
+  color: #fff;
+  padding: 60px 24px 48px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.hero-inner { max-width: 1200px; margin: 0 auto; }
+.hero-num {
+  font-size: 13px;
+  letter-spacing: 3px;
+  color: var(--teal);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.hero-title {
+  font-size: 44px;
+  line-height: 1.15;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+.hero-tagline {
+  font-size: 18px;
+  color: var(--teal-soft);
+  margin-bottom: 24px;
+  font-style: italic;
+  max-width: 720px;
+}
+.hero-stats {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+.hero-stat {
+  background: rgba(255,255,255,0.06);
+  border-left: 3px solid var(--teal);
+  padding: 10px 16px;
+  border-radius: 0 6px 6px 0;
+  font-size: 13px;
+  color: var(--teal-soft);
+}
+.hero-stat strong { color: #fff; font-size: 18px; display: block; }
+
+.legend {
+  display: flex; flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 22px;
+}
+.legend-item {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.legend-def { background: var(--red-soft); color: var(--red); }
+.legend-fwk { background: var(--gold-soft); color: var(--gold); }
+
+/* ═══════════ MAIN ═══════════ */
+main { max-width: 1200px; margin: 0 auto; padding: 36px 24px 80px; }
+.search-status {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 14px;
+  min-height: 18px;
+}
+
+/* ═══════════ ACCORDION SUB-UNITS ═══════════ */
+.subunit {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  margin-bottom: 18px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+.subunit[open] {
+  box-shadow: var(--shadow-md);
+  border-color: var(--teal-line);
+}
+.subunit-summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 18px 22px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: linear-gradient(180deg, #fff 0%, #FAFBFC 100%);
+  user-select: none;
+  transition: background 0.15s;
+}
+.subunit-summary::-webkit-details-marker { display: none; }
+.subunit-summary:hover { background: #F5F8FA; }
+.subunit-id {
+  background: var(--teal);
+  color: var(--navy);
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: Consolas, ui-monospace, monospace;
+}
+.subunit-name {
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--navy);
+  flex: 1 1 auto;
+}
+.subunit-count {
+  font-size: 12px;
+  color: var(--muted);
+  background: #F0F4F8;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+.subunit-chev {
+  color: var(--teal);
+  font-size: 18px;
+  transition: transform 0.2s ease;
+}
+.subunit[open] .subunit-chev { transform: rotate(90deg); }
+.subunit-body {
+  padding: 6px 22px 24px;
+  border-top: 1px solid var(--card-border);
+  background: #FAFBFC;
+}
+.subunit-subtitle {
+  font-style: italic;
+  color: var(--muted);
+  margin: 14px 0 12px;
+  font-size: 14px;
+}
+.trigger {
+  background: var(--navy);
+  color: #fff;
+  padding: 12px 16px;
+  border-radius: 6px;
+  margin-bottom: 22px;
+  border-left: 4px solid var(--teal);
+  font-size: 14px;
+}
+.trigger strong {
+  color: var(--teal);
+  letter-spacing: 1.5px;
+  font-size: 11px;
+  display: block;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+
+/* ═══════════ FRAMEWORK GRID ═══════════ */
+.fw-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+.fw-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+  display: flex;
+  flex-direction: column;
+  outline: none;
+}
+.fw-card:hover, .fw-card:focus {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--teal);
+}
+.fw-thumb {
+  background: var(--thumb-bg, linear-gradient(135deg, #F5F8FA 0%, #E8F0F4 100%));
+  height: 130px;
+  display: grid; place-items: center;
+  border-bottom: 1px solid var(--card-border);
+  padding: 8px;
+}
+.fw-thumb svg { width: 100%; height: 100%; max-width: 220px; max-height: 120px; }
+.fw-card[data-type="DEFINITION"] .fw-thumb { --thumb-bg: #FFF1F1; }
+.fw-card[data-type="FRAMEWORK"]  .fw-thumb { --thumb-bg: #FFF8E6; }
+.fw-meta {
+  padding: 14px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.fw-badge {
+  display: inline-block;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  align-self: flex-start;
+}
+.fw-badge-def { background: var(--red-soft); color: var(--red); }
+.fw-badge-fwk { background: var(--gold-soft); color: var(--gold); }
+.fw-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.25;
+}
+.fw-short {
+  font-size: 12.5px;
+  color: var(--body);
+  line-height: 1.4;
+}
+
+/* ═══════════ MODAL ═══════════ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(8,20,40,0.7);
+  backdrop-filter: blur(4px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 24px;
+}
+.modal-overlay.open { display: flex; }
+.modal-panel {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  max-width: 680px;
+  width: 100%;
+  max-height: 88vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+}
+.modal-header {
+  padding: 22px 24px 14px;
+  border-bottom: 1px solid var(--card-border);
+  position: relative;
+}
+.modal-breadcrumb {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+}
+.modal-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  align-items: center;
+}
+.view-sheet-btn {
+  background: var(--teal);
+  color: var(--navy);
+  border: 0;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.15s;
+}
+.view-sheet-btn:hover { background: #00A682; }
+.modal-close {
+  background: #F0F4F8;
+  border: 0;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  font-size: 18px;
+  cursor: pointer;
+  color: var(--navy);
+  display: grid; place-items: center;
+  transition: background 0.15s;
+}
+.modal-close:hover { background: var(--card-border); }
+
+.modal-body { padding: 22px 24px 28px; }
+.modal-tagline {
+  font-style: italic;
+  color: var(--coral);
+  margin-bottom: 16px;
+  padding: 10px 14px;
+  background: #FFF5F0;
+  border-left: 3px solid var(--coral);
+  border-radius: 0 6px 6px 0;
+  font-size: 14px;
+}
+.modal-section { margin-bottom: 18px; }
+.modal-section h4 {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  color: var(--teal-line);
+  font-weight: 700;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+.modal-section p { font-size: 14px; line-height: 1.55; }
+.modal-cta {
+  background: var(--navy);
+  color: #fff;
+  padding: 16px 18px;
+  border-radius: 8px;
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.modal-cta-text { flex: 1; font-size: 13px; line-height: 1.4; }
+.modal-cta-text strong { color: var(--teal); display: block; margin-bottom: 2px; }
+
+/* ═══════════ PDF VIEWER ═══════════ */
+.pdf-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--navy-deep);
+  z-index: 200;
+  display: none;
+  flex-direction: column;
+}
+.pdf-overlay.open { display: flex; }
+.pdf-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 22px;
+  background: var(--navy);
+  color: #fff;
+  border-bottom: 2px solid var(--teal);
+  flex-shrink: 0;
+}
+.pdf-tb-label {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  color: var(--teal);
+  font-weight: 700;
+}
+.pdf-tb-title {
+  font-size: 14px;
+  flex: 1;
+  font-weight: 600;
+  color: #fff;
+}
+.pdf-btn {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 600;
+}
+.pdf-btn:hover { background: rgba(255,255,255,0.18); }
+.pdf-btn.primary {
+  background: var(--teal);
+  color: var(--navy);
+  border-color: var(--teal);
+}
+.pdf-btn.primary:hover { background: #00A682; }
+.pdf-canvas-wrap {
+  flex: 1;
+  overflow: auto;
+  display: grid;
+  place-items: start center;
+  padding: 24px;
+}
+.pdf-canvas-wrap canvas {
+  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+  background: #fff;
+  max-width: 100%;
+}
+.pdf-loading {
+  color: var(--teal-soft);
+  font-size: 15px;
+  padding: 80px 0;
+}
+
+/* ═══════════ FOOTER ═══════════ */
+.site-footer {
+  background: var(--navy);
+  color: var(--teal-soft);
+  padding: 36px 24px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.site-footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: end;
+}
+.site-footer h5 { color: #fff; font-size: 14px; margin-bottom: 4px; }
+.site-footer .copy { color: rgba(255,255,255,0.5); font-size: 11px; }
+
+/* ═══════════ COPYRIGHT BADGE ═══════════ */
+.copyright-badge {
+  position: fixed;
+  bottom: 12px;
+  right: 12px;
+  background: var(--navy);
+  color: var(--teal);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 10.5px;
+  font-weight: 600;
+  z-index: 90;
+  box-shadow: var(--shadow-md);
+  letter-spacing: 0.5px;
+  pointer-events: none;
+}
+
+/* ═══════════ PRINT BLOCK ═══════════ */
+@media print {
+  body * { visibility: hidden !important; }
+  body::after {
+    content: "Printing is disabled · © Dr. Hildegard Haas · MDGTB301";
+    visibility: visible !important;
+    position: fixed; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    color: var(--navy);
+  }
+}
+
+/* ═══════════ RESPONSIVE ═══════════ */
+@media (max-width: 720px) {
+  .hero-title { font-size: 32px; }
+  .topnav-inner { padding: 12px 16px; gap: 10px; }
+  .search { flex: 1 1 100%; order: 5; }
+  main { padding: 24px 16px 60px; }
+  .modal-actions { position: static; margin-top: 8px; }
+  .modal-header { padding: 20px 18px 12px; }
+  .modal-body { padding: 18px 18px 24px; }
+  .pdf-toolbar { padding: 10px 14px; flex-wrap: wrap; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ NAV ═══════════ -->
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-mark">M</span>
+      <span class="brand-text">MDGTB301</span>
+      <span class="brand-sub">Digital Economy</span>
+    </a>
+    <a href="index.html" class="back-link">← Back to course home</a>
+    <span class="nav-spacer"></span>
+    <div class="search" id="search">
+      <input type="search" id="searchInput" placeholder="Filter frameworks…  ('/')" autocomplete="off">
+      <button class="search-clear" id="searchClear" type="button" aria-label="Clear search">×</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════ HERO ═══════════ -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-num">UNIT 2</div>
+    <h1 class="hero-title">Fundamental Concepts of the Digital Economy</h1>
+    <p class="hero-tagline">The economic laws that make digital different</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><strong>20</strong>frameworks</div>
+      <div class="hero-stat"><strong>4</strong>sub-units</div>
+      <div class="hero-stat"><strong>21pp</strong>A4 reference PDF</div>
+    </div>
+    <div class="legend">
+      <span class="legend-item legend-def">DEFINITION</span>
+      <span class="legend-item legend-fwk">FRAMEWORK</span>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════ MAIN ═══════════ -->
+<main>
+  <div class="search-status" id="searchStatus" aria-live="polite"></div>
+
+  
+      <details class="subunit" open>
+        <summary class="subunit-summary">
+          <span class="subunit-id">2.1</span>
+          <span class="subunit-name">E-Business Architecture</span>
+          <span class="subunit-count">5 cards</span>
+          <span class="subunit-chev" aria-hidden="true">▸</span>
+        </summary>
+        <div class="subunit-body">
+          <p class="subunit-subtitle">The structural layers of digital commerce</p>
+          <div class="trigger">
+            <strong>Trigger Question</strong>
+            <span>What are all the layers that must work together for a digital business to function?</span>
+          </div>
+          <div class="fw-grid">
+        <article class="fw-card" data-id="2.1.1" data-type="DEFINITION" data-pdf-page="2" data-fw-name="E-Business vs. E-Commerce" tabindex="0" role="button" aria-label="E-Business vs. E-Commerce — DEFINITION">
+          <div class="fw-thumb"><svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="60" cy="60" r="32" fill="#DC2626" opacity="0.95"/>
+    <circle cx="130" cy="60" r="24" fill="#DC2626" opacity="0.5"/>
+    <text x="60" y="55" text-anchor="middle" font-family="Arial" font-size="11" font-weight="800" fill="#fff">E-BIZ</text>
+    <text x="60" y="68" text-anchor="middle" font-family="Arial" font-size="7" fill="#fff">(BROAD)</text>
+    <text x="130" y="58" text-anchor="middle" font-family="Arial" font-size="10" font-weight="800" fill="#fff">E-COM</text>
+    <text x="130" y="68" text-anchor="middle" font-family="Arial" font-size="6" fill="#fff">(TRANS)</text>
+  </svg></div>
+          <div class="fw-meta">
+            <span class="fw-badge fw-badge-def">DEFINITION</span>
+            <h4 class="fw-name">E-Business vs. E-Commerce</h4>
+            <p class="fw-short">E-business is the whole organisation; e-commerce is transactions only.</p>
+          </div>
+        </article>
+        <article class="fw-card" data-id="2.1.2" data-type="FRAMEWORK" data-pdf-page="3" data-fw-name="E-Business Infrastructure Stack" tabindex="0" role="button" aria-label="E-Business Infrastructure Stack — FRAMEWORK">
+          <div class="fw-thumb"><svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+    
+      <rect x="25" y="12" width="150" height="15" rx="2" fill="#E5A100" opacity="0.95"/>
+      <text x="100" y="23" text-anchor="middle" font-family="Arial" font-size="8" font-weight="800" fill="#fff">BUSINESS SERVICES</text>
+    
+      <rect x="25" y="30" width="150" height="15" rx="2" fill="#E5A100" opacity="0.7999999999999999"/>
+      <text x="100" y="41" text-anchor="middle" font-family="Arial" font-size="8" font-weight="800" fill="#fff">APPLICATIONS</text>
+    
+      <rect x="25" y="48" width="150" height="15" rx="2" fill="#E5A100" opacity="0.6499999999999999"/>
+      <text x="100" y="59" text-anchor="middle" font-family="Arial" font-size="8" font-weight="800" fill="#fff">CONTENT & DATA</text>
+    
+      <rect x="25" y="66" width="150" height="15" rx="2" fill="#E5A100" opacity="0.5"/>
+      <text x="100" y="77" text-anchor="middle" font-family="Arial" font-size="8" font-weight="800" fill="#fff">TRANSPORT / OS</text>
+    
+      <rect x="25" y="84" width="150" height="15" rx="2" fill="#E5A100" opacity="0.35"/>
+      <text x="100" y="95" text-anchor="middle" font-family="Arial" font-size="8" font-weight="800" fill="#fff">HARDWARE / NETWORK</text>
+    
+  </svg></div>
+          <div class="fw-meta">
+            <span class="fw-badge fw-badge-fwk">FRAMEWORK</span>
+            <h4 class="fw-name">E-Business Infrastructure Stack</h4>
+            <p class="fw-short">Five layers: hardware → networks → OS → apps → business logic.</p>
+          </div>
+        </article>
+        <article class="fw-card" data-id="2.1.3" data-type="DEFINITION" data-pdf-page="4" data-fw-name="B2B · B2C · C2C · B2G" tabindex="0" role="button" aria-label="B2B · B2C · C2C · B2G — DEFINITION">
+          <div class="fw-thumb"><svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+    
+      <circle cx="40" cy="30" r="17" fill="#DC2626" opacity="0.85"/>
+      <text x="40" y="33" text-anchor="middle" font-family="Arial" font-size="10" font-weight="800" fill="#fff">B2B</text>
+    
+      <circle cx="100" cy="30" r="17" fill="#DC2626" opacity="0.85"/>
+      <text x="100" y="33" text-anchor="middle" font-family="Arial" font-size="10" font-weight="800" fill="#fff">B2C</text>
+    
+      <circle cx="160" cy="30" r="17" fill="#DC2626" opacity="0.85"/>
+      <text x="160" y="33" text-anchor="middle" font-family="Arial" font-size="10" font-weight="800" fill="#fff">C2C</text>
+    
+      <circle cx="100" cy="80" r="17" fill="#DC2626" opacity="0.85"/>
+      <text x="100" y="83" text-anchor="middle" font-family="Arial" font-size="10" font-weight="800" fill="#fff">B2G</text>
+    
+    <line x1="40" y1="47" x2="100" y2="63" stroke="#DC2626" opacity="0.3"/>
+    <line x1="100" y1="47" x2="100" y2="63" stroke="#DC2626" opacity="0.3"/>
+    <line x1="160" y1="47" x2="100" y2="63" stroke="#DC2626" opacity="0.3"/>
+  </svg></div>
+          <div class="fw-meta">
+            <span class="fw-badge fw-badge-def">DEFINITION</span>
+            <h4 class="fw-name">B2B · B2C · C2C · B2G</h4>
+            <p class="fw-short">Who sells to whom — the four classic e-commerce modes.</p>
+          </div>
+        </article>
+        <article class="fw-card" data-id="2.1.4" data-type="FRAMEWORK" data-pdf-page="5" data-fw-name="API Economy" tabindex="0" role="button" aria-label="API Economy — FRAMEWORK">
+          <div class="fw-thumb"><svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+    <rect x="75" y="45" width="50" height="30" rx="4" fill="#E5A100"/>
+    <text x="100" y="64" text-anchor="middle" font-family="Arial" font-size="11" font-weight="800" fill="#fff">API</text>
+    
+      <rect x="7" y="17" width="36" height="16" rx="3" fill="#E5A100" opacity="0.45"/>
+      <text x="25" y="28" text-anchor="middle" font-family="Arial" font-size="8" font-weight="700" fill="#fff">App</text>
+      <line x1="43" y1="25" x2="75" y2="60" stroke="#E5A100" stroke-width="1.5" opacity="0.5"/>
+    
+      <rect x="7" y="87" width="36" height="16" rx="3" fill="#E5A100" opacity="0.45"/>
+      <text x="25" y="98" text-anchor="middle" font-family="Arial" font-size="8" font-weight="700" fill="#fff">App</text>
+      <line x1="43" y1="95" x2="75" y2="60" stroke="#E5A100" stroke-width="1.5" opacity="0.5"/>
+    
+      <rect x="157" y="17" width="36" height="16" rx="3" fill="#E5A100" opacity="0.45"/>
+      <text x="175" y="28" text-anchor="middle" font-family="Arial" font-size="8" font-weight="700" fill="#fff">SVC</text>
+      <line x1="157" y1="25" x2="125" y2="60" stroke="#E5A100" stroke-width="1.5" opacity="0.5"/>
+    
+      <rect x="157" y="87" width="36" height="16" rx="3" fill="#E5A100" opacity="0.45"/>
+      <text x="175" y="98" text-anchor="middle" font-family="Arial" font-size="8" font-weight="700" fill="#fff">SVC</text>
+      <line x1="157" y1="95" x2="125" y2="60" stroke="#E5A100" stroke-width="1.5" opacity="0.5"/>
+    
+  </svg></div>
+          <div class="fw-meta">
+            <span class="fw-badge fw-badge-fwk">FRAMEWORK</span>
+            <h4 class="fw-name">API Economy</h4>
+            <p class="fw-short">Software eating the world — via Application Programming Interfaces.</p>
+          </div>
+        </article>
+        <article class="fw-card" data-id="2.1.5" data-type="FRAMEWORK" data-pdf-page="6" data-fw-name="Cloud: IaaS · PaaS · SaaS" tabindex="0" role="button" aria-label="Cloud: IaaS · PaaS · SaaS — FRAMEWORK">
+          <div class="fw-thumb"><svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+    
+      <rect x="30" y="22" width="140" height="18" rx="3" fill="#E5A100" opacity="0.95"/>
+      <text x="100" y="35" text-anchor="middle" font-family="Arial" font-size="9" font-weight="800" fill="#fff">SaaS (APPS)</text>
+    
+      <rect x="40" y="44" width="120" height="18" rx="3" fill="#E5A100" opacity="0.7"/>
+      <text x="100" y="57" text-anchor="middle" font-family="Arial" font-size="9" font-weight="800" fill="#fff">PaaS (PLATFORM)</text>
+    
+      <rect x="50" y="66" width="100" height="18" rx="3" fill="#E5A100" opacity="0.44999999999999996"/>
+      <text x="100" y="79" text-anchor="middle" font-family="Arial" font-size="9" font-weight="800" fill="#fff">IaaS (INFRA)</text>
+    
+  </svg></div>
+          <div class="fw-meta">
+            <span class="fw-badge fw-badge-fwk">FRAMEWORK</span>
+            <h4 class="fw-name">Cloud: IaaS · PaaS · SaaS</h4>
+            <p class="fw-short">Three levels of what the cloud provider manages for you.</p>
+          </div>
+        </article></div>
+        </div>
+      </details>
+
+      <details class="subunit" >
+        <summary class="subunit-summary">
+          <span class="subunit-id">2.2</span>
+          <span class="subunit-name">Digital Networks</span>
+          <span class="subunit-count">5 cards</span>
+          <span class="subunit-chev" aria-hidden="true">▸</span>
+        </summary>
+        <div class="subunit-body">
+          <p class="subunit-subtitle">Why connected systems follow different economic laws</p>
+          <div class="trigger">
+            <strong>Trigger Question</strong>
+            <span>Why do digital markets produce so many monopolies — and what are the exact economics?</span>
+          </div>
+          <div class="fw-grid">
+        <article class="fw-card" data-id="2.2.1" data-type="FRAMEWORK" data-pdf-page="7" data-fw-name="Metcalfe's Law" tabindex="0" role="button" aria-label="Metcalfe's Law — FRAMEWORK">
+          <div class="fw-thumb"><svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+    <line x1="15" y1="100" x2="190" y2="100" stroke="#E5A100" opacity="0.3"/>
+    <line x1="15" y1="15" x2="15" y2="100" stroke="#E5A100" opacity="0.3"/>
+    <path d="M 15 100 Q 50 98 80 85 Q 120 65 160 25 Q 175 15 190 10" fill="none" stroke="#E5A100" stroke-width="2.5"/>
+    <text x="100" y="45" font-family="Arial" font-size="24" font-weight="900" fill="#E5A100" opacity="0.85">n²</text>
+  </svg></div>
+          <div class="fw-meta">
+            <span class="fw-badge fw-badge-fwk">FRAMEWORK</span>
+            <h4 class="fw-name">Metcalfe's Law</h4>
+            <p class="fw-short">Network value grows as n² (number of users squared).</p>
+          </div>
+        </article>
+        <article class="fw-card" data-id="2.2.2" data-type="FRAMEWORK" data-pdf-page="8" data-fw-name="Direct vs. Indirect Network Effects" tabindex="0" role="button" aria-label="Direct vs. Indirect Network Effects — FRAMEWORK">
+          <div class="fw-thumb"><svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+    <g transform="translate(55, 60)">
+      <circle r="24" fill="none" stroke="#E5A100" stroke-width="1.5" opacity="0.4"/>
+      
+        <circle cx="24" cy="0" r="4" fill="#E5A100"/>
+      
+        <circle cx="12.000000000000004" cy="20.784609690826528" r="4" fill="#E5A100"/>
+      
+        <circle cx="-11.999999999999995" cy="20.784609690826528" r="4" fill="#E5A100"/>
+      
+        <circle cx="-24" cy="2.9391523179536475e-15" r="4" fill="#E5A100"/>
+      
+        <circle cx="-12.00000000000001" cy="-20.784609690826525" r="4" fill="#E5A100"/>
+      
+        <circle cx="12.000000000000004" cy="-20.784609690826528" r="4" fill="#E5A100"/>
+      
+      <text x="0" y="45" text-anchor="middle" font-family="Arial" font-size="8" font-weight="700" fill="#E5A100" opacity="0.8">DIRECT</text>
+    </g>
+    <g transform="translate(145, 60)">
+      <circle r="24" fill="none" stroke="#E5A100" stroke-width="1.5" opacity="0.4"/>
+      <line x1="-24" y1="0" x2="24" y2="0" stroke="#E5A100" stroke-width="1" opacity="0.3" stroke-dasharray="2 2"/>
+      <circle cx="24" cy="0" r="4" fill="#E5A100"/><circle cx="12.000000000000004" cy="20.784609690826528" r="4" fill="#E5A100"/><circle cx="-11.999999999999995" cy="20.784609690826528" r="4" fill="#E5A100"/>
+      <circle cx="-24" cy="2.9391523179536475e-15" r="4" fill="#E5A100" opacity="0.5"/><circle cx="-12.00000000000001" cy="-20.784609690826525" r="4" fill="#E5A100" opacity="0.5"/><circle cx="12.000000000000004" cy="-20.784609690826528" r="4" fill="#E5A100" opacity="0.5"/>
+      <text x="0" y="45" text-anchor="middle" font-family="Arial" font-size="8" font-weight="700" fill="#E5A100" opacity="0.8">INDIRECT</text>
+    </g>
+  </svg></div>
+          <div class="fw-meta">
+            <span class="fw-badge fw-badge-fwk">FRAMEWORK</span>
+            <h4 class="fw-name">Direct vs. Indirect Network Effects</h4>
+            <p class="fw-short">Same-side benefit vs. cross-side benefit.</p>
+          </div>
+        </article>
+        <article class="fw-card" data-id="2.2.3" data-type="FRAMEWORK" data-pdf-page="9" data-fw-name="Two-Sided Markets" tabindex="0" role="button" aria-label="Two-Sided Markets — FRAMEWORK">
+          <div class="fw-thumb"><svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+    <rect x="80" y="50" width="40" height="24" rx="4" fill="#E5A100"/>
+    <text x="100" y="66" text-anchor="middle" font-family="Arial" font-size="9" font-weight="800" fill="#fff">PLATFORM</text>
+    <g>
+      <rect x="15" y="20" width="50" height="20" rx="4" fill="#E5A100" opacity="0.55"/>
+      <text x="40" y="34" text-anchor="middle" font-family="Arial" font-size="9" font-weight="700" fill="#fff">SIDE A</text>
+      <path d="M 40 40 Q 60 48 80 55" stroke="#E5A100" stroke-width="1.5" fill="none" opacity="0.5"/>
+    </g>
+    <g>
+      <rect x="135" y="80" width="50" height="20" rx="4" fill="#E5A100" opacity="0.75"/>
+      <text x="160" y="94" text-anchor="middle" font-family="Arial" font-size="9" font-weight="700" fill="#fff">SIDE B</text>
+      <path d="M 160 80 Q 140 72 120 68" stroke="#E5A100" stroke-width="1.5" fill="none" opacity="0.5"/>
+    </g>
+  </svg></div>
+          <div class="fw-meta">
+            <span class="fw-badge fw-badge-fwk">FRAMEWORK</span>
+            <h4 class="fw-name">Two-Sided Markets</h4>
+            <p class="fw-short">Rochet & Tirole — platforms solve a coordination problem between two groups.</p>
+          </div>
+        </article>
+        <article class="fw-card" data-id="2.2.4" data-type="FRAMEWORK" data-pdf-page="10" data-fw-name="Connection Density (MIT 2025)" tabindex="0" role="button" aria-label="Connection Density (MIT 2025) — FRAMEWORK">
+          <div class="fw-thumb"><svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+    <g transform="translate(100, 60)">
+      <circle cx="-30" cy="-20" r="3.5" fill="#E5A100"/><circle cx="0" cy="-28" r="3.5" fill="#E5A100"/><circle cx="30" cy="-20" r="3.5" fill="#E5A100"/><circle cx="-35" cy="5" r="3.5" fill="#E5A100"/><circle cx="-10" cy="0" r="3.5" fill="#E5A100"/><circle cx="15" cy="5" r="3.5" fill="#E5A100"/><circle cx="35" cy="10" r="3.5" fill="#E5A100"/><circle cx="-25" cy="25" r="3.5" fill="#E5A100"/><circle cx="5" cy="20" r="3.5" fill="#E5A100"/><circle cx="28" cy="28" r="3.5" fill="#E5A100"/><circle cx="-5" cy="-5" r="3.5" fill="#E5A100"/>
+      <line x1="-30" y1="-20" x2="0" y2="-28" stroke="#E5A100" stroke-width="1" opacity="0.55"/><line x1="0" y1="-28" x2="30" y2="-20" stroke="#E5A100" stroke-width="1" opacity="0.55"/><line x1="-30" y1="-20" x2="-10" y2="0" stroke="#E5A100" stroke-width="1" opacity="0.55"/><line x1="0" y1="-28" x2="-10" y2="0" stroke="#E5A100" stroke-width="1" opacity="0.55"/><line x1="0" y1="-28" x2="15" y2="5" stroke="#E5A100" stroke-width="1" opacity="0.55"/><line x1="30" y1="-20" x2="15" y2="5" stroke="#E5A100" stroke-width="1" opacity="0.55"/><line x1="-35" y1="5" x2="-10" y2="0" stroke="#E5A100" stroke-width="1" opacity="0.55"/><line x1="-10" y1="0" x2="15" y2="5" stroke="#E5A100" stroke-width="1" opacity="0.55"/><line x1="15" y1="5" x2="35" y2="10" stroke="#E5A100" stroke-width="1" opacity="0.55"/><line x1="-25" y1="25" x2="5" y2="20" stroke="#E5A100" stroke-width="1" opacity="0.55"/><line x1="5" y1="20" x2="28" y2="28" stroke="#E5A100" stroke-width="1" opacity="0.55"/><line x1="-10" y1="0" x2="5" y2="20" stroke="#E5A100" stroke-width="1" opacity="0.55"/><line x1="-5" y1="-5" x2="-10" y2="0" stroke="#E5A100" stroke-width="1" opacity="0.55"/><line x1="-5" y1="-5" x2="15" y2="5" stroke="#E5A100" stroke-width="1" opacity="0.55"/>
+    </g>
+    <text x="100" y="115" text-anchor="middle" font-family="Arial" font-size="8" font-weight="700" fill="#E5A100" opacity="0.6">DENSE CONNECTIONS</text>
+  </svg></div>
+          <div class="fw-meta">
+            <span class="fw-badge fw-badge-fwk">FRAMEWORK</span>
+            <h4 class="fw-name">Connection Density (MIT 2025)</h4>
+            <p class="fw-short">MIT IDE update — not more users, but denser connections drive value.</p>
+          </div>
+        </article>
+        <article class="fw-card" data-id="2.2.5" data-type="FRAMEWORK" data-pdf-page="11" data-fw-name="Tipping Point · Winner-Takes-All" tabindex="0" role="button" aria-label="Tipping Point · Winner-Takes-All — FRAMEWORK">
+          <div class="fw-thumb"><svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+    <line x1="15" y1="100" x2="190" y2="100" stroke="#E5A100" opacity="0.3"/>
+    <line x1="15" y1="15" x2="15" y2="100" stroke="#E5A100" opacity="0.3"/>
+    <path d="M 15 98 L 80 95 L 110 90 L 130 30 L 190 20" fill="none" stroke="#E5A100" stroke-width="2.8"/>
+    <line x1="120" y1="15" x2="120" y2="100" stroke="#E5A100" stroke-width="1" stroke-dasharray="3 3" opacity="0.6"/>
+    <text x="125" y="25" font-family="Arial" font-size="7" font-weight="700" fill="#E5A100">TIPPING</text>
+    <circle cx="120" cy="60" r="5" fill="#E5A100"/>
+  </svg></div>
+          <div class="fw-meta">
+            <span class="fw-badge fw-badge-fwk">FRAMEWORK</span>
+            <h4 class="fw-name">Tipping Point · Winner-Takes-All</h4>
+            <p class="fw-short">At critical mass, the market tips to one platform.</p>
+          </div>
+        </article></div>
+        </div>
+      </details>
+
+      <details class="subunit" >
+        <summary class="subunit-summary">
+          <span class="subunit-id">2.3</span>
+          <span class="subunit-name">Digital Value Creation</span>
+          <span class="subunit-count">5 cards</span>
+          <span class="subunit-chev" aria-hidden="true">▸</span>
+        </summary>
+        <div class="subunit-body">
+          <p class="subunit-subtitle">How firms capture value when the variable cost is near zero</p>
+          <div class="trigger">
+            <strong>Trigger Question</strong>
+            <span>If the product costs almost nothing to reproduce, how does the firm make money?</span>
+          </div>
+          <div class="fw-grid">
+        <article class="fw-card" data-id="2.3.1" data-type="FRAMEWORK" data-pdf-page="12" data-fw-name="Value Chain → Value Network" tabindex="0" role="button" aria-label="Value Chain → Value Network — FRAMEWORK">
+          <div class="fw-thumb"><svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+    <g transform="translate(10, 50)">
+      
+        <path d="M 0 0 L 10 0 L 14 10 L 4 10 Z" fill="#E5A100" opacity="0.6"/>
+      
+        <path d="M 14 0 L 24 0 L 28 10 L 18 10 Z" fill="#E5A100" opacity="0.6"/>
+      
+        <path d="M 28 0 L 38 0 L 42 10 L 32 10 Z" fill="#E5A100" opacity="0.6"/>
+      
+        <path d="M 42 0 L 52 0 L 56 10 L 46 10 Z" fill="#E5A100" opacity="0.6"/>
+      
+        <path d="M 56 0 L 66 0 L 70 10 L 60 10 Z" fill="#E5A100" opacity="0.6"/>
+      
+      <text x="40" y="26" text-anchor="middle" font-family="Arial" font-size="7" font-weight="700" fill="#E5A100" opacity="0.7">CHAIN</text>
+    </g>
+    <g transform="translate(140, 60)">
+      <circle r="12" fill="#E5A100"/>
+      
+        <line x1="0" y1="0" x2="25" y2="0" stroke="#E5A100" stroke-width="1.2" opacity="0.5"/>
+        <circle cx="25" cy="0" r="3" fill="#E5A100" opacity="0.75"/>
+      
+        <line x1="0" y1="0" x2="17.67766952966369" y2="17.677669529663685" stroke="#E5A100" stroke-width="1.2" opacity="0.5"/>
+        <circle cx="17.67766952966369" cy="17.677669529663685" r="3" fill="#E5A100" opacity="0.75"/>
+      
+        <line x1="0" y1="0" x2="1.5308084989341915e-15" y2="25" stroke="#E5A100" stroke-width="1.2" opacity="0.5"/>
+        <circle cx="1.5308084989341915e-15" cy="25" r="3" fill="#E5A100" opacity="0.75"/>
+      
+        <line x1="0" y1="0" x2="-17.677669529663685" y2="17.67766952966369" stroke="#E5A100" stroke-width="1.2" opacity="0.5"/>
+        <circle cx="-17.677669529663685" cy="17.67766952966369" r="3" fill="#E5A100" opacity="0.75"/>
+      
+        <line x1="0" y1="0" x2="-25" y2="3.061616997868383e-15" stroke="#E5A100" stroke-width="1.2" opacity="0.5"/>
+        <circle cx="-25" cy="3.061616997868383e-15" r="3" fill="#E5A100" opacity="0.75"/>
+      
+        <line x1="0" y1="0" x2="-17.677669529663692" y2="-17.677669529663685" stroke="#E5A100" stroke-width="1.2" opacity="0.5"/>
+        <circle cx="-17.677669529663692" cy="-17.677669529663685" r="3" fill="#E5A100" opacity="0.75"/>
+      
+        <line x1="0" y1="0" x2="-4.592425496802574e-15" y2="-25" stroke="#E5A100" stroke-width="1.2" opacity="0.5"/>
+        <circle cx="-4.592425496802574e-15" cy="-25" r="3" fill="#E5A100" opacity="0.75"/>
+      
+        <line x1="0" y1="0" x2="17.677669529663685" y2="-17.677669529663692" stroke="#E5A100" stroke-width="1.2" opacity="0.5"/>
+        <circle cx="17.677669529663685" cy="-17.677669529663692" r="3" fill="#E5A100" opacity="0.75"/>
+      
+      <text x="0" y="42" text-anchor="middle" font-family="Arial" font-size="7" font-weight="700" fill="#E5A100" opacity="0.8">NETWORK</text>
+    </g>
+  </svg></div>
+          <div class="fw-meta">
+            <span class="fw-badge fw-badge-fwk">FRAMEWORK</span>
+            <h4 class="fw-name">Value Chain → Value Network</h4>
+            <p class="fw-short">Porter's linear chain replaced by hub-and-spoke networks.</p>
+          </div>
+        </article>
+        <article class="fw-card" data-id="2.3.2" data-type="FRAMEWORK" data-pdf-page="13" data-fw-name="Freemium Model" tabindex="0" role="button" aria-label="Freemium Model — FRAMEWORK">
+          <div class="fw-thumb"><svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+    <rect x="25" y="20" width="70" height="80" rx="6" fill="#E5A100" opacity="0.3"/>
+    <rect x="105" y="20" width="70" height="80" rx="6" fill="#E5A100"/>
+    <text x="60" y="45" text-anchor="middle" font-family="Arial" font-size="10" font-weight="800" fill="#E5A100">FREE</text>
+    <text x="60" y="62" text-anchor="middle" font-family="Arial" font-size="22" font-weight="900" fill="#E5A100">95%</text>
+    <text x="60" y="85" text-anchor="middle" font-family="Arial" font-size="8" fill="#E5A100" opacity="0.7">users</text>
+    <text x="140" y="45" text-anchor="middle" font-family="Arial" font-size="10" font-weight="800" fill="#fff">PAID</text>
+    <text x="140" y="62" text-anchor="middle" font-family="Arial" font-size="22" font-weight="900" fill="#fff">5%</text>
+    <text x="140" y="85" text-anchor="middle" font-family="Arial" font-size="8" fill="#fff" opacity="0.8">revenue</text>
+  </svg></div>
+          <div class="fw-meta">
+            <span class="fw-badge fw-badge-fwk">FRAMEWORK</span>
+            <h4 class="fw-name">Freemium Model</h4>
+            <p class="fw-short">Free for most users · premium features for the paying few.</p>
+          </div>
+        </article>
+        <article class="fw-card" data-id="2.3.3" data-type="FRAMEWORK" data-pdf-page="14" data-fw-name="Subscription Economy" tabindex="0" role="button" aria-label="Subscription Economy — FRAMEWORK">
+          <div class="fw-thumb"><svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+    
+      <rect x="24" y="75" width="22" height="15" rx="2" fill="#E5A100" opacity="0.35"/>
+    
+      <rect x="56" y="63" width="22" height="27" rx="2" fill="#E5A100" opacity="0.5"/>
+    
+      <rect x="88" y="51" width="22" height="39" rx="2" fill="#E5A100" opacity="0.6499999999999999"/>
+    
+      <rect x="120" y="39" width="22" height="51" rx="2" fill="#E5A100" opacity="0.7999999999999999"/>
+    
+      <rect x="152" y="27" width="22" height="63" rx="2" fill="#E5A100" opacity="0.95"/>
+    
+    <line x1="15" y1="100" x2="185" y2="100" stroke="#E5A100" opacity="0.3"/>
+    <path d="M 30 75 L 62 68 L 94 58 L 126 42 L 158 22" fill="none" stroke="#E5A100" stroke-width="2" stroke-dasharray="3 2"/>
+    <text x="100" y="115" text-anchor="middle" font-family="Arial" font-size="9" font-weight="700" fill="#E5A100" opacity="0.6">RECURRING REVENUE ↗</text>
+  </svg></div>
+          <div class="fw-meta">
+            <span class="fw-badge fw-badge-fwk">FRAMEWORK</span>
+            <h4 class="fw-name">Subscription Economy</h4>
+            <p class="fw-short">Recurring revenue replaces one-time transactions.</p>
+          </div>
+        </article>
+        <article class="fw-card" data-id="2.3.4" data-type="DEFINITION" data-pdf-page="15" data-fw-name="Data as Strategic Asset" tabindex="0" role="button" aria-label="Data as Strategic Asset — DEFINITION">
+          <div class="fw-thumb"><svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+    <g transform="translate(100, 60)">
+      <path d="M -45 0 Q -45 -30 -20 -30 L 20 -30 Q 45 -30 45 0 L 40 0 L 35 30 L -35 30 L -40 0 Z"
+            fill="#DC2626" opacity="0.2"/>
+      <path d="M -35 -15 L -30 5 L -20 -10 L -10 8 L 0 -8 L 10 12 L 20 -5 L 30 8" stroke="#DC2626" stroke-width="1.2" fill="none"/>
+      <text x="0" y="3" text-anchor="middle" font-family="Arial" font-size="12" font-weight="900" fill="#DC2626">DATA</text>
+    </g>
+  </svg></div>
+          <div class="fw-meta">
+            <span class="fw-badge fw-badge-def">DEFINITION</span>
+            <h4 class="fw-name">Data as Strategic Asset</h4>
+            <p class="fw-short">'The new oil' — with important differences from oil.</p>
+          </div>
+        </article>
+        <article class="fw-card" data-id="2.3.5" data-type="FRAMEWORK" data-pdf-page="16" data-fw-name="The Long Tail" tabindex="0" role="button" aria-label="The Long Tail — FRAMEWORK">
+          <div class="fw-thumb"><svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+    <line x1="15" y1="95" x2="190" y2="95" stroke="#E5A100" opacity="0.3"/>
+    <path d="M 15 40 Q 40 25 55 35 Q 65 45 75 55 Q 90 75 105 85 Q 130 92 155 94 Q 175 95 190 95" fill="#E5A100" opacity="0.85"/>
+    <rect x="15" y="40" width="40" height="55" fill="#E5A100" opacity="0.95"/>
+    <text x="35" y="70" text-anchor="middle" font-family="Arial" font-size="8" font-weight="800" fill="#fff">HEAD</text>
+    <text x="135" y="80" font-family="Arial" font-size="8" font-weight="700" fill="#E5A100">LONG TAIL</text>
+  </svg></div>
+          <div class="fw-meta">
+            <span class="fw-badge fw-badge-fwk">FRAMEWORK</span>
+            <h4 class="fw-name">The Long Tail</h4>
+            <p class="fw-short">Anderson — infinite shelf space monetises niche demand.</p>
+          </div>
+        </article></div>
+        </div>
+      </details>
+
+      <details class="subunit" >
+        <summary class="subunit-summary">
+          <span class="subunit-id">2.4</span>
+          <span class="subunit-name">Information Goods</span>
+          <span class="subunit-count">5 cards</span>
+          <span class="subunit-chev" aria-hidden="true">▸</span>
+        </summary>
+        <div class="subunit-body">
+          <p class="subunit-subtitle">Shapiro & Varian's economic laws for digital products</p>
+          <div class="trigger">
+            <strong>Trigger Question</strong>
+            <span>What's so special about information goods, and how do I price them?</span>
+          </div>
+          <div class="fw-grid">
+        <article class="fw-card" data-id="2.4.1" data-type="DEFINITION" data-pdf-page="17" data-fw-name="Zero Marginal Cost" tabindex="0" role="button" aria-label="Zero Marginal Cost — DEFINITION">
+          <div class="fw-thumb"><svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+    <rect x="28" y="20" width="36" height="80" rx="4" fill="#DC2626"/>
+    <text x="46" y="45" text-anchor="middle" font-family="Arial" font-size="9" font-weight="800" fill="#fff">1st</text>
+    <text x="46" y="63" text-anchor="middle" font-family="Arial" font-size="16" font-weight="900" fill="#fff">$$</text>
+    <text x="46" y="80" text-anchor="middle" font-family="Arial" font-size="7" fill="#fff">copy</text>
+    
+      <rect x="82" y="86" width="14" height="14" rx="2" fill="#DC2626" opacity="0.25"/>
+    
+      <rect x="102" y="84" width="14" height="16" rx="2" fill="#DC2626" opacity="0.22"/>
+    
+      <rect x="122" y="82" width="14" height="18" rx="2" fill="#DC2626" opacity="0.19"/>
+    
+      <rect x="142" y="80" width="14" height="20" rx="2" fill="#DC2626" opacity="0.16"/>
+    
+      <rect x="162" y="78" width="14" height="22" rx="2" fill="#DC2626" opacity="0.13"/>
+    
+    <text x="130" y="115" text-anchor="middle" font-family="Arial" font-size="8" font-weight="700" fill="#DC2626" opacity="0.6">MC ≈ 0</text>
+  </svg></div>
+          <div class="fw-meta">
+            <span class="fw-badge fw-badge-def">DEFINITION</span>
+            <h4 class="fw-name">Zero Marginal Cost</h4>
+            <p class="fw-short">High to produce the first copy · ~zero to produce the next.</p>
+          </div>
+        </article>
+        <article class="fw-card" data-id="2.4.2" data-type="DEFINITION" data-pdf-page="18" data-fw-name="Experience Goods" tabindex="0" role="button" aria-label="Experience Goods — DEFINITION">
+          <div class="fw-thumb"><svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+    <rect x="60" y="20" width="80" height="55" rx="4" fill="#DC2626" opacity="0.3"/>
+    <rect x="60" y="20" width="80" height="55" rx="4" fill="none" stroke="#DC2626" stroke-width="1.5" stroke-dasharray="4 3"/>
+    <text x="100" y="48" text-anchor="middle" font-family="Arial" font-size="11" font-weight="800" fill="#DC2626">?</text>
+    <text x="100" y="62" text-anchor="middle" font-family="Arial" font-size="8" fill="#DC2626" opacity="0.8">quality unknown</text>
+    <path d="M 100 80 L 100 92" stroke="#DC2626" stroke-width="2"/>
+    <rect x="60" y="95" width="80" height="15" rx="3" fill="#DC2626"/>
+    <text x="100" y="106" text-anchor="middle" font-family="Arial" font-size="8" font-weight="800" fill="#fff">REVIEWS ★★★★</text>
+  </svg></div>
+          <div class="fw-meta">
+            <span class="fw-badge fw-badge-def">DEFINITION</span>
+            <h4 class="fw-name">Experience Goods</h4>
+            <p class="fw-short">Quality unknowable until consumption — and often after.</p>
+          </div>
+        </article>
+        <article class="fw-card" data-id="2.4.3" data-type="FRAMEWORK" data-pdf-page="19" data-fw-name="Versioning Strategy" tabindex="0" role="button" aria-label="Versioning Strategy — FRAMEWORK">
+          <div class="fw-thumb"><svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+    
+      <rect x="20" y="30" width="48" height="60" rx="4" fill="#E5A100" opacity="0.4"/>
+      <text x="44" y="48" text-anchor="middle" font-family="Arial" font-size="8" font-weight="800" fill="#fff">BASIC</text>
+      <text x="44" y="80" text-anchor="middle" font-family="Arial" font-size="10" font-weight="900" fill="#fff">$5</text>
+    
+      <rect x="76" y="20" width="48" height="70" rx="4" fill="#E5A100" opacity="0.6000000000000001"/>
+      <text x="100" y="38" text-anchor="middle" font-family="Arial" font-size="8" font-weight="800" fill="#fff">PRO</text>
+      <text x="100" y="80" text-anchor="middle" font-family="Arial" font-size="10" font-weight="900" fill="#fff">$20</text>
+    
+      <rect x="132" y="10" width="48" height="80" rx="4" fill="#E5A100" opacity="0.8"/>
+      <text x="156" y="28" text-anchor="middle" font-family="Arial" font-size="8" font-weight="800" fill="#fff">ENT</text>
+      <text x="156" y="80" text-anchor="middle" font-family="Arial" font-size="10" font-weight="900" fill="#fff">$100</text>
+    
+  </svg></div>
+          <div class="fw-meta">
+            <span class="fw-badge fw-badge-fwk">FRAMEWORK</span>
+            <h4 class="fw-name">Versioning Strategy</h4>
+            <p class="fw-short">Multiple versions at different prices — let customers self-sort.</p>
+          </div>
+        </article>
+        <article class="fw-card" data-id="2.4.4" data-type="FRAMEWORK" data-pdf-page="20" data-fw-name="Price Discrimination" tabindex="0" role="button" aria-label="Price Discrimination — FRAMEWORK">
+          <div class="fw-thumb"><svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+    <line x1="15" y1="100" x2="190" y2="100" stroke="#E5A100" opacity="0.3"/>
+    <line x1="15" y1="15" x2="15" y2="100" stroke="#E5A100" opacity="0.3"/>
+    <path d="M 15 30 Q 90 30 180 95" fill="none" stroke="#E5A100" stroke-width="2.5"/>
+    <circle cx="35" cy="60" r="3.5" fill="#E5A100"/><circle cx="70" cy="45" r="3.5" fill="#E5A100"/><circle cx="105" cy="58" r="3.5" fill="#E5A100"/><circle cx="140" cy="72" r="3.5" fill="#E5A100"/><circle cx="165" cy="85" r="3.5" fill="#E5A100"/>
+    <text x="100" y="25" font-family="Arial" font-size="8" font-weight="700" fill="#E5A100" opacity="0.7">P</text>
+    <text x="180" y="115" text-anchor="end" font-family="Arial" font-size="8" font-weight="700" fill="#E5A100" opacity="0.7">Q →</text>
+  </svg></div>
+          <div class="fw-meta">
+            <span class="fw-badge fw-badge-fwk">FRAMEWORK</span>
+            <h4 class="fw-name">Price Discrimination</h4>
+            <p class="fw-short">First-degree (personalised) · second-degree (volume) · third-degree (group).</p>
+          </div>
+        </article>
+        <article class="fw-card" data-id="2.4.5" data-type="FRAMEWORK" data-pdf-page="21" data-fw-name="Lock-In &amp; Switching Costs" tabindex="0" role="button" aria-label="Lock-In &amp; Switching Costs — FRAMEWORK">
+          <div class="fw-thumb"><svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+    <rect x="55" y="30" width="90" height="60" rx="6" fill="#E5A100" opacity="0.15"/>
+    <rect x="80" y="50" width="40" height="30" rx="2" fill="#E5A100"/>
+    <path d="M 88 58 L 88 48 Q 88 40 100 40 Q 112 40 112 48 L 112 58" fill="none" stroke="#E5A100" stroke-width="3"/>
+    <circle cx="100" cy="63" r="3" fill="#fff"/>
+    <line x1="100" y1="66" x2="100" y2="74" stroke="#fff" stroke-width="2"/>
+    <text x="100" y="104" text-anchor="middle" font-family="Arial" font-size="8" font-weight="700" fill="#E5A100" opacity="0.7">SWITCHING COSTS</text>
+  </svg></div>
+          <div class="fw-meta">
+            <span class="fw-badge fw-badge-fwk">FRAMEWORK</span>
+            <h4 class="fw-name">Lock-In & Switching Costs</h4>
+            <p class="fw-short">Contractual · data · skill · network — the four sources of stickiness.</p>
+          </div>
+        </article></div>
+        </div>
+      </details>
+</main>
+
+<!-- ═══════════ MODAL ═══════════ -->
+<div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="modal-panel">
+    <div class="modal-header">
+      <div class="modal-breadcrumb" id="modalBreadcrumb"></div>
+      <h2 class="modal-title" id="modalTitle"></h2>
+      <div class="modal-actions">
+        <button class="view-sheet-btn" id="viewSheetBtn" type="button">📄 View Framework Sheet</button>
+        <button class="modal-close" id="modalClose" type="button" aria-label="Close">×</button>
+      </div>
+    </div>
+    <div class="modal-body">
+      <p class="modal-tagline" id="modalTagline"></p>
+      <div class="modal-section">
+        <h4>What this is</h4>
+        <p id="modalShort"></p>
+      </div>
+      <div class="modal-section">
+        <h4>Reference sheet</h4>
+        <p>The full A4 framework sheet — Definition · Origin & Author · Core Mechanism · Illustrative Figure · How &amp; When Used · Real-World Examples · Related Frameworks · Harvard References — opens via the green button above.</p>
+      </div>
+      <div class="modal-cta">
+        <div class="modal-cta-text">
+          <strong>Sheet structure</strong>
+          9 sections · A4 portrait · Harvard-referenced · designed for revision and assessment.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ PDF VIEWER ═══════════ -->
+<div class="pdf-overlay" id="pdfOverlay" role="dialog" aria-modal="true" aria-hidden="true">
+  <header class="pdf-toolbar">
+    <span class="pdf-tb-label">Framework Sheet</span>
+    <span class="pdf-tb-title" id="pdfTitle">—</span>
+    <button class="pdf-btn" id="pdfPrev" type="button" aria-label="Previous page">‹ Prev</button>
+    <span id="pdfPageInfo" style="font-size:12px; color: rgba(255,255,255,0.7); min-width: 60px; text-align: center;">— / —</span>
+    <button class="pdf-btn" id="pdfNext" type="button" aria-label="Next page">Next ›</button>
+    <button class="pdf-btn" id="pdfZoomOut" type="button" aria-label="Zoom out">−</button>
+    <button class="pdf-btn" id="pdfZoomIn" type="button" aria-label="Zoom in">+</button>
+    <button class="pdf-btn primary" id="pdfClose" type="button">Close</button>
+  </header>
+  <div class="pdf-canvas-wrap" id="pdfCanvasWrap">
+    <div class="pdf-loading" id="pdfLoading">Loading framework sheet…</div>
+  </div>
+</div>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div>
+      <h5>MDGTB301 · Digital Economy</h5>
+      <div>A course by Dr. Hildegard Haas · EU Business School</div>
+      <div>Masters Programme in Digital Business &amp; Innovation</div>
+    </div>
+    <div class="copy">© 2026 Dr. Hildegard Haas · MDGTB301 · All rights reserved</div>
+  </div>
+</footer>
+
+<div class="copyright-badge">© Dr. Hildegard Haas</div>
+
+<!-- ═══════════ PDF.js (CDN) ═══════════ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+<script>
+(function () {
+  'use strict';
+
+  // ─── DATA ───────────────────────────────────────────
+  const FW_DB = {"2.1.1":{"name":"E-Business vs. E-Commerce","type":"DEFINITION","short":"E-business is the whole organisation; e-commerce is transactions only.","sub":"E-Business Architecture","subId":"2.1","pdfPage":2},"2.1.2":{"name":"E-Business Infrastructure Stack","type":"FRAMEWORK","short":"Five layers: hardware → networks → OS → apps → business logic.","sub":"E-Business Architecture","subId":"2.1","pdfPage":3},"2.1.3":{"name":"B2B · B2C · C2C · B2G","type":"DEFINITION","short":"Who sells to whom — the four classic e-commerce modes.","sub":"E-Business Architecture","subId":"2.1","pdfPage":4},"2.1.4":{"name":"API Economy","type":"FRAMEWORK","short":"Software eating the world — via Application Programming Interfaces.","sub":"E-Business Architecture","subId":"2.1","pdfPage":5},"2.1.5":{"name":"Cloud: IaaS · PaaS · SaaS","type":"FRAMEWORK","short":"Three levels of what the cloud provider manages for you.","sub":"E-Business Architecture","subId":"2.1","pdfPage":6},"2.2.1":{"name":"Metcalfe's Law","type":"FRAMEWORK","short":"Network value grows as n² (number of users squared).","sub":"Digital Networks","subId":"2.2","pdfPage":7},"2.2.2":{"name":"Direct vs. Indirect Network Effects","type":"FRAMEWORK","short":"Same-side benefit vs. cross-side benefit.","sub":"Digital Networks","subId":"2.2","pdfPage":8},"2.2.3":{"name":"Two-Sided Markets","type":"FRAMEWORK","short":"Rochet & Tirole — platforms solve a coordination problem between two groups.","sub":"Digital Networks","subId":"2.2","pdfPage":9},"2.2.4":{"name":"Connection Density (MIT 2025)","type":"FRAMEWORK","short":"MIT IDE update — not more users, but denser connections drive value.","sub":"Digital Networks","subId":"2.2","pdfPage":10},"2.2.5":{"name":"Tipping Point · Winner-Takes-All","type":"FRAMEWORK","short":"At critical mass, the market tips to one platform.","sub":"Digital Networks","subId":"2.2","pdfPage":11},"2.3.1":{"name":"Value Chain → Value Network","type":"FRAMEWORK","short":"Porter's linear chain replaced by hub-and-spoke networks.","sub":"Digital Value Creation","subId":"2.3","pdfPage":12},"2.3.2":{"name":"Freemium Model","type":"FRAMEWORK","short":"Free for most users · premium features for the paying few.","sub":"Digital Value Creation","subId":"2.3","pdfPage":13},"2.3.3":{"name":"Subscription Economy","type":"FRAMEWORK","short":"Recurring revenue replaces one-time transactions.","sub":"Digital Value Creation","subId":"2.3","pdfPage":14},"2.3.4":{"name":"Data as Strategic Asset","type":"DEFINITION","short":"'The new oil' — with important differences from oil.","sub":"Digital Value Creation","subId":"2.3","pdfPage":15},"2.3.5":{"name":"The Long Tail","type":"FRAMEWORK","short":"Anderson — infinite shelf space monetises niche demand.","sub":"Digital Value Creation","subId":"2.3","pdfPage":16},"2.4.1":{"name":"Zero Marginal Cost","type":"DEFINITION","short":"High to produce the first copy · ~zero to produce the next.","sub":"Information Goods","subId":"2.4","pdfPage":17},"2.4.2":{"name":"Experience Goods","type":"DEFINITION","short":"Quality unknowable until consumption — and often after.","sub":"Information Goods","subId":"2.4","pdfPage":18},"2.4.3":{"name":"Versioning Strategy","type":"FRAMEWORK","short":"Multiple versions at different prices — let customers self-sort.","sub":"Information Goods","subId":"2.4","pdfPage":19},"2.4.4":{"name":"Price Discrimination","type":"FRAMEWORK","short":"First-degree (personalised) · second-degree (volume) · third-degree (group).","sub":"Information Goods","subId":"2.4","pdfPage":20},"2.4.5":{"name":"Lock-In & Switching Costs","type":"FRAMEWORK","short":"Contractual · data · skill · network — the four sources of stickiness.","sub":"Information Goods","subId":"2.4","pdfPage":21}};
+  const PDF_URL = 'MDGTB301_Unit2_Framework_Library.pdf';
+  const UNIT_NUM = 2;
+  const UNIT_TITLE = 'Fundamental Concepts of the Digital Economy';
+
+  if (window.pdfjsLib) {
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+      'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  }
+
+  // ─── SEARCH ─────────────────────────────────────────
+  const searchInput  = document.getElementById('searchInput');
+  const searchEl     = document.getElementById('search');
+  const searchClear  = document.getElementById('searchClear');
+  const searchStatus = document.getElementById('searchStatus');
+
+  function applySearch() {
+    const q = searchInput.value.trim().toLowerCase();
+    searchEl.classList.toggle('has-text', q.length > 0);
+    let shown = 0, hidden = 0;
+    document.querySelectorAll('.fw-card').forEach(card => {
+      if (!q) {
+        card.style.display = '';
+        shown++;
+        return;
+      }
+      const hay = (card.querySelector('.fw-name').textContent + ' ' +
+                   card.querySelector('.fw-short').textContent + ' ' +
+                   card.dataset.id).toLowerCase();
+      if (hay.indexOf(q) !== -1) { card.style.display = ''; shown++; }
+      else { card.style.display = 'none'; hidden++; }
+    });
+    document.querySelectorAll('.subunit').forEach(d => {
+      const hasVisible = d.querySelector('.fw-card:not([style*="display: none"])');
+      if (q && !hasVisible) d.style.display = 'none';
+      else d.style.display = '';
+      if (q) d.setAttribute('open', '');
+    });
+    searchStatus.textContent = q
+      ? (shown + ' framework' + (shown === 1 ? '' : 's') + ' match "' + searchInput.value + '"' + (hidden ? ' · ' + hidden + ' hidden' : ''))
+      : '';
+  }
+  searchInput.addEventListener('input', applySearch);
+  searchClear.addEventListener('click', () => {
+    searchInput.value = '';
+    applySearch();
+    searchInput.focus();
+  });
+  // "/" focuses search
+  document.addEventListener('keydown', (e) => {
+    if (e.key === '/' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
+      e.preventDefault();
+      searchInput.focus();
+    }
+  });
+
+  // ─── MODAL ──────────────────────────────────────────
+  const modal       = document.getElementById('modalOverlay');
+  const modalTitle  = document.getElementById('modalTitle');
+  const modalBread  = document.getElementById('modalBreadcrumb');
+  const modalTagline = document.getElementById('modalTagline');
+  const modalShort  = document.getElementById('modalShort');
+  const modalClose  = document.getElementById('modalClose');
+  const viewBtn     = document.getElementById('viewSheetBtn');
+
+  let currentFwId = null;
+
+  function openModal(fwId) {
+    const fw = FW_DB[fwId];
+    if (!fw) return;
+    currentFwId = fwId;
+    modalBread.textContent = 'Unit ' + UNIT_NUM + ' · ' + fw.subId + ' · ' + fw.sub;
+    modalTitle.textContent = fw.name;
+    modalTagline.textContent = fw.short;
+    modalShort.textContent =
+      'Card ' + fwId + ' is part of "' + fw.sub + '". Open the framework sheet for the full structured reference: definition, origin and author, core mechanism, illustrative figure, how and when used, real-world examples, related frameworks, and Harvard sources.';
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    modalClose.focus();
+  }
+  function closeModal() {
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    currentFwId = null;
+  }
+
+  document.querySelectorAll('.fw-card').forEach(card => {
+    card.addEventListener('click', () => openModal(card.dataset.id));
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(card.dataset.id); }
+    });
+  });
+  modalClose.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      if (pdfOverlay.classList.contains('open')) closePdf();
+      else if (modal.classList.contains('open')) closeModal();
+    }
+  });
+
+  // ─── PDF VIEWER ─────────────────────────────────────
+  const pdfOverlay = document.getElementById('pdfOverlay');
+  const pdfTitle   = document.getElementById('pdfTitle');
+  const pdfClose   = document.getElementById('pdfClose');
+  const pdfPrev    = document.getElementById('pdfPrev');
+  const pdfNext    = document.getElementById('pdfNext');
+  const pdfZoomIn  = document.getElementById('pdfZoomIn');
+  const pdfZoomOut = document.getElementById('pdfZoomOut');
+  const pdfPageInfo = document.getElementById('pdfPageInfo');
+  const pdfWrap    = document.getElementById('pdfCanvasWrap');
+  const pdfLoading = document.getElementById('pdfLoading');
+
+  let pdfDoc = null;
+  let currentPage = 1;
+  let pageScale = 1.4;
+  let totalPages = 0;
+  let renderTask = null;
+
+  function ensureCanvas() {
+    let c = pdfWrap.querySelector('canvas');
+    if (!c) {
+      c = document.createElement('canvas');
+      pdfWrap.appendChild(c);
+    }
+    return c;
+  }
+
+  async function renderPage(pageNum) {
+    if (!pdfDoc) return;
+    if (renderTask) { try { renderTask.cancel(); } catch (e) {} }
+    pdfLoading.style.display = 'block';
+    try {
+      const page = await pdfDoc.getPage(pageNum);
+      const vp = page.getViewport({ scale: pageScale });
+      const canvas = ensureCanvas();
+      const ctx = canvas.getContext('2d');
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = vp.width * dpr;
+      canvas.height = vp.height * dpr;
+      canvas.style.width = vp.width + 'px';
+      canvas.style.height = vp.height + 'px';
+      ctx.scale(dpr, dpr);
+      renderTask = page.render({ canvasContext: ctx, viewport: vp });
+      await renderTask.promise;
+      pdfLoading.style.display = 'none';
+      pdfPageInfo.textContent = pageNum + ' / ' + totalPages;
+    } catch (e) {
+      if (e && e.name === 'RenderingCancelledException') return;
+      console.error(e);
+      pdfLoading.textContent = 'Could not render page.';
+    }
+  }
+
+  async function openPdfAt(pageNum, label) {
+    pdfOverlay.classList.add('open');
+    pdfOverlay.setAttribute('aria-hidden', 'false');
+    pdfTitle.textContent = label || ('Unit ' + UNIT_NUM);
+    if (!pdfDoc) {
+      try {
+        pdfLoading.textContent = 'Loading framework sheet…';
+        pdfLoading.style.display = 'block';
+        pdfDoc = await pdfjsLib.getDocument(PDF_URL).promise;
+        totalPages = pdfDoc.numPages;
+      } catch (e) {
+        pdfLoading.textContent = 'Could not load PDF: ' + PDF_URL;
+        console.error(e);
+        return;
+      }
+    }
+    currentPage = Math.max(1, Math.min(pageNum, totalPages));
+    await renderPage(currentPage);
+  }
+  function closePdf() {
+    pdfOverlay.classList.remove('open');
+    pdfOverlay.setAttribute('aria-hidden', 'true');
+  }
+
+  viewBtn.addEventListener('click', () => {
+    if (!currentFwId) return;
+    const fw = FW_DB[currentFwId];
+    openPdfAt(fw.pdfPage, fw.name);
+  });
+  pdfClose.addEventListener('click', closePdf);
+  pdfPrev.addEventListener('click', () => { if (currentPage > 1) { currentPage--; renderPage(currentPage); } });
+  pdfNext.addEventListener('click', () => { if (currentPage < totalPages) { currentPage++; renderPage(currentPage); } });
+  pdfZoomIn.addEventListener('click', () => { pageScale = Math.min(pageScale + 0.2, 3.0); renderPage(currentPage); });
+  pdfZoomOut.addEventListener('click', () => { pageScale = Math.max(pageScale - 0.2, 0.6); renderPage(currentPage); });
+
+  // ─── COPY/CONTEXT PROTECTION ────────────────────────
+  document.addEventListener('contextmenu', (e) => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    e.preventDefault();
+  });
+  document.addEventListener('keydown', (e) => {
+    const k = e.key.toLowerCase();
+    if ((e.ctrlKey || e.metaKey) && (k === 's' || k === 'p' || k === 'u')) e.preventDefault();
+    if (k === 'f12') e.preventDefault();
+  });
+  // Block save/print
+  window.addEventListener('beforeprint', () => { /* CSS @media print blocks visibility */ });
+
+})();
+</script>
+
+</body>
+</html>
