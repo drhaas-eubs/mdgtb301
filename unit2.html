@@ -426,17 +426,106 @@ main { max-width: 1200px; margin: 0 auto; padding: 36px 24px 80px; }
 .modal-close:hover { background: var(--card-border); }
 
 .modal-body { padding: 22px 24px 28px; }
+
+/* DEFINITION BLOCK — category-coloured left border */
+.modal-definition {
+  border-left: 4px solid var(--gold);
+  background: #FFFCF2;
+  padding: 12px 16px;
+  border-radius: 0 6px 6px 0;
+  margin-bottom: 16px;
+}
+.modal-definition[data-type="DEFINITION"] {
+  border-left-color: var(--red);
+  background: #FFF5F4;
+}
+.modal-definition[data-type="FRAMEWORK"] {
+  border-left-color: var(--gold);
+  background: #FFFCF2;
+}
+.modal-deflabel {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+.modal-definition[data-type="DEFINITION"] .modal-deflabel { color: var(--red); }
+.modal-definition[data-type="FRAMEWORK"]  .modal-deflabel { color: var(--gold); }
+.modal-definition p {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--ink);
+  margin: 0;
+}
+
+/* BULLET LIST — teal dots, X→Y format friendly */
+.modal-bullets {
+  list-style: none;
+  padding: 0; margin: 0;
+}
+.modal-bullets li {
+  position: relative;
+  padding-left: 18px;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--body);
+  margin-bottom: 8px;
+}
+.modal-bullets li::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 7px;
+  width: 7px;
+  height: 7px;
+  background: var(--teal);
+  border-radius: 50%;
+}
+
+/* HARVARD REFERENCES — small numbered list */
+.modal-refs {
+  list-style: none;
+  padding: 0; margin: 0;
+  counter-reset: ref;
+}
+.modal-refs li {
+  position: relative;
+  padding-left: 22px;
+  font-size: 11.5px;
+  line-height: 1.45;
+  color: var(--body);
+  margin-bottom: 8px;
+  counter-increment: ref;
+}
+.modal-refs li::before {
+  content: counter(ref);
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--teal);
+  background: var(--teal-soft);
+  width: 16px; height: 16px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+}
+
+.modal-section { margin-bottom: 18px; }
+
 .modal-tagline {
   font-style: italic;
   color: var(--coral);
-  margin-bottom: 16px;
-  padding: 10px 14px;
+  margin: 4px 0 16px 0;
+  padding: 8px 12px;
   background: #FFF5F0;
   border-left: 3px solid var(--coral);
-  border-radius: 0 6px 6px 0;
-  font-size: 14px;
+  border-radius: 0 4px 4px 0;
+  font-size: 13px;
+  line-height: 1.4;
 }
-.modal-section { margin-bottom: 18px; }
 .modal-section h4 {
   font-size: 11px;
   letter-spacing: 1.5px;
@@ -1134,19 +1223,23 @@ main { max-width: 1200px; margin: 0 auto; padding: 36px 24px 80px; }
       </div>
     </div>
     <div class="modal-body">
+      <div class="modal-definition" id="modalDefinitionBlock">
+        <span class="modal-deflabel" id="modalDefLabel">DEFINITION</span>
+        <p id="modalDefinition"></p>
+      </div>
       <p class="modal-tagline" id="modalTagline"></p>
       <div class="modal-section">
-        <h4>What this is</h4>
-        <p id="modalShort"></p>
+        <h4>Core mechanism</h4>
+        <ul class="modal-bullets" id="modalBullets"></ul>
       </div>
-      <div class="modal-section">
-        <h4>Reference sheet</h4>
-        <p>The full A4 framework sheet — Definition · Origin & Author · Core Mechanism · Illustrative Figure · How &amp; When Used · Real-World Examples · Related Frameworks · Harvard References — opens via the green button above.</p>
+      <div class="modal-section" id="modalRefsWrap">
+        <h4>Harvard references</h4>
+        <ol class="modal-refs" id="modalRefs"></ol>
       </div>
       <div class="modal-cta">
         <div class="modal-cta-text">
-          <strong>Sheet structure</strong>
-          9 sections · A4 portrait · Harvard-referenced · designed for revision and assessment.
+          <strong>Want to go deeper?</strong>
+          The full A4 framework sheet — origin &amp; author, illustrative figure, how &amp; when used, real-world examples, innovation vs. predecessor, and full Harvard sources — opens via the green button above.
         </div>
       </div>
     </div>
@@ -1192,7 +1285,7 @@ main { max-width: 1200px; margin: 0 auto; padding: 36px 24px 80px; }
   'use strict';
 
   // ─── DATA ───────────────────────────────────────────
-  const FW_DB = {"2.1.1":{"name":"E-Business vs. E-Commerce","type":"DEFINITION","short":"E-business is the whole organisation; e-commerce is transactions only.","sub":"E-Business Architecture","subId":"2.1","pdfPage":2},"2.1.2":{"name":"E-Business Infrastructure Stack","type":"FRAMEWORK","short":"Five layers: hardware → networks → OS → apps → business logic.","sub":"E-Business Architecture","subId":"2.1","pdfPage":3},"2.1.3":{"name":"B2B · B2C · C2C · B2G","type":"DEFINITION","short":"Who sells to whom — the four classic e-commerce modes.","sub":"E-Business Architecture","subId":"2.1","pdfPage":4},"2.1.4":{"name":"API Economy","type":"FRAMEWORK","short":"Software eating the world — via Application Programming Interfaces.","sub":"E-Business Architecture","subId":"2.1","pdfPage":5},"2.1.5":{"name":"Cloud: IaaS · PaaS · SaaS","type":"FRAMEWORK","short":"Three levels of what the cloud provider manages for you.","sub":"E-Business Architecture","subId":"2.1","pdfPage":6},"2.2.1":{"name":"Metcalfe's Law","type":"FRAMEWORK","short":"Network value grows as n² (number of users squared).","sub":"Digital Networks","subId":"2.2","pdfPage":7},"2.2.2":{"name":"Direct vs. Indirect Network Effects","type":"FRAMEWORK","short":"Same-side benefit vs. cross-side benefit.","sub":"Digital Networks","subId":"2.2","pdfPage":8},"2.2.3":{"name":"Two-Sided Markets","type":"FRAMEWORK","short":"Rochet & Tirole — platforms solve a coordination problem between two groups.","sub":"Digital Networks","subId":"2.2","pdfPage":9},"2.2.4":{"name":"Connection Density (MIT 2025)","type":"FRAMEWORK","short":"MIT IDE update — not more users, but denser connections drive value.","sub":"Digital Networks","subId":"2.2","pdfPage":10},"2.2.5":{"name":"Tipping Point · Winner-Takes-All","type":"FRAMEWORK","short":"At critical mass, the market tips to one platform.","sub":"Digital Networks","subId":"2.2","pdfPage":11},"2.3.1":{"name":"Value Chain → Value Network","type":"FRAMEWORK","short":"Porter's linear chain replaced by hub-and-spoke networks.","sub":"Digital Value Creation","subId":"2.3","pdfPage":12},"2.3.2":{"name":"Freemium Model","type":"FRAMEWORK","short":"Free for most users · premium features for the paying few.","sub":"Digital Value Creation","subId":"2.3","pdfPage":13},"2.3.3":{"name":"Subscription Economy","type":"FRAMEWORK","short":"Recurring revenue replaces one-time transactions.","sub":"Digital Value Creation","subId":"2.3","pdfPage":14},"2.3.4":{"name":"Data as Strategic Asset","type":"DEFINITION","short":"'The new oil' — with important differences from oil.","sub":"Digital Value Creation","subId":"2.3","pdfPage":15},"2.3.5":{"name":"The Long Tail","type":"FRAMEWORK","short":"Anderson — infinite shelf space monetises niche demand.","sub":"Digital Value Creation","subId":"2.3","pdfPage":16},"2.4.1":{"name":"Zero Marginal Cost","type":"DEFINITION","short":"High to produce the first copy · ~zero to produce the next.","sub":"Information Goods","subId":"2.4","pdfPage":17},"2.4.2":{"name":"Experience Goods","type":"DEFINITION","short":"Quality unknowable until consumption — and often after.","sub":"Information Goods","subId":"2.4","pdfPage":18},"2.4.3":{"name":"Versioning Strategy","type":"FRAMEWORK","short":"Multiple versions at different prices — let customers self-sort.","sub":"Information Goods","subId":"2.4","pdfPage":19},"2.4.4":{"name":"Price Discrimination","type":"FRAMEWORK","short":"First-degree (personalised) · second-degree (volume) · third-degree (group).","sub":"Information Goods","subId":"2.4","pdfPage":20},"2.4.5":{"name":"Lock-In & Switching Costs","type":"FRAMEWORK","short":"Contractual · data · skill · network — the four sources of stickiness.","sub":"Information Goods","subId":"2.4","pdfPage":21}};
+  const FW_DB = {"2.1.1":{"name":"E-Business vs. E-Commerce","type":"DEFINITION","short":"E-business is the whole organisation; e-commerce is transactions only.","sub":"E-Business Architecture","subId":"2.1","pdfPage":2,"definition":"E-business denotes the application of digital technologies to all business activities — internal operations, supply-chain coordination, customer relationship management, and partner integration. E-commerce is the narrower subset concerned with the digital execution of buying-and-selling transactions over electronic networks.","bullets":["E-business = all business processes mediated digitally (procurement, HR, logistics, marketing).","E-commerce = the transactional sub-set: catalogue, cart, checkout, payment, fulfilment.","All e-commerce is e-business; not all e-business is e-commerce.","Useful diagnostic: 'Where in the firm does the digital touchpoint sit — front-stage transaction or back-stage operation?'"],"references":["Chaffey, D. and Ellis-Chadwick, F. (2019) Digital Business and E-Commerce Management. 7th edn. Harlow: Pearson.","Kalakota, R. and Whinston, A.B. (1996) Frontiers of Electronic Commerce. Reading, MA: Addison-Wesley.","Laudon, K.C. and Traver, C.G. (2022) E-Commerce: Business, Technology, Society. 17th edn. Harlow: Pearson."],"tagline":"E-business is the whole organisation; e-commerce is transactions only."},"2.1.2":{"name":"E-Business Infrastructure Stack","type":"FRAMEWORK","short":"Five layers: hardware → networks → OS → apps → business logic.","sub":"E-Business Architecture","subId":"2.1","pdfPage":3,"definition":"A layered reference model that decomposes the technical foundations of any digital business into five interdependent strata. Each layer abstracts complexity from the one above and exposes a clean interface to it.","bullets":["Layer 1 — Hardware: servers, devices, sensors, edge equipment.","Layer 2 — Networks: TCP/IP, wireless, fibre, the public internet, private VPNs.","Layer 3 — Operating systems & databases: Linux, Windows Server, relational and NoSQL stores.","Layer 4 — Applications: ERP, CRM, e-commerce platforms, SaaS modules.","Layer 5 — Business logic: workflows, processes, rules, customer-facing services."],"references":["Chaffey, D. and Ellis-Chadwick, F. (2019) Digital Business and E-Commerce Management. 7th edn. Harlow: Pearson, ch. 3.","Tanenbaum, A.S. and Wetherall, D.J. (2021) Computer Networks. 6th edn. Harlow: Pearson.","Skilton, M. (2015) Building the Digital Enterprise. London: Palgrave Macmillan."],"tagline":"Five layers: hardware → networks → operating systems → applications → business logic."},"2.1.3":{"name":"B2B · B2C · C2C · B2G","type":"DEFINITION","short":"Who sells to whom — the four classic e-commerce modes.","sub":"E-Business Architecture","subId":"2.1","pdfPage":4,"definition":"A taxonomy of e-commerce relationships defined by the institutional identity of the seller and the buyer. The four canonical modes — business-to-business, business-to-consumer, consumer-to-consumer, business-to-government — capture the structural variety of digital exchange.","bullets":["B2B — sales between enterprises (Alibaba, Salesforce, SAP).","B2C — sales from a business directly to end-consumers (Amazon retail, Apple).","C2C — peer-to-peer transactions on a hosted platform (eBay, Vinted, Etsy).","B2G — businesses contracting with government (procurement portals, e-tendering).","Modes differ on contract size, repeat frequency, regulation, and unit economics."],"references":["Laudon, K.C. and Traver, C.G. (2022) E-Commerce: Business, Technology, Society. 17th edn. Harlow: Pearson.","OECD (2023) OECD Digital Economy Outlook 2023. Paris: OECD Publishing.","UNCTAD (2024) Digital Economy Report 2024. Geneva: United Nations."],"tagline":"Who sells to whom: the four classic e-commerce modes."},"2.1.4":{"name":"API Economy","type":"FRAMEWORK","short":"Software eating the world — via Application Programming Interfaces.","sub":"E-Business Architecture","subId":"2.1","pdfPage":5,"definition":"An economic configuration in which firms expose, consume and monetise discrete software capabilities through standardised programmatic interfaces. APIs become products in their own right, enabling composable architectures, partner ecosystems and new revenue streams.","bullets":["Provider exposes a capability (payment, mapping, identity, AI inference) via a documented interface.","Consumers integrate without knowing internal implementation — pure abstraction.","Pricing models: per-call, freemium tier, revenue share, flat enterprise.","Network effect: each new integration increases the value of every other integration.","Architectural consequence: monolithic applications dissolve into composable micro-services."],"references":["Iyer, B. and Subramaniam, M. (2015) 'The strategic value of APIs', Harvard Business Review, 7 January.","Andreessen, M. (2011) 'Why software is eating the world', Wall Street Journal, 20 August.","Jacobson, D., Brail, G. and Woods, D. (2012) APIs: A Strategy Guide. Sebastopol, CA: O'Reilly."],"tagline":"Software eating the world — via Application Programming Interfaces."},"2.1.5":{"name":"Cloud: IaaS · PaaS · SaaS","type":"FRAMEWORK","short":"Three levels of what the cloud provider manages for you.","sub":"E-Business Architecture","subId":"2.1","pdfPage":6,"definition":"A canonical service-model taxonomy distinguishing the depth at which a cloud provider takes operational responsibility — from raw infrastructure (IaaS), through managed runtime (PaaS), to fully delivered software (SaaS).","bullets":["IaaS — provider supplies virtualised compute, storage, networking. Customer manages OS upward.","PaaS — provider also manages OS, middleware, runtime. Customer deploys code and data only.","SaaS — provider delivers a complete application; customer configures and consumes.","Shared-responsibility model: as you move up the stack, customer responsibility shrinks.","Pricing: pay-per-use (IaaS), per-environment (PaaS), per-seat (SaaS)."],"references":["Mell, P. and Grance, T. (2011) The NIST Definition of Cloud Computing. NIST Special Publication 800-145. Gaithersburg, MD: NIST.","Marston, S. et al. (2011) 'Cloud computing — the business perspective', Decision Support Systems, 51(1), pp. 176–189.","Armbrust, M. et al. (2010) 'A view of cloud computing', Communications of the ACM, 53(4), pp. 50–58."],"tagline":"Three levels of what the cloud provider manages for you."},"2.2.1":{"name":"Metcalfe's Law","type":"FRAMEWORK","short":"Network value grows as n² (number of users squared).","sub":"Digital Networks","subId":"2.2","pdfPage":7,"definition":"An empirical heuristic stating that the value of a communications network is proportional to the square of the number of connected users (n²), because each new user can potentially connect with every existing user.","bullets":["n users → n(n−1)/2 possible pairwise connections → ≈ n² value.","Doubling users approximately quadruples potential value.","Implication: growth in connections accelerates faster than growth in users.","Empirical refinement: Briscoe, Odlyzko & Tilly (2006) argue n·log(n) is more realistic; recent work confirms n² for small networks, n·log(n) for very large.","Underlying logic of why winner-takes-all dynamics are so common in digital markets."],"references":["Gilder, G. (1993) 'Metcalfe's Law and legacy', Forbes ASAP, 13 September.","Briscoe, B., Odlyzko, A. and Tilly, B. (2006) 'Metcalfe's Law is wrong', IEEE Spectrum, 43(7), pp. 34–39.","Shapiro, C. and Varian, H.R. (1999) Information Rules. Boston, MA: Harvard Business School Press."],"tagline":"Network value grows as n² (number of users squared)."},"2.2.2":{"name":"Direct vs. Indirect Network Effects","type":"FRAMEWORK","short":"Same-side benefit vs. cross-side benefit.","sub":"Digital Networks","subId":"2.2","pdfPage":8,"definition":"A distinction between two mechanisms by which networks create value. Direct (same-side) effects arise when more users on one side make the platform more valuable to that same side. Indirect (cross-side) effects arise when more users on one side make the platform more valuable to a different side.","bullets":["Direct: users on side A benefit from more users on side A. Telephones, WhatsApp, Slack within a firm.","Indirect: users on side A benefit from more users on side B. Buyers benefit from more sellers; iOS users benefit from more app developers.","Negative network effects exist — congestion (Uber surge), spam (email), low-quality sellers (eBay).","Most modern platforms exhibit both, in mixed proportions."],"references":["Katz, M.L. and Shapiro, C. (1985) 'Network externalities, competition, and compatibility', American Economic Review, 75(3), pp. 424–440.","Eisenmann, T., Parker, G. and Van Alstyne, M.W. (2006) 'Strategies for two-sided markets', Harvard Business Review, October, pp. 92–101.","Parker, G., Van Alstyne, M. and Choudary, S.P. (2016) Platform Revolution. New York: W.W. Norton."],"tagline":"Same-side benefit vs. cross-side benefit."},"2.2.3":{"name":"Two-Sided Markets","type":"FRAMEWORK","short":"Rochet & Tirole — platforms solve a coordination problem between two groups.","sub":"Digital Networks","subId":"2.2","pdfPage":9,"definition":"An economic model of markets in which a platform intermediary brings together two (or more) distinct user groups whose value to each other is realised only through the platform. The platform sets a price structure — not just a price level — to balance participation on both sides.","bullets":["The platform's challenge is not setting one price but a price structure across both sides.","Often optimal to subsidise one side (free for users) and monetise the other (paying advertisers).","The 'money side' (who pays) versus the 'subsidy side' (who is attracted free).","Cross-side externalities mean small price changes can flip platform viability.","Generalises naturally to multi-sided platforms (developers + users + advertisers)."],"references":["Rochet, J.-C. and Tirole, J. (2003) 'Platform competition in two-sided markets', Journal of the European Economic Association, 1(4), pp. 990–1029.","Rochet, J.-C. and Tirole, J. (2006) 'Two-sided markets: a progress report', RAND Journal of Economics, 37(3), pp. 645–667.","Evans, D.S. and Schmalensee, R. (2016) Matchmakers: The New Economics of Multisided Platforms. Boston, MA: Harvard Business Review Press."],"tagline":"Rochet & Tirole: platforms solve a coordination problem between two distinct user groups."},"2.2.4":{"name":"Connection Density (MIT 2025)","type":"FRAMEWORK","short":"MIT IDE update — not more users, but denser connections drive value.","sub":"Digital Networks","subId":"2.2","pdfPage":10,"definition":"A refinement of classical network-effect theory holding that, beyond a threshold, the marginal value of an additional user falls — while the marginal value of an additional meaningful connection (interaction-weighted edge) keeps rising. Value tracks the density and quality of edges, not the count of nodes.","bullets":["Classical Metcalfe assumes all edges equally valuable — empirically false at scale.","Active edges (interactions per unit time × strength of tie) better predict economic value.","AI-mediated personalisation increases interaction relevance — pushing density up without adding users.","Implication for strategy: engagement metrics dominate registration metrics.","Implication for valuation: DAU/MAU and time-spent are stronger signals than total signups."],"references":["Brynjolfsson, E. and McAfee, A. (2025) MIT IDE Annual Report 2025. Cambridge, MA: MIT Initiative on the Digital Economy.","Tucker, C. (2018) 'Network effects and market power: what have we learned in the last decade?', Antitrust, 32(2), pp. 72–79.","Aral, S. (2020) The Hype Machine. New York: Currency."],"tagline":"MIT IDE update: not more users, but denser connections drive value."},"2.2.5":{"name":"Tipping Point · Winner-Takes-All","type":"FRAMEWORK","short":"At critical mass, the market tips to one platform.","sub":"Digital Networks","subId":"2.2","pdfPage":11,"definition":"A market dynamic in which strong network effects, low marginal costs and limited differentiation cause user adoption to converge on a single dominant platform once a critical-mass threshold is crossed. Smaller competitors enter a death spiral as users rationally migrate to the larger network.","bullets":["Below the tipping point, multiple platforms can coexist.","Once one platform crosses critical mass, network value gap widens with each new user.","Rational users defect from smaller platforms, accelerating concentration.","Outcome: 'winner-takes-all' (one platform) or 'winner-takes-most' (one dominant + small fringe).","Multi-homing — users on several platforms simultaneously — is the main brake."],"references":["Arthur, W.B. (1989) 'Competing technologies, increasing returns, and lock-in by historical events', The Economic Journal, 99(394), pp. 116–131.","Shapiro, C. and Varian, H.R. (1999) Information Rules. Boston, MA: Harvard Business School Press.","Parker, G., Van Alstyne, M. and Choudary, S.P. (2016) Platform Revolution. New York: W.W. Norton."],"tagline":"At critical mass, the market tips to one platform."},"2.3.1":{"name":"Value Chain → Value Network","type":"FRAMEWORK","short":"Porter's linear chain replaced by hub-and-spoke networks.","sub":"Digital Value Creation","subId":"2.3","pdfPage":12,"definition":"A reconceptualisation of value creation in digital settings, in which Porter's linear sequence of primary activities (inbound logistics → operations → outbound logistics → marketing → service) gives way to a non-linear network of interacting actors orchestrated by a digital platform.","bullets":["Linear value chain: input → activity → output, value added stage by stage.","Value network: nodes (firms, customers, complementors) interact in many-to-many patterns through a hub.","The hub orchestrates flows of information, money and goods — controls the architecture, captures rents.","Ecosystem governance becomes the dominant strategic variable, not internal optimisation.","Customer is co-creator, not endpoint."],"references":["Porter, M.E. (1985) Competitive Advantage. New York: Free Press.","Stabell, C.B. and Fjeldstad, Ø.D. (1998) 'Configuring value for competitive advantage', Strategic Management Journal, 19(5), pp. 413–437.","Iansiti, M. and Lakhani, K.R. (2020) Competing in the Age of AI. Boston, MA: Harvard Business Review Press."],"tagline":"Porter's linear chain replaced by hub-and-spoke value networks."},"2.3.2":{"name":"Freemium Model","type":"FRAMEWORK","short":"Free for most users · premium features for the paying few.","sub":"Digital Value Creation","subId":"2.3","pdfPage":13,"definition":"A revenue-model archetype in which a basic version of a digital product is provided at no charge to acquire a large user base, while a premium tier — accessed by a small minority — generates the revenue. Variable costs near zero make this economically viable.","bullets":["Free tier acquires users at zero per-user cost — only marginal infrastructure.","Premium tier converts a small share (typically 1–8%) into paying customers.","Conversion economics depend on: perceived value of premium features, friction at upgrade point, and price.","Works only when marginal cost of serving free users approaches zero.","Often combined with network effects: free users still create value (data, content, social proof)."],"references":["Anderson, C. (2009) Free: The Future of a Radical Price. New York: Hyperion.","Kumar, V. (2014) 'Making freemium work', Harvard Business Review, May.","Tzuo, T. and Weisert, G. (2018) Subscribed. New York: Portfolio."],"tagline":"Free for most users · premium features for the paying few."},"2.3.3":{"name":"Subscription Economy","type":"FRAMEWORK","short":"Recurring revenue replaces one-time transactions.","sub":"Digital Value Creation","subId":"2.3","pdfPage":14,"definition":"An economic configuration in which firms generate revenue through ongoing, time-based access to a service rather than one-time sales of a product. The customer relationship — not the transaction — becomes the locus of value.","bullets":["Recurring revenue replaces episodic transactions — improves predictability and lifetime value.","Acquisition cost amortised over many periods, raising tolerable CAC.","Key metrics shift: ARR, MRR, churn, NRR, CAC payback.","Customer success becomes a discipline — retention is the primary growth lever.","Pricing experiments become continuous — providers iterate on tiering, packaging, contract length."],"references":["Tzuo, T. and Weisert, G. (2018) Subscribed. New York: Portfolio.","Baxter, R.K. (2020) The Forever Transaction. New York: McGraw-Hill.","McKinsey & Company (2021) 'Thinking inside the subscription box'."],"tagline":"Recurring revenue replaces one-time transactions."},"2.3.4":{"name":"Data as Strategic Asset","type":"DEFINITION","short":"'The new oil' — with important differences from oil.","sub":"Digital Value Creation","subId":"2.3","pdfPage":15,"definition":"The proposition that data, accumulated through digital operations, is itself a strategic resource: it confers competitive advantage, can be monetised directly or indirectly, and exhibits properties (non-rivalry, increasing returns) distinct from physical commodities.","bullets":["Non-rival: same data can serve unlimited uses simultaneously — unlike oil.","Increasing returns: more data improves models which attract more users which produce more data.","Privacy-sensitive: regulatory regimes (GDPR, CCPA, EU AI Act) constrain extraction and use.","Asymmetric value: data is most valuable to the largest holder of complementary data.","Refining matters: raw data is rarely valuable; cleaned, labelled, contextual data is the moat."],"references":["Mayer-Schönberger, V. and Ramge, T. (2018) Reinventing Capitalism in the Age of Big Data. New York: Basic Books.","Iansiti, M. and Lakhani, K.R. (2020) Competing in the Age of AI. Boston, MA: Harvard Business Review Press.","The Economist (2017) 'The world's most valuable resource is no longer oil, but data', 6 May."],"tagline":"'The new oil' — with important differences from oil."},"2.3.5":{"name":"The Long Tail","type":"FRAMEWORK","short":"Anderson — infinite shelf space monetises niche demand.","sub":"Digital Value Creation","subId":"2.3","pdfPage":16,"definition":"An empirical regularity, formalised for digital markets, holding that a large share of total demand is concentrated in a long tail of low-popularity items, which becomes profitable to serve only when the cost of inventory and distribution approaches zero — as is typical online.","bullets":["Demand follows a power law: a few hits + a long tail of niches.","Physical retail can only stock the head — shelf space is scarce.","Digital markets eliminate shelf-space constraints and lower selection cost (search, recommendation).","Aggregate revenue from the tail rivals or exceeds the head.","Crucial enablers: democratised production, distribution and discovery."],"references":["Anderson, C. (2006) The Long Tail: Why the Future of Business is Selling Less of More. New York: Hyperion.","Brynjolfsson, E., Hu, Y. and Smith, M.D. (2010) 'The longer tail: the changing shape of Amazon's sales distribution curve', Significance, 7(2), pp. 67–71.","Anderson, C. (2004) 'The Long Tail', Wired, October."],"tagline":"Anderson: infinite shelf space monetises niche demand."},"2.4.1":{"name":"Zero Marginal Cost","type":"DEFINITION","short":"High to produce the first copy · ~zero to produce the next.","sub":"Information Goods","subId":"2.4","pdfPage":17,"definition":"An economic property of digital goods whereby the cost of producing one additional unit, after the first copy is created, approaches zero. The cost structure is dominated by sunk fixed costs (development, content production) rather than variable production costs.","bullets":["First copy: large up-front investment (R&D, content, infrastructure).","Subsequent copies: trivial replication and distribution cost.","Implications: pricing cannot be cost-plus — must be value-based.","Implication: firms competing on price collapse to zero — a destructive equilibrium.","Recent caveat: AI inference pushes some costs back to usage time, partially restoring marginal-cost economics."],"references":["Shapiro, C. and Varian, H.R. (1999) Information Rules. Boston, MA: Harvard Business School Press.","Rifkin, J. (2014) The Zero Marginal Cost Society. New York: Palgrave Macmillan.","Brynjolfsson, E. and McAfee, A. (2025) MIT IDE Annual Report 2025. Cambridge, MA: MIT Initiative on the Digital Economy."],"tagline":"High to produce the first copy · ~zero to produce the next."},"2.4.2":{"name":"Experience Goods","type":"DEFINITION","short":"Quality unknowable until consumption — and often after.","sub":"Information Goods","subId":"2.4","pdfPage":18,"definition":"A category of goods whose qualities cannot be assessed by inspection prior to purchase: they must be experienced. Most information goods (books, films, software) are experience goods; some are 'credence goods' whose quality is hard to verify even after consumption.","bullets":["Search goods: quality observable before purchase (e.g. apples).","Experience goods: quality observable only on use (e.g. films, restaurants).","Credence goods: quality hard to verify even after use (e.g. medical advice, audits).","Information goods predominantly experience or credence — a fundamental marketing problem.","Solutions: previews, reviews, ratings, brands, free trials, money-back guarantees."],"references":["Nelson, P. (1970) 'Information and consumer behaviour', Journal of Political Economy, 78(2), pp. 311–329.","Darby, M.R. and Karni, E. (1973) 'Free competition and the optimal amount of fraud', Journal of Law and Economics, 16(1), pp. 67–88.","Shapiro, C. and Varian, H.R. (1999) Information Rules. Boston, MA: Harvard Business School Press."],"tagline":"Quality unknowable until consumption — and often after."},"2.4.3":{"name":"Versioning Strategy","type":"FRAMEWORK","short":"Multiple versions at different prices — let customers self-sort.","sub":"Information Goods","subId":"2.4","pdfPage":19,"definition":"A pricing-and-product strategy in which a firm offers several variants of essentially the same digital good, each with different features and prices, designed so that different customer segments self-select into the version that matches their willingness to pay.","bullets":["Identify customer segments with different willingness to pay.","Design product variants — by feature, capacity, support, speed — that map to those segments.","Self-selection: customers reveal their type by choosing the version that fits.","Critical: the versioning ladder must be incentive-compatible — high-WTP customers must not prefer the cheap version.","Often combined with freemium (zero-priced lowest tier)."],"references":["Shapiro, C. and Varian, H.R. (1999) Information Rules. Boston, MA: Harvard Business School Press, ch. 3.","Sundararajan, A. (2004) 'Nonlinear pricing of information goods', Management Science, 50(12), pp. 1660–1673.","Tellis, G.J. (1986) 'Beyond the many faces of price', Journal of Marketing, 50(4), pp. 146–160."],"tagline":"Multiple versions at different prices — let customers self-sort."},"2.4.4":{"name":"Price Discrimination","type":"FRAMEWORK","short":"First-degree (personalised) · second-degree (volume) · third-degree (group).","sub":"Information Goods","subId":"2.4","pdfPage":20,"definition":"The practice of charging different prices to different customers — or for different units of the same good — based on willingness to pay, without corresponding differences in cost. Pigou's classic three-degree taxonomy is the standard reference frame.","bullets":["First-degree: each customer pays the maximum they would pay (perfect personalisation).","Second-degree: prices vary by quantity or version (volume discounts, versioning).","Third-degree: prices vary by observable customer group (student, region, sector).","Conditions: market power, ability to segment, ability to prevent arbitrage.","Welfare: ambiguous — can expand output (efficiency gain) but redistributes surplus from consumer to producer."],"references":["Pigou, A.C. (1920) The Economics of Welfare. London: Macmillan.","Tirole, J. (1988) The Theory of Industrial Organization. Cambridge, MA: MIT Press, ch. 3.","Shapiro, C. and Varian, H.R. (1999) Information Rules. Boston, MA: Harvard Business School Press."],"tagline":"First-degree (personalised) · Second-degree (volume) · Third-degree (group)."},"2.4.5":{"name":"Lock-In & Switching Costs","type":"FRAMEWORK","short":"Contractual · data · skill · network — the four sources of stickiness.","sub":"Information Goods","subId":"2.4","pdfPage":21,"definition":"The mechanisms — contractual, technical, behavioural and economic — that make it costly for a customer to switch from one provider to another, thereby giving the incumbent provider durable pricing power.","bullets":["Contractual lock-in: term contracts, early-termination fees, exclusivity clauses.","Data lock-in: proprietary formats, non-portable history, integration debt.","Skill lock-in: training investment, certifications, learned workflows.","Network lock-in: established relationships, social graphs, ecosystem complements.","Switching-cost calculation drives lifetime-value math and pricing power."],"references":["Shapiro, C. and Varian, H.R. (1999) Information Rules. Boston, MA: Harvard Business School Press, ch. 5.","Klemperer, P. (1987) 'Markets with consumer switching costs', Quarterly Journal of Economics, 102(2), pp. 375–394.","Farrell, J. and Klemperer, P. (2007) 'Coordination and lock-in', in Handbook of Industrial Organization, vol. 3. Amsterdam: North-Holland."],"tagline":"Contractual · Data · Skill · Network — the four sources of stickiness."}};
   const PDF_URL = 'MDGTB301_Unit2_Framework_Library.pdf';
   const UNIT_NUM = 2;
   const UNIT_TITLE = 'Fundamental Concepts of the Digital Economy';
@@ -1253,7 +1346,12 @@ main { max-width: 1200px; margin: 0 auto; padding: 36px 24px 80px; }
   const modalTitle  = document.getElementById('modalTitle');
   const modalBread  = document.getElementById('modalBreadcrumb');
   const modalTagline = document.getElementById('modalTagline');
-  const modalShort  = document.getElementById('modalShort');
+  const modalDef    = document.getElementById('modalDefinition');
+  const modalDefLabel = document.getElementById('modalDefLabel');
+  const modalDefBlock = document.getElementById('modalDefinitionBlock');
+  const modalBullets = document.getElementById('modalBullets');
+  const modalRefs    = document.getElementById('modalRefs');
+  const modalRefsWrap = document.getElementById('modalRefsWrap');
   const modalClose  = document.getElementById('modalClose');
   const viewBtn     = document.getElementById('viewSheetBtn');
 
@@ -1265,9 +1363,40 @@ main { max-width: 1200px; margin: 0 auto; padding: 36px 24px 80px; }
     currentFwId = fwId;
     modalBread.textContent = 'Unit ' + UNIT_NUM + ' · ' + fw.subId + ' · ' + fw.sub;
     modalTitle.textContent = fw.name;
-    modalTagline.textContent = fw.short;
-    modalShort.textContent =
-      'Card ' + fwId + ' is part of "' + fw.sub + '". Open the framework sheet for the full structured reference: definition, origin and author, core mechanism, illustrative figure, how and when used, real-world examples, related frameworks, and Harvard sources.';
+    modalTagline.textContent = fw.tagline || fw.short || '';
+
+    // Definition block — coloured by type
+    modalDefLabel.textContent = fw.type;
+    modalDefBlock.dataset.type = fw.type;
+    modalDef.textContent = fw.definition || fw.short || '';
+
+    // Bullets (core mechanism)
+    modalBullets.innerHTML = '';
+    (fw.bullets || []).slice(0, 6).forEach(function (b) {
+      const li = document.createElement('li');
+      li.textContent = b;
+      modalBullets.appendChild(li);
+    });
+    if ((fw.bullets || []).length === 0) {
+      const li = document.createElement('li');
+      li.textContent = 'See the framework sheet (green button above) for the full mechanism breakdown.';
+      modalBullets.appendChild(li);
+    }
+
+    // Harvard references
+    modalRefs.innerHTML = '';
+    const refs = fw.references || [];
+    if (refs.length === 0) {
+      modalRefsWrap.style.display = 'none';
+    } else {
+      modalRefsWrap.style.display = '';
+      refs.slice(0, 3).forEach(function (r) {
+        const li = document.createElement('li');
+        li.textContent = r;
+        modalRefs.appendChild(li);
+      });
+    }
+
     modal.classList.add('open');
     modal.setAttribute('aria-hidden', 'false');
     modalClose.focus();

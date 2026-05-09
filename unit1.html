@@ -426,17 +426,106 @@ main { max-width: 1200px; margin: 0 auto; padding: 36px 24px 80px; }
 .modal-close:hover { background: var(--card-border); }
 
 .modal-body { padding: 22px 24px 28px; }
+
+/* DEFINITION BLOCK — category-coloured left border */
+.modal-definition {
+  border-left: 4px solid var(--gold);
+  background: #FFFCF2;
+  padding: 12px 16px;
+  border-radius: 0 6px 6px 0;
+  margin-bottom: 16px;
+}
+.modal-definition[data-type="DEFINITION"] {
+  border-left-color: var(--red);
+  background: #FFF5F4;
+}
+.modal-definition[data-type="FRAMEWORK"] {
+  border-left-color: var(--gold);
+  background: #FFFCF2;
+}
+.modal-deflabel {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+.modal-definition[data-type="DEFINITION"] .modal-deflabel { color: var(--red); }
+.modal-definition[data-type="FRAMEWORK"]  .modal-deflabel { color: var(--gold); }
+.modal-definition p {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--ink);
+  margin: 0;
+}
+
+/* BULLET LIST — teal dots, X→Y format friendly */
+.modal-bullets {
+  list-style: none;
+  padding: 0; margin: 0;
+}
+.modal-bullets li {
+  position: relative;
+  padding-left: 18px;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--body);
+  margin-bottom: 8px;
+}
+.modal-bullets li::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 7px;
+  width: 7px;
+  height: 7px;
+  background: var(--teal);
+  border-radius: 50%;
+}
+
+/* HARVARD REFERENCES — small numbered list */
+.modal-refs {
+  list-style: none;
+  padding: 0; margin: 0;
+  counter-reset: ref;
+}
+.modal-refs li {
+  position: relative;
+  padding-left: 22px;
+  font-size: 11.5px;
+  line-height: 1.45;
+  color: var(--body);
+  margin-bottom: 8px;
+  counter-increment: ref;
+}
+.modal-refs li::before {
+  content: counter(ref);
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--teal);
+  background: var(--teal-soft);
+  width: 16px; height: 16px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+}
+
+.modal-section { margin-bottom: 18px; }
+
 .modal-tagline {
   font-style: italic;
   color: var(--coral);
-  margin-bottom: 16px;
-  padding: 10px 14px;
+  margin: 4px 0 16px 0;
+  padding: 8px 12px;
   background: #FFF5F0;
   border-left: 3px solid var(--coral);
-  border-radius: 0 6px 6px 0;
-  font-size: 14px;
+  border-radius: 0 4px 4px 0;
+  font-size: 13px;
+  line-height: 1.4;
 }
-.modal-section { margin-bottom: 18px; }
 .modal-section h4 {
   font-size: 11px;
   letter-spacing: 1.5px;
@@ -1143,19 +1232,23 @@ main { max-width: 1200px; margin: 0 auto; padding: 36px 24px 80px; }
       </div>
     </div>
     <div class="modal-body">
+      <div class="modal-definition" id="modalDefinitionBlock">
+        <span class="modal-deflabel" id="modalDefLabel">DEFINITION</span>
+        <p id="modalDefinition"></p>
+      </div>
       <p class="modal-tagline" id="modalTagline"></p>
       <div class="modal-section">
-        <h4>What this is</h4>
-        <p id="modalShort"></p>
+        <h4>Core mechanism</h4>
+        <ul class="modal-bullets" id="modalBullets"></ul>
       </div>
-      <div class="modal-section">
-        <h4>Reference sheet</h4>
-        <p>The full A4 framework sheet — Definition · Origin & Author · Core Mechanism · Illustrative Figure · How &amp; When Used · Real-World Examples · Related Frameworks · Harvard References — opens via the green button above.</p>
+      <div class="modal-section" id="modalRefsWrap">
+        <h4>Harvard references</h4>
+        <ol class="modal-refs" id="modalRefs"></ol>
       </div>
       <div class="modal-cta">
         <div class="modal-cta-text">
-          <strong>Sheet structure</strong>
-          9 sections · A4 portrait · Harvard-referenced · designed for revision and assessment.
+          <strong>Want to go deeper?</strong>
+          The full A4 framework sheet — origin &amp; author, illustrative figure, how &amp; when used, real-world examples, innovation vs. predecessor, and full Harvard sources — opens via the green button above.
         </div>
       </div>
     </div>
@@ -1201,7 +1294,7 @@ main { max-width: 1200px; margin: 0 auto; padding: 36px 24px 80px; }
   'use strict';
 
   // ─── DATA ───────────────────────────────────────────
-  const FW_DB = {"1.1.1":{"name":"Atoms → Bits","type":"FRAMEWORK","short":"Negroponte's foundational shift — the displacement of atoms by bits as the dominant economic substrate.","sub":"Digital Transformation","subId":"1.1","pdfPage":2},"1.1.2":{"name":"OECD 3-Layer Model","type":"FRAMEWORK","short":"ICT sector · digitalising sectors · digital economy at large — three nested scopes.","sub":"Digital Transformation","subId":"1.1","pdfPage":3},"1.1.3":{"name":"S-Curve of Adoption","type":"FRAMEWORK","short":"Technology diffusion: slow start → exponential rise → saturation plateau.","sub":"Digital Transformation","subId":"1.1","pdfPage":4},"1.1.4":{"name":"Gartner Hype Cycle","type":"FRAMEWORK","short":"Trigger → peak → trough → slope → plateau — five stages of expectation.","sub":"Digital Transformation","subId":"1.1","pdfPage":5},"1.1.5":{"name":"Digitisation · Digitalisation · DT","type":"DEFINITION","short":"Three distinct concepts often confused: artefact change vs. process change vs. business-model change.","sub":"Digital Transformation","subId":"1.1","pdfPage":6},"1.2.1":{"name":"UNCTAD Digital Trade Flows","type":"FRAMEWORK","short":"Cross-border data flows now exceed traditional trade flows in many sectors.","sub":"Digital Economy Data","subId":"1.2","pdfPage":7},"1.2.2":{"name":"ICT Sector % of GDP","type":"FRAMEWORK","short":"OECD methodology for measuring the digital sector's contribution to national output.","sub":"Digital Economy Data","subId":"1.2","pdfPage":8},"1.2.3":{"name":"Global Internet Penetration","type":"FRAMEWORK","short":"ITU data — 5.5bn online by 2024; gaps remain across regions and demographics.","sub":"Digital Economy Data","subId":"1.2","pdfPage":9},"1.2.4":{"name":"DCO Regional Digital Trends","type":"FRAMEWORK","short":"Digital Cooperation Organization tracks adoption across MENA, Asia, Africa.","sub":"Digital Economy Data","subId":"1.2","pdfPage":10},"1.2.5":{"name":"The Digital Divide Gap","type":"DEFINITION","short":"Inequality of access, skills, and use — the persistent shadow of digital growth.","sub":"Digital Economy Data","subId":"1.2","pdfPage":11},"1.3.1":{"name":"Platform vs. Pipeline","type":"FRAMEWORK","short":"Parker, Van Alstyne & Choudary — two architectures, two different strategic playbooks.","sub":"Technology & Ecosystems","subId":"1.3","pdfPage":12},"1.3.2":{"name":"SMAC Stack","type":"FRAMEWORK","short":"Social · Mobile · Analytics · Cloud — the substrate of digital business.","sub":"Technology & Ecosystems","subId":"1.3","pdfPage":13},"1.3.3":{"name":"Iansiti–Levien Ecosystem Patterns","type":"FRAMEWORK","short":"Keystone · niche · dominator · hub-landlord — four roles in any digital ecosystem.","sub":"Technology & Ecosystems","subId":"1.3","pdfPage":14},"1.3.4":{"name":"Network Effects","type":"FRAMEWORK","short":"Each new user makes the network more valuable — the central digital-economy mechanic.","sub":"Technology & Ecosystems","subId":"1.3","pdfPage":15},"1.3.5":{"name":"Super-App Model","type":"FRAMEWORK","short":"WeChat, Alipay, Grab — single app, many integrated services.","sub":"Technology & Ecosystems","subId":"1.3","pdfPage":16},"1.4.1":{"name":"Christensen's Disruption","type":"FRAMEWORK","short":"Lower-end entrant improves over time and overtakes incumbent leaders.","sub":"Disruption Patterns","subId":"1.4","pdfPage":17},"1.4.2":{"name":"Industry Digitization Index","type":"FRAMEWORK","short":"MGI scoring — labour, asset, and usage dimensions of industry digitisation.","sub":"Disruption Patterns","subId":"1.4","pdfPage":18},"1.4.3":{"name":"BCG 10-20-70 Rule","type":"FRAMEWORK","short":"10% tech · 20% data · 70% organisation — where transformation value really comes from.","sub":"Disruption Patterns","subId":"1.4","pdfPage":19},"1.4.4":{"name":"Before/After: Music · Retail · Finance","type":"FRAMEWORK","short":"Three textbook disruption case studies — what changed structurally.","sub":"Disruption Patterns","subId":"1.4","pdfPage":20},"1.4.5":{"name":"WEF Future of Jobs","type":"FRAMEWORK","short":"Net new jobs created vs. displaced — the labour-market arithmetic of disruption.","sub":"Disruption Patterns","subId":"1.4","pdfPage":21}};
+  const FW_DB = {"1.1.1":{"name":"Atoms → Bits","type":"FRAMEWORK","short":"Negroponte's foundational shift — the displacement of atoms by bits as the dominant economic substrate.","sub":"Digital Transformation","subId":"1.1","pdfPage":2,"definition":"Nicholas Negroponte's framing of the central economic transition of the late 20th and early 21st centuries: the displacement of atoms (physical goods, physical distribution, physical interaction) by bits (digital goods, digital distribution, digital interaction) as the dominant substrate of value creation.","bullets":["Bits replace atoms wherever the underlying value is informational rather than physical.","Bits are non-rival, non-perishable, and have zero or near-zero marginal reproduction cost.","Physical distribution networks (retail stores, postal services) are displaced by digital ones (apps, streaming, downloads).","Industries vary in atom-content: information-goods industries digitised first; physical-good industries (food, construction, healthcare) only partially.","The transition is uneven, ongoing, and reversible only in narrow contexts."],"references":["Negroponte, N. (1995) Being Digital. New York: Knopf.","Toffler, A. (1980) The Third Wave. New York: Bantam Books.","Castells, M. (1996) The Information Age: Economy, Society, and Culture. Oxford: Blackwell."],"tagline":"Negroponte's foundational shift — from physical substrate to informational substrate."},"1.1.2":{"name":"OECD 3-Layer Model","type":"FRAMEWORK","short":"ICT sector · digitalising sectors · digital economy at large — three nested scopes.","sub":"Digital Transformation","subId":"1.1","pdfPage":3,"definition":"An OECD-developed measurement framework for the digital economy that recognises three nested layers: (1) the core ICT sector itself; (2) digitalising sectors (firms whose primary product isn't digital but whose operations are heavily digital); (3) the digital economy at large, where digital is integral to the value proposition.","bullets":["Layer 1 — Core: information and communication technology (ICT) sector — telecom, software, hardware, IT services.","Layer 2 — Narrow: ICT + digital services + digital media.","Layer 3 — Broad: ICT + digital services + e-business + the digitalised parts of all other sectors.","The three layers correspond to ~5%, ~15%, and ~30%+ of global GDP respectively.","Choice of layer matters for policy: tax design, trade negotiation, statistical comparison."],"references":["OECD (2020) A Roadmap Toward a Common Framework for Measuring the Digital Economy. Paris: OECD Publishing.","Bukht, R. and Heeks, R. (2017) 'Defining, conceptualising and measuring the digital economy', Centre for Development Informatics Working Paper 68. Manchester: University of Manchester.","OECD (2024) OECD Digital Economy Outlook 2024. Paris: OECD Publishing."],"tagline":"Three nested scopes for measuring the digital economy."},"1.1.3":{"name":"S-Curve of Adoption","type":"FRAMEWORK","short":"Technology diffusion: slow start → exponential rise → saturation plateau.","sub":"Digital Transformation","subId":"1.1","pdfPage":4,"definition":"The S-curve is the canonical shape of technology diffusion through a population: a slow innovator-and-early-adopter phase, followed by a steep early-majority and late-majority climb, ending in a saturation plateau as laggards eventually adopt or the market is exhausted. The shape recurs across electricity, telephones, internet, smartphones, and AI.","bullets":["Phase 1 — Innovators (~2.5%): risk-tolerant, technically curious, often researchers or hobbyists.","Phase 2 — Early adopters (~13.5%): opinion leaders who validate the technology for the majority.","Phase 3 — Early majority (~34%): pragmatists who adopt once social proof exists.","Phase 4 — Late majority (~34%): sceptics who adopt under social or economic pressure.","Phase 5 — Laggards (~16%): adopt last, often only when alternatives disappear."],"references":["Rogers, E.M. (2003) Diffusion of Innovations. 5th edn. New York: Free Press.","Bass, F.M. (1969) 'A new product growth for model consumer durables', Management Science, 15(5), pp. 215–227.","Geroski, P.A. (2000) 'Models of technology diffusion', Research Policy, 29(4–5), pp. 603–625."],"tagline":"Slow start · exponential rise · saturation plateau — the universal diffusion shape."},"1.1.4":{"name":"Gartner Hype Cycle","type":"FRAMEWORK","short":"Trigger → peak → trough → slope → plateau — five stages of expectation.","sub":"Digital Transformation","subId":"1.1","pdfPage":5,"definition":"Gartner's five-phase model of expectation dynamics around an emerging technology: Innovation Trigger → Peak of Inflated Expectations → Trough of Disillusionment → Slope of Enlightenment → Plateau of Productivity. Distinct from the S-curve in that it tracks public/expectation attitude rather than adoption percentage.","bullets":["Phase 1 — Innovation trigger: a breakthrough creates initial press interest; few real products exist.","Phase 2 — Peak of inflated expectations: media hype peaks; failures common.","Phase 3 — Trough of disillusionment: failures drive expectations down; many vendors exit.","Phase 4 — Slope of enlightenment: surviving vendors find genuine use cases; understanding deepens.","Phase 5 — Plateau of productivity: technology delivers steady, demonstrable value at scale."],"references":["Fenn, J. and Raskino, M. (2008) Mastering the Hype Cycle: How to Choose the Right Innovation at the Right Time. Boston: Harvard Business Press.","Gartner Inc. (2024) Gartner Hype Cycle for Emerging Technologies 2024. Stamford, CT: Gartner.","Roehrich, G. (2009) 'Hype cycle as a marketing tool', Journal of Marketing Theory and Practice, 17(3), pp. 235–246."],"tagline":"Trigger · peak · trough · slope · plateau — the emotional shape of technology adoption."},"1.1.5":{"name":"Digitisation · Digitalisation · DT","type":"DEFINITION","short":"Three distinct concepts often confused: artefact change vs. process change vs. business-model change.","sub":"Digital Transformation","subId":"1.1","pdfPage":6,"definition":"Three frequently conflated concepts: digitisation (converting an analogue artefact to digital form — e.g. scanning a paper file), digitalisation (using digital technology to change a process — e.g. moving claims-handling online), and digital transformation (changing the business model itself — e.g. a record label becoming a streaming-and-data company).","bullets":["Digitisation: artefact-level change. Output = digital artefact. Effort = low.","Digitalisation: process-level change. Output = digitised workflow. Effort = medium.","Digital transformation: business-model-level change. Output = new value proposition. Effort = high; failure rate ~70% (BCG).","The three are sequential: digitisation usually precedes digitalisation, which usually precedes transformation.","Confusion is common: 'we're digitally transforming' is often actually digitalisation."],"references":["Brennen, J.S. and Kreiss, D. (2014) 'Digitalization and digitization', in The International Encyclopedia of Communication. Oxford: Wiley-Blackwell.","Verhoef, P.C., Broekhuizen, T., Bart, Y., Bhattacharya, A., Dong, J.Q., Fabian, N. and Haenlein, M. (2021) 'Digital transformation: a multidisciplinary reflection and research agenda', Journal of Business Research, 122, pp. 889–901.","Gartner Inc. (2024) IT Glossary: Digital Transformation. Stamford, CT: Gartner."],"tagline":"Three distinct concepts often confused — artefact change · process change · business-model change."},"1.2.1":{"name":"UNCTAD Digital Trade Flows","type":"FRAMEWORK","short":"Cross-border data flows now exceed traditional trade flows in many sectors.","sub":"Digital Economy Data","subId":"1.2","pdfPage":7,"definition":"UNCTAD's framework for measuring international digital trade — services delivered electronically, digital intermediation of physical trade, and pure cross-border data flows. The headline finding: digital and digitally-deliverable services have grown roughly twice as fast as goods trade since 2010, and now account for over half of global services trade.","bullets":["Three measurement categories: digitally-deliverable services · digital-platform-intermediated trade · pure data flows.","Digitally-deliverable services: ~$3.6tn globally (2023, UNCTAD), >50% of services trade.","Digital-platform intermediation: e-commerce platforms moved ~$26.7tn of goods and services in 2023.","Data flows: cross-border bandwidth use grew ~45x between 2010 and 2024 (Cisco / TeleGeography).","Implication: traditional trade-statistic frames understate the digital economy by 30–50%."],"references":["UNCTAD (2024) Digital Economy Report 2024. Geneva: United Nations Conference on Trade and Development.","OECD (2024) OECD Digital Economy Outlook 2024. Paris: OECD Publishing.","WTO (2024) World Trade Statistical Review 2024. Geneva: World Trade Organization."],"tagline":"Cross-border data flows now exceed traditional trade in many sectors."},"1.2.2":{"name":"ICT Sector % of GDP","type":"FRAMEWORK","short":"OECD methodology for measuring the digital sector's contribution to national output.","sub":"Digital Economy Data","subId":"1.2","pdfPage":8,"definition":"The OECD methodology for measuring the ICT (Information and Communication Technology) sector's contribution to national GDP. The ICT sector is defined by ISIC Rev. 4 codes covering hardware manufacturing, software publishing, telecommunications, and IT services. Direct contribution to OECD GDP: ~5–7% on average; in leading economies (USA, Korea, Ireland) 8–14%.","bullets":["Includes: hardware manufacturing (semiconductors, computers, networking), software publishing, telecoms, computer services, data services.","Excludes: ICT use in non-ICT sectors (that's Layer 2/3 in the OECD 3-Layer Model).","Top countries by ICT sector share: Ireland (~14%), Korea (~10%), Israel (~9%), USA (~8%).","Cross-country comparability is good but coverage of platform / data-monetising firms is uneven.","Useful as a baseline; understates true digital-economy contribution by 3–5x."],"references":["OECD (2011) Guide to Measuring the Information Society 2011. Paris: OECD Publishing.","OECD (2024) OECD Digital Economy Outlook 2024. Paris: OECD Publishing.","United Nations (2008) International Standard Industrial Classification of All Economic Activities, Rev. 4. New York: UN Statistics Division."],"tagline":"OECD methodology — measuring the digital sector's contribution to national output."},"1.2.3":{"name":"Global Internet Penetration","type":"FRAMEWORK","short":"ITU data — 5.5bn online by 2024; gaps remain across regions and demographics.","sub":"Digital Economy Data","subId":"1.2","pdfPage":9,"definition":"The percentage of the global population using the internet, tracked annually by the International Telecommunication Union (ITU). 2024 estimate: ~67% of the global population, or ~5.5 billion users, with substantial regional variation: Europe ~92%, Americas ~88%, Asia-Pacific ~71%, Africa ~37%. Gender, urban-rural, and income gaps persist.","bullets":["Headline metric: % of population using the internet in the past three months.","Definitional nuance: 'using' includes mobile-data, Wi-Fi, broadband, satellite — any path.","Regional gaps: Europe vs Africa = ~55-percentage-point gap.","Within-country gaps: rural/urban (15–30pp), gender (~7pp globally), income, age.","Quality vs access: 5G/fixed broadband penetration is a separate, more skewed metric."],"references":["ITU (2024) Measuring Digital Development: Facts and Figures 2024. Geneva: International Telecommunication Union.","ITU (2020) Handbook for Measuring ICT Access and Use by Households and Individuals. Geneva: ITU.","World Bank (2024) Digital Progress and Trends Report 2024. Washington, DC: World Bank."],"tagline":"ITU 2024 — 5.5bn online · gaps remain across regions and demographics."},"1.2.4":{"name":"DCO Regional Digital Trends","type":"FRAMEWORK","short":"Digital Cooperation Organization tracks adoption across MENA, Asia, Africa.","sub":"Digital Economy Data","subId":"1.2","pdfPage":10,"definition":"The Digital Cooperation Organization (DCO) is an intergovernmental body of 16 member states (largely MENA, parts of Asia and Africa) that publishes annual Digital Economy Trends reports tracking digital-economy progress across emerging markets. Useful complement to OECD/UNCTAD coverage, which is biased toward developed economies.","bullets":["Tracks: digital infrastructure, digital skills, digital business environment, digital governance, regional cooperation.","Member states span very different income levels — useful for comparing leapfrog patterns.","Headline 2024 finding: DCO collective digital economy ~$2.1tn, growing ~14% annually.","Highlights: GCC infrastructure leadership; Africa mobile-money leapfrogging; South Asia services-export growth.","Limitation: small sample, member-state self-reporting, less methodological maturity than OECD."],"references":["Digital Cooperation Organization (2024) DCO Digital Economy Trends 2024. Riyadh: DCO.","Digital Cooperation Organization (2025) DCO Digital Economy Trends 2025. Riyadh: DCO.","World Bank (2024) Digital Progress and Trends Report 2024. Washington, DC: World Bank."],"tagline":"Digital Cooperation Organization — adoption patterns across MENA, Asia, and Africa."},"1.2.5":{"name":"The Digital Divide Gap","type":"DEFINITION","short":"Inequality of access, skills, and use — the persistent shadow of digital growth.","sub":"Digital Economy Data","subId":"1.2","pdfPage":11,"definition":"The digital divide is the gap between those who have effective access to and capability with digital technology and those who do not. It operates along three dimensions: access (do you have the device and connection?), skills (can you use it productively?), and use (do you actually use it for high-value activities?). The first-order divide closes; the second- and third-order persist.","bullets":["First-order divide (access): physical access to a device and a connection. Closing fast — but not closed.","Second-order divide (skills): operational, formal, information, and strategic digital skills. Closing more slowly.","Third-order divide (use): actual high-value use vs entertainment-only use. Persists — and can widen as new tools (AI) emerge.","Demographics: age, income, education, gender, urban/rural — all correlate with all three orders.","Policy implication: 'connecting the next billion' is necessary but not sufficient."],"references":["DiMaggio, P. and Hargittai, E. (2001) 'From the digital divide to digital inequality: studying internet use as penetration increases', Princeton CCSPR Working Paper, 15.","van Dijk, J. (2005) The Deepening Divide: Inequality in the Information Society. Thousand Oaks, CA: Sage.","ITU (2024) Measuring Digital Development: Facts and Figures 2024. Geneva: ITU."],"tagline":"The persistent inequality of access · skills · and use that shadows digital growth."},"1.3.1":{"name":"Platform vs. Pipeline","type":"FRAMEWORK","short":"Parker, Van Alstyne & Choudary — two architectures, two different strategic playbooks.","sub":"Technology & Ecosystems","subId":"1.3","pdfPage":12,"definition":"Parker, Van Alstyne and Choudary's distinction between two business architectures: the pipeline (linear value chain — produce, then distribute, then consume) and the platform (orchestrating value-creating interactions between producers and consumers it does not employ). The shift from pipeline to platform is the dominant structural pattern of the digital economy.","bullets":["Pipelines own the value-creation chain — design, build, market, distribute.","Platforms orchestrate the value chain — they do not produce; they enable producers to reach consumers.","Pipeline competitive moat: efficiency, scale, distribution control.","Platform competitive moat: network effects, data, ecosystem lock-in.","Hybrid forms common: Amazon retail (pipeline) + Marketplace (platform)."],"references":["Parker, G.G., Van Alstyne, M.W. and Choudary, S.P. (2016) Platform Revolution. New York: W.W. Norton.","Iansiti, M. and Levien, R. (2004) The Keystone Advantage. Boston: HBR Press.","Cusumano, M.A., Gawer, A. and Yoffie, D.B. (2019) The Business of Platforms. New York: HarperBusiness."],"tagline":"Two architectures · two strategic playbooks."},"1.3.2":{"name":"SMAC Stack","type":"FRAMEWORK","short":"Social · Mobile · Analytics · Cloud — the substrate of digital business.","sub":"Technology & Ecosystems","subId":"1.3","pdfPage":13,"definition":"An umbrella label for four mutually-reinforcing technology layers that, in combination, form the operational substrate of post-2010 digital business: Social (online networks and identity), Mobile (smartphones, apps, ubiquitous connectivity), Analytics (data-driven decisioning), and Cloud (elastic, on-demand compute and storage).","bullets":["Cloud — the foundation: elastic compute, storage, and networking on demand.","Mobile — the access layer: ubiquitous, location-aware, always-on user devices.","Social — the identity and graph layer: who knows whom, who trusts whom.","Analytics — the value-extraction layer: data → insight → action.","Each layer reinforces the others: mobile generates data → analytics needs cloud → social personalises mobile."],"references":["Cognizant Center for the Future of Work (2013) The Future of Work: Powered by SMAC. Teaneck, NJ: Cognizant.","Gartner Inc. (2013) The Nexus of Forces: Social, Mobile, Cloud and Information. Stamford, CT: Gartner.","Brynjolfsson, E. and McAfee, A. (2014) The Second Machine Age. New York: W.W. Norton."],"tagline":"Social · Mobile · Analytics · Cloud — the substrate of digital business."},"1.3.3":{"name":"Iansiti–Levien Ecosystem Patterns","type":"FRAMEWORK","short":"Keystone · niche · dominator · hub-landlord — four roles in any digital ecosystem.","sub":"Technology & Ecosystems","subId":"1.3","pdfPage":14,"definition":"Iansiti and Levien's taxonomy of strategic roles within a business ecosystem: Keystones provide platform value to many participants and capture a share of the surplus; Niche players specialise within a keystone's ecosystem; Dominators absorb most ecosystem value into themselves; Hub-landlords extract rent without contributing platform value.","bullets":["Keystone — creates and shares platform value (e.g. App Store giving developers reach in exchange for 15–30%).","Niche player — specialises within an ecosystem; thrives if keystone health is good.","Dominator — absorbs ecosystem value, leaves little for partners; ecosystem typically declines.","Hub-landlord — controls a chokepoint and extracts rent without ecosystem-building.","Healthy ecosystems are keystone-led; failing ecosystems often have a dominator at the centre."],"references":["Iansiti, M. and Levien, R. (2004) The Keystone Advantage. Boston: HBR Press.","Moore, J.F. (1993) 'Predators and prey: a new ecology of competition', Harvard Business Review, 71(3), pp. 75–86.","Jacobides, M.G., Cennamo, C. and Gawer, A. (2018) 'Towards a theory of ecosystems', Strategic Management Journal, 39(8), pp. 2255–2276."],"tagline":"Keystone · niche · dominator · hub-landlord — four roles in any digital ecosystem."},"1.3.4":{"name":"Network Effects","type":"FRAMEWORK","short":"Each new user makes the network more valuable — the central digital-economy mechanic.","sub":"Technology & Ecosystems","subId":"1.3","pdfPage":15,"definition":"A network effect exists when the value of a product or service to one user depends on the number of other users. Direct network effects: same-side benefit (more users → more useful, e.g. WhatsApp). Indirect (cross-side): two distinct user groups benefit each other (e.g. more Uber drivers → more passenger value). The dominant moat in digital markets.","bullets":["Direct effect: utility(user_i) increases with n (number of users).","Indirect effect: utility(group_A_user) increases with n_B (number of users in group B).","Same-side and cross-side effects can be positive or negative (e.g. ad-load on a social network is negative same-side).","Strength varies: WhatsApp very strong; Uber moderate (multi-homing weakens it); ride-hailing's network effects are local, not global.","Network effects → tipping → winner-takes-all dynamics in many but not all cases."],"references":["Rohlfs, J. (1974) 'A theory of interdependent demand for a communications service', Bell Journal of Economics, 5(1), pp. 16–37.","Katz, M.L. and Shapiro, C. (1994) 'Systems competition and network effects', Journal of Economic Perspectives, 8(2), pp. 93–115.","Eisenmann, T., Parker, G. and Van Alstyne, M.W. (2006) 'Strategies for two-sided markets', Harvard Business Review, 84(10), pp. 92–101."],"tagline":"Each new user makes the network more valuable — the central digital-economy mechanic."},"1.3.5":{"name":"Super-App Model","type":"FRAMEWORK","short":"WeChat, Alipay, Grab — single app, many integrated services.","sub":"Technology & Ecosystems","subId":"1.3","pdfPage":16,"definition":"A single mobile application that provides many distinct services through embedded sub-apps or mini-programs — chat, payments, ride-hailing, food delivery, e-commerce, lifestyle, government services. Pioneered in Asia (WeChat 2011+, Alipay 2013+, Grab 2016+); contrast with the more fragmented Western app-store-per-service model.","bullets":["Core anchor service (chat, payments, or commerce) drives high daily-active engagement.","Mini-programs / sub-apps embedded within: ride-hailing, food, banking, government.","Single identity, single payment instrument, single notification channel — high friction-reduction.","Platform owner becomes the OS-of-services within the smartphone OS.","Cultural and regulatory factors: Asia's mobile-first, lower-trust-in-fragmentation environment more receptive than the West."],"references":["Steinberg, M. (2019) The Platform Economy: How Japan Transformed the Consumer Internet. Minneapolis: University of Minnesota Press.","Cusumano, M.A., Gawer, A. and Yoffie, D.B. (2019) The Business of Platforms. New York: HarperBusiness.","Tencent (2024) Tencent Annual Report 2024. Shenzhen: Tencent Holdings Ltd."],"tagline":"WeChat · Alipay · Grab — single app · many integrated services."},"1.4.1":{"name":"Christensen's Disruption","type":"FRAMEWORK","short":"Lower-end entrant improves over time and overtakes incumbent leaders.","sub":"Disruption Patterns","subId":"1.4","pdfPage":17,"definition":"Clayton Christensen's theory of disruptive innovation: a new entrant with an inferior but cheaper product targets either a low-end segment or a non-consumer market that incumbents underserve, then improves its product over time, eventually meeting and surpassing the performance demanded by the mainstream market — at which point incumbents collapse. The pattern recurs across industries.","bullets":["Step 1 — Entrant launches a worse-but-cheaper or simpler product targeting an underserved or non-consumer segment.","Step 2 — Incumbent ignores or dismisses (rationally — the segment is unprofitable to them).","Step 3 — Entrant improves performance trajectory faster than the mainstream improvement curve.","Step 4 — Entrant's product crosses into mainstream-acceptable performance.","Step 5 — Mainstream customers switch; incumbent collapses or is acquired."],"references":["Christensen, C.M. (1997) The Innovator's Dilemma. Boston: Harvard Business School Press.","Christensen, C.M., Raynor, M.E. and McDonald, R. (2015) 'What is disruptive innovation?', Harvard Business Review, 93(12), pp. 44–53.","Lepore, J. (2014) 'The disruption machine: what the gospel of innovation gets wrong', The New Yorker, June 23."],"tagline":"Lower-end entrant improves over time and overtakes incumbent leaders."},"1.4.2":{"name":"Industry Digitization Index","type":"FRAMEWORK","short":"MGI scoring — labour, asset, and usage dimensions of industry digitisation.","sub":"Disruption Patterns","subId":"1.4","pdfPage":18,"definition":"McKinsey Global Institute's 2015–2020 series of indices measuring the digitisation of US and European industries along three dimensions: digital assets (digital infrastructure spending, hardware, software), digital usage (transactions, customer interactions, digital business processes), and digital labour (digital skills, digital work practices). Reveals very large cross-industry gaps.","bullets":["Three dimensions, each scored 0–100 across ~20 indicators.","Industry rankings: ICT, media, finance at top; agriculture, construction, healthcare at bottom.","Gap between top and bottom industries: ~10x.","Within-industry gaps also large: top quartile firms ~5x more digital than bottom quartile.","The bottom-quartile gap correlates with productivity gap — supports the digital-productivity-puzzle thesis."],"references":["McKinsey Global Institute (2015) Digital America: A Tale of the Haves and Have-Mores. New York: McKinsey & Company.","McKinsey Global Institute (2018) Digital Europe: Pushing the Frontier, Capturing the Benefits. New York: McKinsey & Company.","Brynjolfsson, E. and McAfee, A. (2014) The Second Machine Age. New York: W.W. Norton."],"tagline":"MGI scoring — labour · asset · usage dimensions of industry digitisation."},"1.4.3":{"name":"BCG 10-20-70 Rule","type":"FRAMEWORK","short":"10% tech · 20% data · 70% organisation — where transformation value really comes from.","sub":"Disruption Patterns","subId":"1.4","pdfPage":19,"definition":"BCG's empirical rule of thumb derived from digital-transformation research: ~10% of value comes from the technology itself, ~20% from data and analytics, ~70% from organisational and process change. The headline lesson: technology is necessary but not sufficient; transformations that under-invest in the 70% predictably underdeliver.","bullets":["Technology layer (~10%): platforms, cloud, AI tools — genuine but commoditised contribution.","Data & analytics layer (~20%): ability to extract decision-grade insight from data.","Organisation & process layer (~70%): cross-functional teams, agile working, redesigned customer journeys, culture.","Implication: budget mix matters — 80% tech / 20% change typically underdelivers.","Empirical: firms with dedicated change-management capacity see 1.5–2x higher transformation success."],"references":["BCG (2020) Flipping the Odds of Digital Transformation Success. Boston: Boston Consulting Group.","Westerman, G., Bonnet, D. and McAfee, A. (2014) Leading Digital: Turning Technology into Business Transformation. Boston: HBR Press.","BCG (2024) The Digital Acceleration Index 2024. Boston: Boston Consulting Group."],"tagline":"10% tech · 20% data · 70% organisation — where transformation value really comes from."},"1.4.4":{"name":"Before/After: Music · Retail · Finance","type":"FRAMEWORK","short":"Three textbook disruption case studies — what changed structurally.","sub":"Disruption Patterns","subId":"1.4","pdfPage":20,"definition":"A comparative case-based framework illustrating disruption patterns across three different industries: music (high-IP, low physical-asset intensity), retail (low-IP, medium physical-asset), and finance (regulated, very high information intensity). Each shows different disruption mechanics, different incumbent responses, and different end-states.","bullets":["Music — disruption pattern: bits replace atoms (CDs → MP3 → streaming); incumbents (labels) lose distribution control but retain rights ownership.","Retail — disruption pattern: digital marketplace + logistics = unbundling of department-store value chain; Amazon dominates.","Finance — disruption pattern: services unbundled (payments, lending, wealth, insurance) by fintech specialists; incumbents partially digitise but lose share.","Common pattern: incumbent recognises threat too late; partial digitisation insufficient; structural reorganisation required.","Different end-states: music re-bundled around streaming; retail consolidating around 2–3 platforms; finance fragmenting then re-bundling around super-apps."],"references":["Knopper, S. (2009) Appetite for Self-Destruction: The Spectacular Crash of the Record Industry in the Digital Age. New York: Free Press.","Stone, B. (2013) The Everything Store: Jeff Bezos and the Age of Amazon. New York: Little, Brown.","King, B. (2018) Bank 4.0: Banking Everywhere, Never at a Bank. Singapore: Marshall Cavendish."],"tagline":"Three textbook disruption case studies — what changed structurally."},"1.4.5":{"name":"WEF Future of Jobs","type":"FRAMEWORK","short":"Net new jobs created vs. displaced — the labour-market arithmetic of disruption.","sub":"Disruption Patterns","subId":"1.4","pdfPage":21,"definition":"The World Economic Forum's biennial Future of Jobs Report estimates how many jobs are created, destroyed, and transformed by technology adoption over a 5-year horizon, based on a survey of ~800 global employers. The 2023 edition projects ~83m jobs displaced, ~69m created — a net loss of ~14m by 2027, with substantial occupational reshuffling.","bullets":["Survey of ~800 large global employers across ~45 countries.","Each employer estimates expected hiring, displacement, transformation by occupational category.","Top growing roles 2023–2027: AI/ML specialists, sustainability specialists, BI analysts, data analysts.","Top declining roles: bank tellers, postal clerks, cashiers, data-entry clerks, administrative secretaries.","Net effect highly composition-dependent: net loss in routine cognitive, net gain in non-routine cognitive and care work."],"references":["WEF (2023) Future of Jobs Report 2023. Geneva: World Economic Forum.","WEF (2025) Future of Jobs Report 2025. Geneva: World Economic Forum.","Frey, C.B. and Osborne, M.A. (2013) The Future of Employment: How Susceptible Are Jobs to Computerisation? Oxford: Oxford Martin School."],"tagline":"Net new jobs created vs. displaced — the labour-market arithmetic of disruption."}};
   const PDF_URL = 'MDGTB301_Unit1_Framework_Library.pdf';
   const UNIT_NUM = 1;
   const UNIT_TITLE = 'Digitalization of the Global Economy';
@@ -1262,7 +1355,12 @@ main { max-width: 1200px; margin: 0 auto; padding: 36px 24px 80px; }
   const modalTitle  = document.getElementById('modalTitle');
   const modalBread  = document.getElementById('modalBreadcrumb');
   const modalTagline = document.getElementById('modalTagline');
-  const modalShort  = document.getElementById('modalShort');
+  const modalDef    = document.getElementById('modalDefinition');
+  const modalDefLabel = document.getElementById('modalDefLabel');
+  const modalDefBlock = document.getElementById('modalDefinitionBlock');
+  const modalBullets = document.getElementById('modalBullets');
+  const modalRefs    = document.getElementById('modalRefs');
+  const modalRefsWrap = document.getElementById('modalRefsWrap');
   const modalClose  = document.getElementById('modalClose');
   const viewBtn     = document.getElementById('viewSheetBtn');
 
@@ -1274,9 +1372,40 @@ main { max-width: 1200px; margin: 0 auto; padding: 36px 24px 80px; }
     currentFwId = fwId;
     modalBread.textContent = 'Unit ' + UNIT_NUM + ' · ' + fw.subId + ' · ' + fw.sub;
     modalTitle.textContent = fw.name;
-    modalTagline.textContent = fw.short;
-    modalShort.textContent =
-      'Card ' + fwId + ' is part of "' + fw.sub + '". Open the framework sheet for the full structured reference: definition, origin and author, core mechanism, illustrative figure, how and when used, real-world examples, related frameworks, and Harvard sources.';
+    modalTagline.textContent = fw.tagline || fw.short || '';
+
+    // Definition block — coloured by type
+    modalDefLabel.textContent = fw.type;
+    modalDefBlock.dataset.type = fw.type;
+    modalDef.textContent = fw.definition || fw.short || '';
+
+    // Bullets (core mechanism)
+    modalBullets.innerHTML = '';
+    (fw.bullets || []).slice(0, 6).forEach(function (b) {
+      const li = document.createElement('li');
+      li.textContent = b;
+      modalBullets.appendChild(li);
+    });
+    if ((fw.bullets || []).length === 0) {
+      const li = document.createElement('li');
+      li.textContent = 'See the framework sheet (green button above) for the full mechanism breakdown.';
+      modalBullets.appendChild(li);
+    }
+
+    // Harvard references
+    modalRefs.innerHTML = '';
+    const refs = fw.references || [];
+    if (refs.length === 0) {
+      modalRefsWrap.style.display = 'none';
+    } else {
+      modalRefsWrap.style.display = '';
+      refs.slice(0, 3).forEach(function (r) {
+        const li = document.createElement('li');
+        li.textContent = r;
+        modalRefs.appendChild(li);
+      });
+    }
+
     modal.classList.add('open');
     modal.setAttribute('aria-hidden', 'false');
     modalClose.focus();
